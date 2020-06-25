@@ -1,32 +1,26 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 const BottomNav = () => {
 
   return (
     <nav className="bottom-nav">
-      {/* <div> */}
         <ul>
-          {/* <Link to="/"> */}
+          <Link to="/">
             <li>Home</li>
-          {/* </Link> */}
+          </Link>
 
-          {/* <Link to="/"> */}
+          <Link to="/newpost">
             <li>New Post</li>
-          {/* </Link> */}
+          </Link>
 
-          {/* <Link to="/contact"> */}
+          <Link to="/userprofile">
             <li>Profile</li>
-          {/* </Link> */}
+          </Link>
         </ul>
-      {/* </div> */}
     </nav>
   )
 }
-
-// Nav.propTypes = {
-//   ??: PropTypes.??
-// }
 
 export default BottomNav;

@@ -1,17 +1,28 @@
 import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+
+/* Styles */
 import './App.scss';
 
 /* Component */
 import TopNav from './components/topNav';
-import BottomNav  from './components/bottomNav';
+import BottomNav from './components/bottomNav';
+import Home from './components/Home';
+import Routes from './components/Routes';
 
 const App = () => {
   return (
-    <div className="App">
-      <TopNav />
+    <Router>
+      
+      <div className="App">
 
-      <BottomNav />
-    </div>
+        <TopNav />
+        <Routes />
+        <BottomNav />
+
+      </div>
+
+    </Router>
   );
 }
 

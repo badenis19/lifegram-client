@@ -4,7 +4,7 @@ const TopNav = () => {
 
   return (
     <nav className="top-nav">
-      <h1>LIFEGRAM</h1>
+      <h3>LIFEGRAM</h3>
     </nav>
   )
 }

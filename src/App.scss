@@ -2,11 +2,11 @@
   // border: solid red;
   min-height: 100vh;
   margin: 0 auto;
-  // position: relative;
+  padding-top: 61.44px;
 }
 
 // reset - Removes default behavior
-body,p,a,ul,li{
+body,p,a,ul,li,h1{
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -20,7 +20,7 @@ body,p,a,ul,li{
   top: 0;
   border: 1px solid lightgray;
 
-  h1 {
+  h3 {
     text-align: center;
   }
 }
@@ -43,6 +43,7 @@ body,p,a,ul,li{
 
   li {
     align-items: center;
+    color: black;
     padding: 10px 10px;
     opacity: 0.7;
   }
