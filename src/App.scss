@@ -1,0 +1,49 @@
+.App {
+  // border: solid red;
+  min-height: 100vh;
+  margin: 0 auto;
+  // position: relative;
+}
+
+// reset - Removes default behavior
+body,p,a,ul,li{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+// NAV //
+.top-nav {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  border: 1px solid lightgray;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border: 1px solid lightgray;
+
+  ul {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+  }
+
+  li {
+    align-items: center;
+    padding: 10px 10px;
+    opacity: 0.7;
+  }
+}

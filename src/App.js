@@ -1,10 +1,16 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
-function App() {
+/* Component */
+import TopNav from './components/topNav';
+import BottomNav  from './components/bottomNav';
+
+const App = () => {
   return (
     <div className="App">
-      <h1>HOME</h1>
+      <TopNav />
+
+      <BottomNav />
     </div>
   );
 }
