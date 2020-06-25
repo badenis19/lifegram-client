@@ -2,9 +2,6 @@ import { gql } from 'apollo-boost';
 
 /* Queries */
 
-
-
-
 /* POSTS */
 
 // Get all
@@ -25,15 +22,25 @@ const getUserPostsQuery = gql`
 `;
 
 // Get one
-// const getProductQuery = gql`
-//   {
-//     product($id: ID){
-//       name
-//       price
-//       img_url
-//     }
-//   }
-// `;
+const getSingleUserDetailsQuery = gql`
+  {
+    user(id: "5ef3602068f1d34b9d562635"){
+      id,
+      username,
+      description
+      followers
+      following
+      posts {
+        id
+        img
+        description
+        likes
+        comments
+        timeStamp
+      }
+    }
+  }
+`;
 
 /* USERS */
 
@@ -60,7 +67,4 @@ const getUsersPostsQuery = gql`
 }
 `;
 
-
-
-
-export { getUserPostsQuery, getUsersPostsQuery }
+export { getUserPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery }

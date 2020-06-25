@@ -3,41 +3,48 @@ import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 
 
 /* Queries */
-import { getUserPostsQuery } from '../queries/queries'
+import { getSingleUserDetailsQuery } from '../queries/queries';
 
 const UserProfile = (props) => {
 
   // console.log(posts)
   let data = props.data;
+  console.log(data);
 
-  const displayPosts = () => {
-
+  const displayUsers = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
     } else {
-      return data.posts.map(post => {
-        console.log(">>>", post.img)
-        return (
-          <div key={post.id}>
-            <p>{post.user["username"]}</p>
-            <p>{post.img}</p>
-            <p>{post.description}</p>
-            <p>{post.likes}</p>
-            <p>comments:{post.comments}</p>
-            <br/>
-            <br/>
-          </div>
-        )
-      })
+      return (
+        <div>
+          <p>{data.user.username}</p>
+          <p>{data.user.description}</p>
+          <p>Followers: {data.user.followers.length}</p>
+          <p>Following: {data.user.following.length}</p>
+          <p>Posts: {data.user.posts.length}</p>
+          <br />
+          {data.user.posts.map((post) => {
+            return (
+              <div key={post.id}>
+                <p>image: {post.img}</p>
+                <p>description: {post.description}</p>
+                <p>{post.likes}</p>
+                <p>comments:{post.comments}</p>
+                <br />
+              </div>
+            )
+          })}
+        </div>
+      )
     }
   }
 
   return (
     <div>
       <h1>UserProfile</h1>
-      {displayPosts()}
+      {displayUsers()}
     </div>
   )
 }
 
-export default graphql(getUserPostsQuery)(UserProfile); // query result accessible via props
+export default graphql(getSingleUserDetailsQuery)(UserProfile); // query result accessible via props
