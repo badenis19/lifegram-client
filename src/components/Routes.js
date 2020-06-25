@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import React from 'react';
 
+
 /* Component */
 import Home from './Home';
 import NewPost from './NewPost';
@@ -20,7 +21,7 @@ const Routes = () => {
 
           <Route
             path="/home"
-            component={Home}
+            render={() => <Home />}
             exact
           />
 
