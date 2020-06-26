@@ -5,7 +5,7 @@ import { gql } from 'apollo-boost';
 /* POSTS */
 
 // Get all
-const getUserPostsQuery = gql`
+const getAllPostsQuery = gql`
 {
   posts {
     id
@@ -22,6 +22,8 @@ const getUserPostsQuery = gql`
 `;
 
 /* USERS */
+
+
 // user(id: "5ef3602068f1d34b9d562635"){
 // Get one
 const getSingleUserDetailsQuery = gql`
@@ -69,4 +71,4 @@ const getUsersPostsQuery = gql`
 }
 `;
 
-export { getUserPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery }
+export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery }
