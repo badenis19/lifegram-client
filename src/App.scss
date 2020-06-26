@@ -57,7 +57,20 @@ body,p,a,ul,li,h1{
   border: 1px solid lightgrey;
   margin-bottom: 3px;
   
+  p {
+    padding-left: 5px;
+  }
+  
   :last-child {
     margin-bottom: 40px;
+  }
+}
+
+// USER PROFILE
+
+.user-info-and-stats {
+
+  img {
+    border-radius: 50%;
   }
 }

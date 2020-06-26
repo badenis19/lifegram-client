@@ -16,7 +16,7 @@ const UserProfile = (props) => {
       return (<p>Loading...</p>)
     } else {
       return (
-        <div>
+        <div className="user-info-and-stats">
           <p>username: {data.user.username}</p>
           <p>description: {data.user.description}</p>
           <img src={data.user.img} alt="user_image"/>
@@ -26,12 +26,11 @@ const UserProfile = (props) => {
           <br />
           {data.user.posts.map((post) => {
             return (
-              <div key={post.id}>
+              <div className="post" key={post.id}>
                 <img src={post.img} alt="post_image"/>
                 <p>description: {post.description}</p>
                 <p>likes {post.likes}</p>
                 <p>comments:{post.comments}</p>
-                <br />
               </div>
             )
           })}
