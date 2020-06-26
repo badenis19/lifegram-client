@@ -12,15 +12,14 @@ const Home = (props) => {
   const displayAllPosts = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
-      // (TO ADD) else if array is empty return there are no posts
-    } else {
+    } else if(data.posts.length > 0) {
       return (
         <div>
           {data.posts.map((post) => {
             return (
               <div className="post" key={post.id}>
                 <p>user: {post.user["username"]}</p>
-                <img src={post.img} alt="post_image"/>
+                <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
                 <p>likes {post.likes}</p>
                 <p>comments:{post.comments}</p>
@@ -29,6 +28,8 @@ const Home = (props) => {
           })}
         </div>
       )
+    } else {
+      return (<p>There are no posts...</p>)
     }
   }
 
@@ -39,4 +40,4 @@ const Home = (props) => {
   )
 }
 
-export default graphql(getAllPostsQuery)(Home) ;
+export default graphql(getAllPostsQuery)(Home);
