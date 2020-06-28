@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 
+
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 
 /* Mutations */
-import { addPostMutation } from "../mutations/mutations"
+import { addPostMutation } from "../mutations/mutations";
+
+const client = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
 
 const NewPost = (props) => {
 
@@ -15,7 +18,20 @@ const NewPost = (props) => {
   let [image, setImage] = useState("");
   let userId = "5ef50e5a2af31853d8f4964a";
 
-  console.log(">>", description)
+  // const options = {
+  //   displayMode: 'inline',
+  //   container: '#inline'
+  // };
+
+  console.log(">>", description);
+  
+  const handleImageUpload = () => {
+    console.log("A")
+    client.picker().open();
+    // console.log(client.PickerFileMetadata())
+  };
+
+  // console.log(result.filesUploaded[0].url)
 
   const submitForm = (e) => {
     console.log("running....");
@@ -30,8 +46,6 @@ const NewPost = (props) => {
     })
   }
 
-  // onChange={(e) => this.setState({ name: e.target.value })}
-
   return (
     <div className="share-form" onSubmit={(e) => submitForm(e)}>
       <form action="">
@@ -41,6 +55,7 @@ const NewPost = (props) => {
         <input type="text" placeholder="Enter image URL" onChange={(e) => setImage(e.target.value)} name="post-image" /><br />
         <button>Share</button>
       </form>
+      <button onClick={() => handleImageUpload()}>Widget</button>
     </div>
 
   )
