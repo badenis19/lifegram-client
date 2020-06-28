@@ -1,43 +1,20 @@
 import React from 'react';
-import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 
-/* Queries */
-import { getAllPostsQuery } from '../queries/queries';
-
-const Home = (props) => {
-
-  let data = props.data;
-  console.log(props);
-
-  const displayAllPosts = () => {
-    if (data.loading) {
-      return (<p>Loading...</p>)
-    } else if(data.posts.length > 0) {
-      return (
-        <div>
-          {data.posts.map((post) => {
-            return (
-              <div className="post" key={post.id}>
-                <p>user: {post.user["username"]}</p>
-                <img src={post.img} alt="post_image" />
-                <p>description: {post.description}</p>
-                <p>likes {post.likes}</p>
-                <p>comments:{post.comments}</p>
-              </div>
-            )
-          })}
-        </div>
-      )
-    } else {
-      return (<p>There are no posts...</p>)
-    }
-  }
+const Home = () => {
 
   return (
     <div>
-      {displayAllPosts()}
+      <h1>Welcome to LifeGram</h1>
+      <p>Sign in</p>
+      <form action="">
+        <label htmlFor="user-email">Email:&nbsp;</label>
+        <input type="text" placeholder="Enter your email." name="user-email" /><br />
+        <label htmlFor="user-password">Password:&nbsp;</label>
+        <input type="password" placeholder="Enter your password" name="user-password" /><br />
+        <button>Login</button>
+      </form>
     </div>
   )
 }
 
-export default graphql(getAllPostsQuery)(Home);
+export default Home;

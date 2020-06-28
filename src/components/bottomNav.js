@@ -7,8 +7,8 @@ const BottomNav = () => {
   return (
     <nav className="bottom-nav">
         <ul>
-          <Link to="/">
-            <li>Home</li>
+          <Link to="/posts">
+            <li>Posts</li>
           </Link>
 
           <Link to="/newpost">

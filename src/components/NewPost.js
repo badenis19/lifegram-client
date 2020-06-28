@@ -35,7 +35,7 @@ const NewPost = (props) => {
   return (
     <div className="share-form" onSubmit={(e) => submitForm(e)}>
       <form action="">
-        <label htmlFor="post-descriptio">Description:&nbsp;</label>
+        <label htmlFor="post-description">Description:&nbsp;</label>
         <input type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" /><br />
         <label htmlFor="post-image">Book Name:&nbsp;</label>
         <input type="text" placeholder="Enter image URL" onChange={(e) => setImage(e.target.value)} name="post-image" /><br />
