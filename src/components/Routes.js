@@ -7,6 +7,7 @@ import PostsFeed from './PostsFeed';
 import NewPost from './NewPost';
 import UserProfile from './UserProfile';
 import Home from "./Home";
+import Signup from "./Signup";
 
 const Routes = () => {
 
@@ -17,6 +18,12 @@ const Routes = () => {
         <Route
           path="/"
           render={() => <PostsFeed />}
+          exact
+        />
+
+        <Route
+          path="/signup"
+          render={() => <Signup />}
           exact
         />
 

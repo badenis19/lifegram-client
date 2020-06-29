@@ -1,10 +1,14 @@
-import React from 'react';
-import { graphql } from 'react-apollo'; // To bind Apollo with React Component
+import React, { useEffect } from 'react';
+import { graphql } from 'react-apollo';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 
 const PostsFeed = (props) => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   let data = props.data;
   console.log(props);
@@ -12,7 +16,7 @@ const PostsFeed = (props) => {
   const displayAllPosts = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
-    } else if(data.posts.length > 0) {
+    } else if (data.posts.length > 0) {
       return (
         <div>
           {data.posts.map((post) => {
