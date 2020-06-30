@@ -22,7 +22,7 @@ const UserProfile = (props) => {
         <div className="user-info-and-stats">
           <p>username: {data.user.username}</p>
           <p>description: {data.user.description}</p>
-          <img src={data.user.img} alt="user_image" />
+          <img id="profile-picture" src={data.user.img} alt="user_image"/>
           <p>Followers: {data.user.followers.length}</p>
           <p>Following: {data.user.following.length}</p>
           <p>Posts: {data.user.posts.length}</p>
