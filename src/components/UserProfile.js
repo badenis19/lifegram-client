@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'react-apollo'; // To bind Apollo with React Component
+import { graphql } from 'react-apollo';
 
 
 /* Queries */
@@ -7,7 +7,6 @@ import { getSingleUserDetailsQuery } from '../queries/queries';
 
 const UserProfile = (props) => {
 
-  // console.log(posts)
   let data = props.data;
   console.log(data);
 
