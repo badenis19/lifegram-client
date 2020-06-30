@@ -3,47 +3,61 @@ import React from 'react';
 
 
 /* Component */
-import Home from './Home';
+import PostsFeed from './PostsFeed';
 import NewPost from './NewPost';
 import UserProfile from './UserProfile';
+import Home from "./Home";
+import Signup from "./Signup";
 
 const Routes = () => {
 
   return (
-      <>
-        <Switch>
+    <>
+      <Switch>
 
-          <Route
-            path="/"
-            render={() => <Home />}
-            exact
-          />
+        <Route
+          path="/"
+          render={() => <PostsFeed />}
+          exact
+        />
 
-          <Route
-            path="/home"
-            render={() => <Home />}
-            exact
-          />
+        <Route
+          path="/signup"
+          render={() => <Signup />}
+          exact
+        />
 
-          <Route
-            path="/newpost"
-            render={() => <NewPost />}
-            exact
-          />
+        <Route
+          path="/home"
+          render={() => <Home />}
+          exact
+        />
 
-          <Route
-            path="/userprofile"
-            render={() => <UserProfile />}
-          />
+        <Route
+          path="/posts"
+          render={() => <PostsFeed />}
+          exact
+        />
 
-          {/* <Route
+        <Route
+          path="/newpost"
+          render={() => <NewPost />}
+          exact
+        />
+
+        <Route
+          path="/userprofile"
+          render={() => <UserProfile />}
+        />
+
+        {/* <Route
             path="/products/:id"
             render={(props) => <SingleProduct {...props} products={products} />}
           /> */}
 
-          
-        </Switch>
-      </>
+
+      </Switch>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 
@@ -17,6 +17,10 @@ const client = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
 
 
 const NewPost = (props) => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  });
 
   let [description, setDescription] = useState("");
   let [imageUrl, setImageUrl] = useState("");
