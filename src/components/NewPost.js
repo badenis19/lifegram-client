@@ -33,6 +33,7 @@ const NewPost = (props) => {
 
   // Callback options for fileStack upload
   const options = {
+    fromSources: ["local_file_system","webcam","url","video","instagram","facebook"],
     onUploadDone: file => {
       setImageUrl(file.filesUploaded[0].url) // to save url from upload
     }
