@@ -29,8 +29,8 @@ const getAllPostsQuery = gql`
 const getSingleUserDetailsQuery = gql`
   { 
     user(id: "5ef50e5a2af31853d8f4964a"){
-      id,
-      username,
+      id
+      username
       description
       img
       followers

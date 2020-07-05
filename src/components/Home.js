@@ -7,10 +7,19 @@ const Home = () => {
     window.scrollTo(0, 0)
   });
 
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    // e.prevenDefault();
+    console.log("submit");
+  }
+
+
   return (
     <div>
       <h1>Welcome to LifeGram</h1>
-      <form action="">
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="user-email">Email:&nbsp;</label>
         <input type="text" placeholder="Enter your email." name="user-email" /><br />
         <label htmlFor="user-password">Password:&nbsp;</label>

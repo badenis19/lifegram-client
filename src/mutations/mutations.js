@@ -12,4 +12,15 @@ const addPostMutation = gql`
     }
 `;
 
+// const loginMutation = gql`
+// mutation($email: String!, $password: String){
+//     addUser(email: $email, password: $password){ 
+//         description
+//         id
+//     }
+// }
+// `;
+
+
+
 export { addPostMutation }

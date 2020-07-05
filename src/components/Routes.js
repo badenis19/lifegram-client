@@ -8,6 +8,7 @@ import NewPost from './NewPost';
 import UserProfile from './UserProfile';
 import Home from "./Home";
 import Signup from "./Signup";
+import Comments from "./Comments";
 
 const Routes = () => {
 
@@ -48,6 +49,11 @@ const Routes = () => {
         <Route
           path="/userprofile"
           render={() => <UserProfile />}
+        />
+
+        <Route
+          path="/comments"
+          render={() => <Comments />}
         />
 
         {/* <Route
