@@ -12,7 +12,6 @@ const UserProfile = (props) => {
   });
 
   let data = props.data;
-  console.log(">>==",data.user);
 
   const displayUsers = () => {
     if (data.loading) {

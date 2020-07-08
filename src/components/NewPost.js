@@ -8,13 +8,17 @@ import { getAllPostsQuery } from '../queries/queries';
 
 /* Mutations */
 import { createPostMutation } from "../mutations/mutations";
+
 // require("dotenv/config");
+// require('dotenv').config();
 
 // setting up the filestack client with API KEY
 const clientFS = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
 // const clientFS = require('filestack-js').init(process.env.FILESTACK_API_KEY);
 
-const NewPost = (props) => {
+// console.log("env:", process.env.TEST)
+
+const NewPost = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
