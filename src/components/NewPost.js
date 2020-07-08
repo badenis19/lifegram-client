@@ -16,9 +16,9 @@ import { createPostMutation } from "../mutations/mutations";
 const clientFS = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
 // const clientFS = require('filestack-js').init(process.env.FILESTACK_API_KEY);
 
-console.log("env:", process.env.TEST)
+// console.log("env:", process.env.TEST)
 
-const NewPost = (props) => {
+const NewPost = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)

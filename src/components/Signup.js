@@ -7,11 +7,7 @@ import { useHistory } from 'react-router-dom';
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
 
-const Signup = (props) => {
-
-  const [username, setUsername] = useState('?');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Signup = () => {
 
   let history = useHistory();
 
@@ -19,15 +15,20 @@ const Signup = (props) => {
     window.scrollTo(0, 0);
   });
 
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [age, setAge] = useState('');
+
   const createUser = async (e) => {
     console.log("creating user..");
     e.preventDefault();
-
     await client.mutate({
       variables: {
         username: username,
         email: email,
-        password: password
+        password: password,
+        age: Number(age)
       },
       mutation: createUserMutation
       // ,
@@ -47,6 +48,8 @@ const Signup = (props) => {
         <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" name="user-email" /><br />
         <label htmlFor="user-password">Password:&nbsp;</label>
         <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" name="user-password" /><br />
+        <label htmlFor="user-age">Age:&nbsp;</label>
+        <input type="number" onChange={(e) => setAge(e.target.value)} placeholder="Enter your age" name="user-age" /><br />
         <button>Log in</button>
       </form>
     </div>
