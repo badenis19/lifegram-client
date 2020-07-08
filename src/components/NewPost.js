@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
+import client from '../apollo';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 
 /* Mutations */
-import { addPostMutation } from "../mutations/mutations";
-
+import { createPostMutation } from "../mutations/mutations";
 // require("dotenv/config");
-// require('dotenv').config();
 
 // setting up the filestack client with API KEY
-const client = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
-// const client = require('filestack-js').init(process.env.FILESTACK_API_KEY);
-
+const clientFS = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
+// const clientFS = require('filestack-js').init(process.env.FILESTACK_API_KEY);
 
 const NewPost = (props) => {
 
@@ -33,8 +31,8 @@ const NewPost = (props) => {
 
   // Callback options for fileStack upload
   const options = {
-    fromSources: ["local_file_system","webcam","url","instagram","facebook"],
-    accept: ["image/*","video/*"],
+    fromSources: ["local_file_system", "webcam", "url", "instagram", "facebook"],
+    accept: ["image/*", "video/*"],
     onUploadDone: file => {
       setImageUrl(file.filesUploaded[0].url) // to save url from upload
     }
@@ -42,19 +40,21 @@ const NewPost = (props) => {
 
   const handleImageUpload = () => {
     // to open the widget for image upload
-    client.picker(options).open();
+    clientFS.picker(options).open();
   };
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     console.log("running....");
     e.preventDefault();
-    props.addPostMutation({ // addPostMutation refers to addPostMutation name (key) in the compose function at bottom of the page
+
+    await client.mutate({ 
       variables: {
         description: description,
         img: imageUrl,
         userId: userId
       },
-      refetchQueries: [{ query: getAllPostsQuery }]
+      mutation: createPostMutation,
+      refetchQueries: () => [{ query: getAllPostsQuery }]
     });
     console.log("refreshing page..");
     refreshPage();
@@ -80,6 +80,6 @@ const NewPost = (props) => {
 }
 
 export default compose(
-  graphql(addPostMutation, { name: "addPostMutation" }),
+  graphql(createPostMutation, { name: "createPostMutation" }),
   graphql(getAllPostsQuery, { name: "getAllPostsQuery" })
 )(NewPost);

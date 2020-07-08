@@ -12,7 +12,7 @@ const UserProfile = (props) => {
   });
 
   let data = props.data;
-  console.log(data);
+  console.log(">>==",data.user);
 
   const displayUsers = () => {
     if (data.loading) {
@@ -29,7 +29,7 @@ const UserProfile = (props) => {
           <br />
           {data.user.posts.map((post) => {
             return (
-              <div className="post" key={post.id}>
+              <div className="post" key={post._id}>
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
                 <p>likes {post.likes}</p>

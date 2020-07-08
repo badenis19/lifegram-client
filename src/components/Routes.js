@@ -39,6 +39,10 @@ const Routes = () => {
           render={() => <PostsFeed />}
           exact
         />
+        <Route
+          path="/:postid/comments"
+          render={() => <Comments />}
+        />
 
         <Route
           path="/newpost"
@@ -51,10 +55,6 @@ const Routes = () => {
           render={() => <UserProfile />}
         />
 
-        <Route
-          path="/comments"
-          render={() => <Comments />}
-        />
 
         {/* <Route
             path="/products/:id"

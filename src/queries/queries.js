@@ -8,7 +8,7 @@ import { gql } from 'apollo-boost';
 const getAllPostsQuery = gql`
 {
   posts {
-    id
+    _id
     img
     description
     likes
@@ -28,15 +28,15 @@ const getAllPostsQuery = gql`
 // Get one
 const getSingleUserDetailsQuery = gql`
   { 
-    user(id: "5ef50e5a2af31853d8f4964a"){
-      id
+    user(_id: "5ef50e5a2af31853d8f4964a"){
+      _id
       username
       description
       img
       followers
       following
       posts {
-        id
+        _id
         img
         description
         likes
@@ -52,7 +52,7 @@ const getSingleUserDetailsQuery = gql`
 const getUsersPostsQuery = gql`
 {
   users {
-    id
+    _id
     username
     password
     age
@@ -60,7 +60,7 @@ const getUsersPostsQuery = gql`
     followers
     following
     posts {
-      id
+      _id
       img
       description
       likes

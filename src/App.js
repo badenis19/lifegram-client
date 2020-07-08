@@ -1,7 +1,8 @@
 import React from 'react';
-import ApolloClient from 'apollo-boost';
+// import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo'; // binds apollo to React
 import { BrowserRouter as Router } from "react-router-dom";
+import client from './apollo';
 
 /* Styles */
 import './App.scss';
@@ -13,24 +14,19 @@ import Routes from './components/Routes';
 
 const App = () => {
 
-  const client = new ApolloClient({
-    uri: "http://localhost:4001/graphql" //apollo knows we will be making requests to this end-point from our application
-    // uri: "https://techworld-api.herokuapp.com/graphql" 
-  })
-
   return (
-    <Router>
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <Router>
 
-      <div className="App">
+        <div className="App">
 
-        <TopNav />
-        <Routes />
-        <BottomNav />
+          <TopNav />
+          <Routes />
+          <BottomNav />
 
-      </div>
-      </ApolloProvider>
-    </Router>
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
