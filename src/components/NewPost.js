@@ -51,17 +51,17 @@ const NewPost = () => {
     console.log("running....");
     e.preventDefault();
 
-    // await client.mutate({ 
-    //   variables: {
-    //     description: description,
-    //     img: imageUrl,
-    //     userId: userId
-    //   },
-    //   mutation: createPostMutation,
-    //   refetchQueries: () => [{ query: getAllPostsQuery }]
-    // });
-    // console.log("refreshing page..");
-    // refreshPage();
+    await client.mutate({ 
+      variables: {
+        description: description,
+        img: imageUrl,
+        userId: userId
+      },
+      mutation: createPostMutation,
+      refetchQueries: () => [{ query: getAllPostsQuery }]
+    });
+    console.log("refreshing page..");
+    refreshPage();
   }
 
   return (

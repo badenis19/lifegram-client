@@ -54,7 +54,7 @@ const SignIn = () => {
       if (data.success) {
         document.cookie = 'token=' + data.token
         // redirect to private-area
-        history.push('/userprofile');
+        history.push('/private-area');
       }
     })
   }

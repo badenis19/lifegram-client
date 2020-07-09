@@ -1,17 +1,15 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import { navigate } from '@reach/router';
+import { useHistory } from 'react-router-dom';
 
 const PrivateArea = () => {
 
+  let history = useHistory();
+
   // check if there’s the token in the cookies. If not, just go back to the login form
   if (!Cookies.get('token')) {
-    console.log("No token")
-    navigate('/')
-  } else {
-    console.log("No token")
-  }
-
+    history.push('/signin');
+  } 
 
   return (
     <div>
