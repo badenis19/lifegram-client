@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const SignIn = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -34,4 +34,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default SignIn;

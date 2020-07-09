@@ -8,8 +8,8 @@ import client from './apollo';
 import './App.scss';
 
 /* Component */
-import TopNav from './components/topNav';
-import BottomNav from './components/bottomNav';
+import TopNav from './components/TopNav';
+import BottomNav from './components/BottomNav';
 import Routes from './components/Routes';
 
 const App = () => {

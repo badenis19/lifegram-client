@@ -14,7 +14,7 @@ const TopNav = () => {
           <li><strong>LIFEGRAM</strong></li>
         </Link>
 
-        <Link to="/home">
+        <Link to="/signIn">
           <li>Sign in</li>
         </Link>
       </ul>

@@ -6,7 +6,7 @@ import React from 'react';
 import PostsFeed from './PostsFeed';
 import NewPost from './NewPost';
 import UserProfile from './UserProfile';
-import Home from "./Home";
+import SignIn from "./SignIn";
 import Signup from "./Signup";
 import Comments from "./Comments";
 
@@ -29,8 +29,8 @@ const Routes = () => {
         />
 
         <Route
-          path="/home"
-          render={() => <Home />}
+          path="/signIn"
+          render={() => <SignIn />}
           exact
         />
 
