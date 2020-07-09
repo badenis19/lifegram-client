@@ -8,7 +8,7 @@ import NewPost from './NewPost';
 import UserProfile from './UserProfile';
 import SignIn from "./SignIn";
 import Signup from "./Signup";
-import Comments from "./Comments";
+// import Comments from "./Comments";
 
 const Routes = () => {
 
@@ -29,7 +29,7 @@ const Routes = () => {
         />
 
         <Route
-          path="/signIn"
+          path="/signin"
           render={() => <SignIn />}
           exact
         />
@@ -39,10 +39,11 @@ const Routes = () => {
           render={() => <PostsFeed />}
           exact
         />
-        <Route
+        
+        {/* <Route
           path="/:postid/comments"
           render={() => <Comments />}
-        />
+        /> */}
 
         <Route
           path="/newpost"
