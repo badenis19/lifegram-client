@@ -8,6 +8,7 @@ import NewPost from './NewPost';
 import UserProfile from './UserProfile';
 import SignIn from "./SignIn";
 import Signup from "./Signup";
+import PrivateArea from "./PrivateArea";
 // import Comments from "./Comments";
 
 const Routes = () => {
@@ -39,7 +40,7 @@ const Routes = () => {
           render={() => <PostsFeed />}
           exact
         />
-        
+
         {/* <Route
           path="/:postid/comments"
           render={() => <Comments />}
@@ -61,6 +62,11 @@ const Routes = () => {
             path="/products/:id"
             render={(props) => <SingleProduct {...props} products={products} />}
           /> */}
+
+        <Route
+          path="/private-area"
+          render={() => <PrivateArea />}
+        />
 
 
       </Switch>

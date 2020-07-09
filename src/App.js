@@ -1,8 +1,8 @@
 import React from 'react';
-// import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo'; // binds apollo to React
 import { BrowserRouter as Router } from "react-router-dom";
 import client from './apollo';
+import { navigate } from '@reach/router';
 
 /* Styles */
 import './App.scss';
@@ -11,6 +11,7 @@ import './App.scss';
 import TopNav from './components/TopNav';
 import BottomNav from './components/BottomNav';
 import Routes from './components/Routes';
+import PrivateArea from './components/PrivateArea';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
         <div className="App">
 
           <TopNav />
+          {/* <PrivateArea /> */}
           <Routes />
           <BottomNav />
 
