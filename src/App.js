@@ -2,6 +2,8 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo'; // binds apollo to React
 import { BrowserRouter as Router } from "react-router-dom";
 import client from './apollo';
+import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 /* Styles */
 import './App.scss';
@@ -10,9 +12,14 @@ import './App.scss';
 import TopNav from './components/TopNav';
 import BottomNav from './components/BottomNav';
 import Routes from './components/Routes';
-// import PrivateArea from './components/PrivateArea';
 
 const App = () => {
+
+  let history = useHistory();
+
+  if (Cookies.get('token')) {
+    history.push('/private-area');
+  } 
 
   return (
     <ApolloProvider client={client}>
@@ -21,7 +28,6 @@ const App = () => {
         <div className="App">
 
           <TopNav />
-          {/* <PrivateArea /> */}
           <Routes />
           <BottomNav />
 
