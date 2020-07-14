@@ -11,12 +11,12 @@ const PostsFeed = (props) => {
   });
 
   let data = props.data;
-  // console.log(">>>",data.posts);
+  console.log(">>>",data);
 
   const displayAllPosts = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
-    } else if (data.posts.length > 0) {
+    } else if (data.posts) {
       return (
         <div>
           {data.posts.map((post) => {

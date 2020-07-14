@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const SignIn = () => {
-
-  let history = useHistory();
 
   useEffect(() => {
     window.scrollTo(0, 0)
   });
+
+  let history = useHistory();
+
+  if (Cookies.get('token')) {
+    history.push('/private-area');
+  } 
 
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";

@@ -13,9 +13,12 @@ const UserProfile = (props) => {
 
   let data = props.data;
 
-  const displayUsers = () => {
+  const displayUserDetails = () => {
+    console.log(data);
     if (data.loading) {
       return (<p>Loading...</p>)
+    } else if (!data.user) {
+      return (<p>No users have been loaded. Contact admin.</p>)
     } else {
       return (
         <div className="user-info-and-stats">
@@ -43,7 +46,7 @@ const UserProfile = (props) => {
 
   return (
     <div>
-      {displayUsers()}
+      {displayUserDetails()}
     </div>
   )
 }
