@@ -1,5 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import React from 'react';
+import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom';
 
 
 /* Component */
@@ -12,6 +14,14 @@ import PrivateArea from "./PrivateArea";
 // import Comments from "./Comments";
 
 const Routes = () => {
+
+  let history = useHistory();
+
+  // check if there’s the token in the cookies. If not, just go back to the login form
+  if (!Cookies.get('token')) {
+    console.log("redirect")
+    history.push('/signin');
+  }
 
   return (
     <>

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom';
 
 const TopNav = () => {
 
-  // let history = useHistory();
+  let history = useHistory();
 
-  // if (!Cookies.get('token')) {
-  //   history.push('/signin');
-  // }
+  const handleSignOut = () => {
+    // remove token cookie 
+    Cookies.remove('token');
+    // redirect to sign in page
+    history.push('/signin');
+  }
 
   return (
     <nav className="top-nav">
@@ -25,6 +28,8 @@ const TopNav = () => {
         <Link to="/signIn">
           <li>Sign in</li>
         </Link>
+
+        <li onClick={() => handleSignOut()}>Sign out</li>
       </ul>
     </nav>
   )

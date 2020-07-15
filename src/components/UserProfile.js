@@ -3,7 +3,8 @@ import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 
 
 /* Queries */
-import { getSingleUserDetailsQuery } from '../queries/queries';
+import { getSingleUserDetailsQuery, getMyProfileQuery } from '../queries/queries';
+
 
 const UserProfile = (props) => {
 
@@ -51,4 +52,4 @@ const UserProfile = (props) => {
   )
 }
 
-export default graphql(getSingleUserDetailsQuery)(UserProfile); // query result accessible via props
+export default graphql(getMyProfileQuery)(UserProfile); // query result accessible via props

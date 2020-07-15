@@ -27,26 +27,26 @@ const getAllPostsQuery = gql`
 // user(id: "5ef3602068f1d34b9d562635"){
 // Get one
 
-// const getMyProfileQuery = gql`
-//   { 
-//     myProfile{
-//       _id
-//       username
-//       description
-//       img
-//       followers
-//       following
-//       posts {
-//         _id
-//         img
-//         description
-//         likes
-//         comments
-//         timeStamp
-//       }
-//     }
-//   }
-// `;
+const getMyProfileQuery = gql`
+  { 
+    myProfile{
+      _id
+      username
+      description
+      img
+      followers
+      following
+      posts {
+        _id
+        img
+        description
+        likes
+        comments
+        timeStamp
+      }
+    }
+  }
+`;
 
 const getSingleUserDetailsQuery = gql`
   { 
@@ -103,4 +103,4 @@ const testQuery = gql`
 `;
 
 
-export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, testQuery }
+export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, testQuery, getMyProfileQuery }

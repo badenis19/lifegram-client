@@ -39,7 +39,7 @@ const PostsFeed = (props) => {
 
   return (
     <div>
-      {/* {displayAllPosts()} */}
+      {displayAllPosts()}
     </div>
   )
 }
