@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+// import Cookies from 'js-cookie';
 
 const TopNav = () => {
+
+  // let history = useHistory();
+
+  // if (!Cookies.get('token')) {
+  //   history.push('/signin');
+  // }
 
   return (
     <nav className="top-nav">
