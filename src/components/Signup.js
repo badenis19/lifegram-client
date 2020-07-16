@@ -41,7 +41,8 @@ const Signup = () => {
   return (
     <div>
       <h3>Sign up now to share and see your friend's best life moments!</h3>
-      <form onSubmit={(e) => createUser(e)}>
+      {/* <form onSubmit={(e) => createUser(e)}> */}
+      <form action="http://localhost:4001/sign" method="POST">
         <label htmlFor="user-name">Username:&nbsp;</label>
         <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Enter your username" name="user-name" /><br />
         <label htmlFor="user-email">Email:&nbsp;</label>

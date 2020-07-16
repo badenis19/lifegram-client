@@ -12,8 +12,8 @@ const SignIn = () => {
   let history = useHistory();
 
   if (Cookies.get('token')) {
-    history.push('/private-area');
-  } 
+    history.push('/userprofile');
+  }
 
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";
@@ -23,7 +23,7 @@ const SignIn = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-   
+
     console.log("submit");
 
     const options = {
@@ -36,33 +36,32 @@ const SignIn = () => {
 
     // fetch() to make network request using promises (similar to XMLHttpRequest)
     fetch(url, options)
-    .then(response => {
-      console.log(response)
+      .then(response => {
+        console.log(response)
         // if response not ok, return error messages else return response 
-      if (!response.ok) {
-        if (response.status === 404) {
-          alert('Email not found, please retry')
+        if (!response.ok) {
+          if (response.status === 404) {
+            alert('Email not found, please retry')
+          }
+          if (response.status === 401) {
+            alert('Email and password do not match, please retry')
+          }
         }
-        if (response.status === 401) {
-          alert('Email and password do not match, please retry')
+
+        console.log("passed the response checks")
+
+        return response
+      }) // from string to Json object
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        // if data.success (logged in) is true then store
+        if (data.success) {
+          document.cookie = 'token=' + data.token
+          // redirect to user profile page
+          history.push('/userprofile');
         }
-      }
-
-      console.log("passed the response checks")
-
-      return response
-    }) // from string to Json object
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      // if data.success (logged in) is true then store
-      if (data.success) {
-        document.cookie = 'token=' + data.token
-        // redirect to private-area
-        // history.push('/private-area');
-        history.push('/userprofile');
-      }
-    })
+      })
   }
 
   return (

@@ -3,7 +3,6 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 
-
 /* Component */
 import PostsFeed from './PostsFeed';
 import NewPost from './NewPost';
@@ -19,8 +18,9 @@ const Routes = () => {
 
   // check if there’s the token in the cookies. If not, just go back to the login form
   if (!Cookies.get('token')) {
-    console.log("redirect")
-    history.push('/signin');
+    console.log("no token here")
+    // document.location("/signin")
+    // history.push('/signin');
   }
 
   return (
@@ -77,7 +77,6 @@ const Routes = () => {
           path="/private-area"
           render={() => <PrivateArea />}
         />
-
 
       </Switch>
     </>
