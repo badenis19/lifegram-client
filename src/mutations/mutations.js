@@ -12,6 +12,7 @@ const createPostMutation = gql`
     }
 `;
 
+// Not used for now
 const createUserMutation = gql`
     mutation CreateUser($username: String!, $email: String!, $password: String!, $img: String, $age: Int, $description: String, $followers: [ID], $following: [ID]){
         createUser(username: $username, email: $email, password: $password, img: $img, age: $age, description: $description, followers: $followers, following: $following ){ 
@@ -19,14 +20,5 @@ const createUserMutation = gql`
         }
     }
 `;
-
-// const loginMutation = gql`
-// mutation($email: String!, $password: String){
-//     addUser(email: $email, password: $password){ 
-//         description
-//         id
-//     }
-// }
-// `;
 
 export { createPostMutation, createUserMutation }

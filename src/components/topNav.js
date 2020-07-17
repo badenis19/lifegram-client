@@ -7,21 +7,6 @@ const TopNav = () => {
 
   let history = useHistory();
 
-  const refreshPage = () => {
-    window.location.reload(false);
-  }
-
-  // check if there’s the token in the cookies. If not, just go back to the login form
-  // if (!Cookies.get('token')) {
-  //   console.log("no token")
-  //   // document.location("/signin")
-  //   // window.location.href = "http://www.w3schools.com";
-  //   history.push('/signin');
-  //   // refreshPage();
-  // } else {
-  //   console.log("token here")
-  // }
-
   const handleSignOut = () => {
     // remove token cookie 
     Cookies.remove('token');
@@ -48,6 +33,6 @@ const TopNav = () => {
       </ul>
     </nav>
   )
-}
+};
 
 export default TopNav;

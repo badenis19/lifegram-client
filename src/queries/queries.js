@@ -23,10 +23,6 @@ const getAllPostsQuery = gql`
 
 /* USERS */
 
-
-// user(id: "5ef3602068f1d34b9d562635"){
-// Get one
-
 const getMyProfileQuery = gql`
   { 
     myProfile{
@@ -48,6 +44,7 @@ const getMyProfileQuery = gql`
   }
 `;
 
+// Not used for now, will use for explore page, search page
 const getSingleUserDetailsQuery = gql`
   { 
     user(_id: "5ef50e5a2af31853d8f4964a"){
@@ -93,14 +90,4 @@ const getUsersPostsQuery = gql`
 }
 `;
 
-const testQuery = gql`
-{
-  todos {
-    id
-    name
-  }
-}
-`;
-
-
-export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, testQuery, getMyProfileQuery }
+export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, getMyProfileQuery }

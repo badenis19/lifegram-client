@@ -11,7 +11,6 @@ const PostsFeed = (props) => {
   });
 
   let data = props.data;
-  console.log(data);
 
   const displayAllPosts = () => {
     if (data.loading) {

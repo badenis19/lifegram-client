@@ -10,13 +10,10 @@ import { getAllPostsQuery } from '../queries/queries';
 import { createPostMutation } from "../mutations/mutations";
 
 // require("dotenv/config");
-// require('dotenv').config();
 
 // setting up the filestack client with API KEY
 const clientFS = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
 // const clientFS = require('filestack-js').init(process.env.FILESTACK_API_KEY);
-
-// console.log("env:", process.env.TEST)
 
 const NewPost = () => {
 
@@ -26,7 +23,6 @@ const NewPost = () => {
 
   let [description, setDescription] = useState("");
   let [imageUrl, setImageUrl] = useState("");
-  let userId = "5ef50e5a2af31853d8f4964a";
 
   // To refresh page after submitting the form
   const refreshPage = () => {
@@ -51,16 +47,14 @@ const NewPost = () => {
     console.log("running....");
     e.preventDefault();
 
-    await client.mutate({ 
+    await client.mutate({
       variables: {
         description: description,
         img: imageUrl
-        // userId: userId
       },
       mutation: createPostMutation,
       refetchQueries: () => [{ query: getAllPostsQuery }]
     });
-    console.log("refreshing page..");
     refreshPage();
   }
 
@@ -81,7 +75,7 @@ const NewPost = () => {
     </div>
 
   )
-}
+};
 
 export default compose(
   graphql(createPostMutation, { name: "createPostMutation" }),

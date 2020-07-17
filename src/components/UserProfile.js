@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import { graphql } from 'react-apollo'; 
+import { graphql } from 'react-apollo';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 
-
 /* Queries */
-import { getSingleUserDetailsQuery, getMyProfileQuery } from '../queries/queries';
-
+import { getMyProfileQuery } from '../queries/queries';
 
 const UserProfile = (props) => {
 
@@ -23,7 +21,6 @@ const UserProfile = (props) => {
   let data = props.data;
 
   const displayUserDetails = () => {
-    console.log(data);
     if (data.loading) {
       return (<p>Loading...</p>)
     } else if (!data.myProfile) {
@@ -33,7 +30,7 @@ const UserProfile = (props) => {
         <div className="user-info-and-stats">
           <p>username: {data.myProfile.username}</p>
           <p>description: {data.myProfile.description}</p>
-          <img id="profile-picture" src={data.myProfile.img} alt="user_image"/>
+          <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
           <p>Followers: {data.myProfile.followers.length}</p>
           <p>Following: {data.myProfile.following.length}</p>
           <p>Posts: {data.myProfile.posts.length}</p>

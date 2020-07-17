@@ -20,6 +20,6 @@ const BottomNav = () => {
         </ul>
     </nav>
   )
-}
+};
 
 export default BottomNav;
