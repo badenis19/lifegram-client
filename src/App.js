@@ -1,5 +1,4 @@
 import React from 'react';
-// import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo'; // binds apollo to React
 import { BrowserRouter as Router } from "react-router-dom";
 import client from './apollo';
@@ -8,8 +7,8 @@ import client from './apollo';
 import './App.scss';
 
 /* Component */
-import TopNav from './components/topNav';
-import BottomNav from './components/bottomNav';
+import TopNav from './components/TopNav';
+import BottomNav from './components/BottomNav';
 import Routes from './components/Routes';
 
 const App = () => {

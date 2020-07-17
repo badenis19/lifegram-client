@@ -1,16 +1,27 @@
 import { Route, Switch } from "react-router-dom";
 import React from 'react';
-
+// import Cookies from 'js-cookie';
+// import { useHistory } from 'react-router-dom';
 
 /* Component */
 import PostsFeed from './PostsFeed';
 import NewPost from './NewPost';
 import UserProfile from './UserProfile';
-import Home from "./Home";
+import SignIn from "./SignIn";
 import Signup from "./Signup";
-import Comments from "./Comments";
+import PrivateArea from "./PrivateArea";
+// import Comments from "./Comments";
 
 const Routes = () => {
+
+  // let history = useHistory();
+
+  // // check if there’s the token in the cookies. If not, just go back to the login form
+  // if (!Cookies.get('token')) {
+  //   console.log("no token here")
+  //   // document.location("/signin")
+  //   // history.push('/signin');
+  // }
 
   return (
     <>
@@ -29,8 +40,8 @@ const Routes = () => {
         />
 
         <Route
-          path="/home"
-          render={() => <Home />}
+          path="/signin"
+          render={() => <SignIn />}
           exact
         />
 
@@ -39,10 +50,11 @@ const Routes = () => {
           render={() => <PostsFeed />}
           exact
         />
-        <Route
+
+        {/* <Route
           path="/:postid/comments"
           render={() => <Comments />}
-        />
+        /> */}
 
         <Route
           path="/newpost"
@@ -61,6 +73,10 @@ const Routes = () => {
             render={(props) => <SingleProduct {...props} products={products} />}
           /> */}
 
+        <Route
+          path="/private-area"
+          render={() => <PrivateArea />}
+        />
 
       </Switch>
     </>

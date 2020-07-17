@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react';
-import { graphql } from 'react-apollo'; // To bind Apollo with React Component
+import { graphql } from 'react-apollo'; 
+import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom';
 
 
 /* Queries */
-import { getSingleUserDetailsQuery } from '../queries/queries';
+import { getSingleUserDetailsQuery, getMyProfileQuery } from '../queries/queries';
+
 
 const UserProfile = (props) => {
+
+  let history = useHistory();
+
+  if (!Cookies.get('token')) {
+    history.push('/signin');
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -13,20 +22,23 @@ const UserProfile = (props) => {
 
   let data = props.data;
 
-  const displayUsers = () => {
+  const displayUserDetails = () => {
+    console.log(data);
     if (data.loading) {
       return (<p>Loading...</p>)
+    } else if (!data.myProfile) {
+      return (<p>No users have been loaded. Contact admin.</p>)
     } else {
       return (
         <div className="user-info-and-stats">
-          <p>username: {data.user.username}</p>
-          <p>description: {data.user.description}</p>
-          <img id="profile-picture" src={data.user.img} alt="user_image"/>
-          <p>Followers: {data.user.followers.length}</p>
-          <p>Following: {data.user.following.length}</p>
-          <p>Posts: {data.user.posts.length}</p>
+          <p>username: {data.myProfile.username}</p>
+          <p>description: {data.myProfile.description}</p>
+          <img id="profile-picture" src={data.myProfile.img} alt="user_image"/>
+          <p>Followers: {data.myProfile.followers.length}</p>
+          <p>Following: {data.myProfile.following.length}</p>
+          <p>Posts: {data.myProfile.posts.length}</p>
           <br />
-          {data.user.posts.map((post) => {
+          {data.myProfile.posts.map((post) => {
             return (
               <div className="post" key={post._id}>
                 <img src={post.img} alt="post_image" />
@@ -43,9 +55,9 @@ const UserProfile = (props) => {
 
   return (
     <div>
-      {displayUsers()}
+      {displayUserDetails()}
     </div>
   )
 }
 
-export default graphql(getSingleUserDetailsQuery)(UserProfile); // query result accessible via props
+export default graphql(getMyProfileQuery)(UserProfile); // query result accessible via props

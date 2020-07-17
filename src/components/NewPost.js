@@ -54,8 +54,8 @@ const NewPost = () => {
     await client.mutate({ 
       variables: {
         description: description,
-        img: imageUrl,
-        userId: userId
+        img: imageUrl
+        // userId: userId
       },
       mutation: createPostMutation,
       refetchQueries: () => [{ query: getAllPostsQuery }]
@@ -65,8 +65,8 @@ const NewPost = () => {
   }
 
   return (
-    <div className="share-form" onSubmit={(e) => submitForm(e)}>
-      <form action="">
+    <div >
+      <form className="share-form" onSubmit={(e) => submitForm(e)}>
         <label htmlFor="post-description">Description:&nbsp;</label>
         <input type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" /><br />
         {
