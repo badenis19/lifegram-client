@@ -54,8 +54,8 @@ const NewPost = () => {
     await client.mutate({ 
       variables: {
         description: description,
-        img: imageUrl,
-        userId: userId
+        img: imageUrl
+        // userId: userId
       },
       mutation: createPostMutation,
       refetchQueries: () => [{ query: getAllPostsQuery }]
