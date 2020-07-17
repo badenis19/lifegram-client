@@ -44,13 +44,13 @@ const Signup = () => {
       {/* <form onSubmit={(e) => createUser(e)}> */}
       <form action="http://localhost:4001/sign" method="POST">
         <label htmlFor="user-name">Username:&nbsp;</label>
-        <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Enter your username" name="user-name" /><br />
-        <label htmlFor="user-email">Email:&nbsp;</label>
-        <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" name="user-email" /><br />
-        <label htmlFor="user-password">Password:&nbsp;</label>
-        <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" name="user-password" /><br />
-        <label htmlFor="user-age">Age:&nbsp;</label>
-        <input type="number" onChange={(e) => setAge(e.target.value)} placeholder="Enter your age" name="user-age" /><br />
+        <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Enter your username" name="username" /><br />
+        <label htmlFor="email">Email:&nbsp;</label>
+        <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" name="email" /><br />
+        <label htmlFor="password">Password:&nbsp;</label>
+        <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" name="password" /><br />
+        <label htmlFor="age">Age:&nbsp;</label>
+        <input type="number" onChange={(e) => setAge(e.target.value)} placeholder="Enter your age" name="age" /><br />
         <button>Log in</button>
       </form>
     </div>

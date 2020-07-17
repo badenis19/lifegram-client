@@ -11,7 +11,7 @@ const PostsFeed = (props) => {
   });
 
   let data = props.data;
-  console.log(">>>",data);
+  console.log(data);
 
   const displayAllPosts = () => {
     if (data.loading) {
@@ -22,7 +22,7 @@ const PostsFeed = (props) => {
           {data.posts.map((post) => {
             return (
               <div className="post" key={post._id}>
-                <p>user: {post.user["username"]}</p>
+                <p>user: {post.user.username}</p>
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
                 <p>likes {post.likes}</p>
