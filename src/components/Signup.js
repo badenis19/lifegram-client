@@ -1,18 +1,32 @@
 import React, { useEffect } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
 
 const Signup = () => {
+  
+  let history = useHistory();
 
-  // let history = useHistory();
+  if (Cookies.get('token')) {
+    history.push('/userprofile');
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  // const refreshPage = () => {
+  //   window.location.reload(false);
+  // };
+
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   refreshPage();
+  // }
 
   // const [username, setUsername] = useState('');
   // const [email, setEmail] = useState('');
@@ -49,7 +63,7 @@ const Signup = () => {
         <input type="password" placeholder="Enter your password" name="password" /><br />
         <label htmlFor="age">Age:&nbsp;</label>
         <input type="number" placeholder="Enter your age" name="age" /><br />
-        <button>Log in</button>
+        <button>Sign up</button>
       </form>
     </div>
   )

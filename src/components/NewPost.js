@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import client from '../apollo';
+import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
@@ -16,6 +18,12 @@ const clientFS = require('filestack-js').init('ADK13G1OuTrawWRBsxxAOz');
 // const clientFS = require('filestack-js').init(process.env.FILESTACK_API_KEY);
 
 const NewPost = () => {
+
+  let history = useHistory();
+  
+  if (!Cookies.get('token')) {
+    history.push('/userprofile');
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0)

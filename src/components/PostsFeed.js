@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
 import { graphql } from 'react-apollo';
+import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 
 const PostsFeed = (props) => {
+
+  let history = useHistory();
+  
+  if (!Cookies.get('token')) {
+    history.push('/userprofile');
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,7 +29,7 @@ const PostsFeed = (props) => {
           {data.posts.map((post) => {
             return (
               <div className="post" key={post._id}>
-                <p>user: {post.user.username}</p>
+                {/* <p>user: {post.user.username}</p> */}
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
                 <p>likes {post.likes}</p>
