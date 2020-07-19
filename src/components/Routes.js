@@ -7,6 +7,7 @@ import NewPost from './NewPost';
 import UserProfile from './UserProfile';
 import SignIn from "./SignIn";
 import Signup from "./Signup";
+import SearchUser from "./SearchUser";
 // import Comments from "./Comments";
 
 const Routes = () => {
@@ -53,6 +54,11 @@ const Routes = () => {
         <Route
           path="/userprofile"
           render={() => <UserProfile />}
+        />
+
+        <Route
+          path="/searchuser"
+          render={() => <SearchUser />}
         />
 
         {/* <Route

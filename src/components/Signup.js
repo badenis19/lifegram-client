@@ -19,14 +19,15 @@ const Signup = () => {
     window.scrollTo(0, 0);
   });
 
-  // const refreshPage = () => {
-  //   window.location.reload(false);
-  // };
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
 
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   refreshPage();
-  // }
+  const handleFormSubmit = (e) => {
+    // e.preventDefault();
+    // refreshPage();
+    // forceUpdate();
+  }
 
   // const [username, setUsername] = useState('');
   // const [email, setEmail] = useState('');

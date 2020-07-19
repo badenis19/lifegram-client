@@ -10,6 +10,10 @@ const BottomNav = () => {
             <li>Posts</li>
           </Link>
 
+          <Link to="/searchuser">
+            <li>Search</li>
+          </Link>
+
           <Link to="/newpost">
             <li>New Post</li>
           </Link>
