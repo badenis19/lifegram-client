@@ -5,7 +5,6 @@ import { graphql } from 'react-apollo';
 
 /* Queries */
 import { allUsersQuery } from "../queries/queries"
-import { empty } from 'apollo-boost';
 
 const SearchUser = (props) => {
 
@@ -17,16 +16,10 @@ const SearchUser = (props) => {
 
   let [userList, setUserList] = useState([]);
   let [searchText, setSearchText] = useState("");
-  
+
   let searchInput = document.getElementById("search-user-input");
 
   const searchUsers = () => {
-
-    if(searchInput.value.length === 0){
-      console.log("empty");
-      setUserList([0]);
-    }
-    
     const res = props.data.users.filter(user => {
       return user.username.toLowerCase().includes(searchText);
     })
@@ -34,7 +27,7 @@ const SearchUser = (props) => {
   }
 
   const handleCancel = () => {
-    setSearchText('');
+    searchInput.value = ""
     setUserList([]);
   }
 
@@ -45,14 +38,11 @@ const SearchUser = (props) => {
       <button onClick={() => handleCancel()}>cancel</button>
 
       <h3>List of user below:</h3>
-      {/* {<p>{userList.length}</p>} */}
-      {/* {!userList.length ? <p>No results found</p> : <p>{userList.length} result(s)</p>} */}
-      {/* {!userList.length ? <p>No results found</p> : <p>{userList.length} result(s)</p>} */}
       {searchText.length > 0 &&
         userList.map(user => {
           return (
             <div key={user._id}>
-              <p>username: {user.username}</p>
+              <p>{user.username}</p>
               <img src={user.img} alt="" />
             </div>
           )
