@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
+import { SignedInContext } from "../App"
 
-const TopNav = ({ isSignedIn, setIsSignedIn }) => {
-
+const TopNav = () => {
+  
   let history = useHistory();
-
-  // console.log("isSignedIn", isSignedIn)
-
+ 
   const handleSignOut = () => {
     // remove token cookie 
     Cookies.remove('token');
-    setIsSignedIn(false);
-    console.log(isSignedIn)
     // redirect to sign in page
     history.push('/signin');
   };
 
+  let isSignedIn = useContext(SignedInContext)
+  
   return (
     <nav className="top-nav">
       <ul>
+
+      { console.log(">>",isSignedIn) }
 
         {!isSignedIn &&
           <Link to="/signup">

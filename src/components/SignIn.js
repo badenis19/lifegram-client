@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { SignedInContext } from "../App"
 
-const SignIn = ({ isSignedIn, setIsSignedIn }) => {
+const SignIn = () => {
   
-  console.log("isSignedIn", isSignedIn)
-
   useEffect(() => {
     window.scrollTo(0, 0)
   });
@@ -14,12 +13,10 @@ const SignIn = ({ isSignedIn, setIsSignedIn }) => {
   let history = useHistory();
 
   if (Cookies.get('token')) {
-    // console.log("before",isSignedIn);
-    // setIsSignedIn(true)
-    // console.log("after", isSignedIn)
-    // // console.log(props)
-    // history.push('/userprofile');
-  }
+    history.push('/userprofile');
+  };
+
+  let isSignedIn = useContext(SignedInContext)
 
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";
@@ -60,7 +57,8 @@ const SignIn = ({ isSignedIn, setIsSignedIn }) => {
           document.cookie = 'token=' + data.token
           // redirect to user profile page
           history.push('/userprofile');
-          setIsSignedIn(true)
+          // isSignedIn = true
+          // console.log("//",isSignedIn)
         }
       })
   }

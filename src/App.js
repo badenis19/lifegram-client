@@ -10,6 +10,7 @@ import './App.scss';
 import TopNav from './components/TopNav';
 import BottomNav from './components/BottomNav';
 import Routes from './components/Routes';
+export const SignedInContext = React.createContext();
 
 const App = () => {
 
@@ -20,12 +21,15 @@ const App = () => {
       <Router>
 
         <div className="App">
+          
+          <SignedInContext.Provider value={isSignedIn}>
+            <TopNav/>
+          </SignedInContext.Provider>
 
-          <TopNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
-          <Routes isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+          <Routes/>
           {isSignedIn
             &&
-            <BottomNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+            <BottomNav />
           }
 
         </div>
