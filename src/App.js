@@ -23,7 +23,10 @@ const App = () => {
 
           <TopNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
           <Routes isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
-          <BottomNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+          {isSignedIn
+            &&
+            <BottomNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+          }
 
         </div>
       </Router>

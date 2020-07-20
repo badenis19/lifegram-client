@@ -15,7 +15,7 @@ const SignIn = ({ isSignedIn, setIsSignedIn }) => {
 
   if (Cookies.get('token')) {
     // console.log("before",isSignedIn);
-    setIsSignedIn(true)
+    // setIsSignedIn(true)
     // console.log("after", isSignedIn)
     // // console.log(props)
     // history.push('/userprofile');
@@ -60,6 +60,7 @@ const SignIn = ({ isSignedIn, setIsSignedIn }) => {
           document.cookie = 'token=' + data.token
           // redirect to user profile page
           history.push('/userprofile');
+          setIsSignedIn(true)
         }
       })
   }
