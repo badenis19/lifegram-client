@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ApolloProvider } from 'react-apollo'; // binds apollo to React
 import { BrowserRouter as Router } from "react-router-dom";
 import client from './apollo';
@@ -13,15 +13,20 @@ import Routes from './components/Routes';
 
 const App = () => {
 
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
   return (
     <ApolloProvider client={client}>
       <Router>
 
         <div className="App">
 
-          <TopNav />
-          <Routes />
-          <BottomNav />
+          <TopNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+          <Routes isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+          {isSignedIn
+            &&
+            <BottomNav isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+          }
 
         </div>
       </Router>

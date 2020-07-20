@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-const SignIn = () => {
+const SignIn = ({ isSignedIn, setIsSignedIn }) => {
+  
+  console.log("isSignedIn", isSignedIn)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -12,7 +14,11 @@ const SignIn = () => {
   let history = useHistory();
 
   if (Cookies.get('token')) {
-    history.push('/userprofile');
+    // console.log("before",isSignedIn);
+    // setIsSignedIn(true)
+    // console.log("after", isSignedIn)
+    // // console.log(props)
+    // history.push('/userprofile');
   }
 
   // signin endpoint URL
@@ -54,6 +60,7 @@ const SignIn = () => {
           document.cookie = 'token=' + data.token
           // redirect to user profile page
           history.push('/userprofile');
+          setIsSignedIn(true)
         }
       })
   }
