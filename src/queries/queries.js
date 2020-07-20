@@ -44,6 +44,8 @@ const getMyProfileQuery = gql`
   }
 `;
 
+
+
 // Not used for now, will use for explore page, search page
 const getSingleUserDetailsQuery = gql`
   { 
@@ -90,4 +92,18 @@ const getUsersPostsQuery = gql`
 }
 `;
 
-export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, getMyProfileQuery }
+// USERS
+
+// Not used for now, will use for explore page, search page
+const allUsersQuery = gql`
+  {
+    users {
+      _id
+      username
+      description
+      img
+    }
+  }
+`;
+
+export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, getMyProfileQuery, allUsersQuery }
