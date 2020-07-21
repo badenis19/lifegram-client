@@ -5,10 +5,15 @@ import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App"
 
 const TopNav = () => {
-  
+
   let history = useHistory();
-  
+
   let { isSignedIn, updateSignIn } = useContext(SignedInContext);
+
+  // To delete
+  // if (Cookies.get('token')) {
+  //   // updateSignIn();
+  // };
 
   const handleSignOut = () => {
     // remove token cookie 
@@ -22,9 +27,9 @@ const TopNav = () => {
     <nav className="top-nav">
       <ul>
 
-      { console.log(">>",isSignedIn) }
+        {console.log(">>", isSignedIn)}
 
-        <p>::{isSignedIn.toString()}</p>
+        {/* <p>::{isSignedIn.toString()}</p> */}
 
         {!isSignedIn &&
           <Link to="/signup">
@@ -35,13 +40,14 @@ const TopNav = () => {
           <li><strong>LIFEGRAM</strong></li>
         </Link>
 
-        {/* {!isSignedIn && */}
-        <Link to="/signIn">
-          <li>Sign in</li>
-        </Link>
+        {!isSignedIn &&
+          <Link to="/signIn">
+            <li>Sign in</li>
+          </Link>}
 
-        {/* {isSignedIn && */}
-         <li onClick={() => handleSignOut()}>Sign out</li>
+        {isSignedIn &&
+          <li onClick={() => handleSignOut()}>Sign out</li>
+        }
 
 
       </ul>

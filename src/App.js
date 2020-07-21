@@ -16,10 +16,11 @@ const App = () => {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const updateSignIn = () => {
-    setIsSignedIn(true);
+  const updateSignIn = (isSignedIn) => {
+    setIsSignedIn(isSignedIn);
   }
 
+  console.log('isSignedIn :', isSignedIn);
   return (
     <ApolloProvider client={client}>
       <Router>

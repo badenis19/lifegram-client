@@ -59,7 +59,7 @@ const SignIn = () => {
           document.cookie = 'token=' + data.token
           // redirect to user profile page
           history.push('/userprofile');
-          updateSignIn()
+          updateSignIn(true);
           console.log(isSignedIn)
         }
       })
