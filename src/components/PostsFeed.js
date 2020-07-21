@@ -9,7 +9,7 @@ import { getAllPostsQuery } from '../queries/queries';
 const PostsFeed = (props) => {
 
   let history = useHistory();
-  
+
   if (!Cookies.get('token')) {
     history.push('/userprofile');
   };
@@ -19,6 +19,7 @@ const PostsFeed = (props) => {
   });
 
   let data = props.data;
+  console.log(data);
 
   const displayAllPosts = () => {
     if (data.loading) {
