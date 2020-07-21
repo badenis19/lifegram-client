@@ -2,12 +2,12 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { SignedInContext } from "../App"
+import { SignedInContext } from "../App";
 
 const SignIn = () => {
   
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   });
 
   let history = useHistory();
@@ -16,9 +16,7 @@ const SignIn = () => {
     history.push('/userprofile');
   };
 
-  let { isSignedIn, updateSignIn } = useContext(SignedInContext)
-  console.log("--",isSignedIn)
-  console.log("-<>-",updateSignIn)
+  let { updateSignIn } = useContext(SignedInContext);
 
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";
@@ -59,8 +57,8 @@ const SignIn = () => {
           document.cookie = 'token=' + data.token
           // redirect to user profile page
           history.push('/userprofile');
+          // updating the context isSignedIn to false
           updateSignIn(true);
-          console.log(isSignedIn)
         }
       })
   }

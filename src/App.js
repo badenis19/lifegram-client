@@ -10,22 +10,25 @@ import './App.scss';
 import TopNav from './components/TopNav';
 import BottomNav from './components/BottomNav';
 import Routes from './components/Routes';
+
+// creating context
 export const SignedInContext = React.createContext();
 
 const App = () => {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
+  // method to update the isSignedIn variable (true or false)
   const updateSignIn = (isSignedIn) => {
     setIsSignedIn(isSignedIn);
-  }
+  };
 
-  console.log('isSignedIn :', isSignedIn);
   return (
     <ApolloProvider client={client}>
       <Router>
 
         <div className="App">
+          {/* All the components nested inside of the Provider will have access to the context values */}
           <SignedInContext.Provider value={{ isSignedIn, updateSignIn }}>
             <TopNav />
             <Routes />

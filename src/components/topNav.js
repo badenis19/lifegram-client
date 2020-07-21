@@ -10,14 +10,10 @@ const TopNav = () => {
 
   let { isSignedIn, updateSignIn } = useContext(SignedInContext);
 
-  // To delete
-  // if (Cookies.get('token')) {
-  //   // updateSignIn();
-  // };
-
   const handleSignOut = () => {
     // remove token cookie 
     Cookies.remove('token');
+    // updating the context isSignedIn to false
     updateSignIn(false);
     // redirect to sign in page
     history.push('/signin');
@@ -26,10 +22,6 @@ const TopNav = () => {
   return (
     <nav className="top-nav">
       <ul>
-
-        {console.log(">>", isSignedIn)}
-
-        {/* <p>::{isSignedIn.toString()}</p> */}
 
         {!isSignedIn &&
           <Link to="/signup">
@@ -48,7 +40,6 @@ const TopNav = () => {
         {isSignedIn &&
           <li onClick={() => handleSignOut()}>Sign out</li>
         }
-
 
       </ul>
     </nav>
