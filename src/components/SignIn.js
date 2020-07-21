@@ -16,7 +16,9 @@ const SignIn = () => {
     history.push('/userprofile');
   };
 
-  let isSignedIn = useContext(SignedInContext)
+  let { isSignedIn, updateSignIn } = useContext(SignedInContext)
+  console.log("--",isSignedIn)
+  console.log("-<>-",updateSignIn)
 
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";
@@ -57,8 +59,8 @@ const SignIn = () => {
           document.cookie = 'token=' + data.token
           // redirect to user profile page
           history.push('/userprofile');
-          // isSignedIn = true
-          // console.log("//",isSignedIn)
+          updateSignIn()
+          console.log(isSignedIn)
         }
       })
   }

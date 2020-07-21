@@ -7,21 +7,24 @@ import { SignedInContext } from "../App"
 const TopNav = () => {
   
   let history = useHistory();
- 
+  
+  let { isSignedIn, updateSignIn } = useContext(SignedInContext);
+
   const handleSignOut = () => {
     // remove token cookie 
     Cookies.remove('token');
+    updateSignIn(false);
     // redirect to sign in page
     history.push('/signin');
   };
 
-  let isSignedIn = useContext(SignedInContext)
-  
   return (
     <nav className="top-nav">
       <ul>
 
       { console.log(">>",isSignedIn) }
+
+        <p>::{isSignedIn.toString()}</p>
 
         {!isSignedIn &&
           <Link to="/signup">
@@ -32,12 +35,13 @@ const TopNav = () => {
           <li><strong>LIFEGRAM</strong></li>
         </Link>
 
-        {!isSignedIn &&
+        {/* {!isSignedIn && */}
         <Link to="/signIn">
           <li>Sign in</li>
-        </Link>}
+        </Link>
 
-        {isSignedIn && <li onClick={() => handleSignOut()}>Sign out</li>}
+        {/* {isSignedIn && */}
+         <li onClick={() => handleSignOut()}>Sign out</li>
 
 
       </ul>

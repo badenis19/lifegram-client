@@ -16,21 +16,24 @@ const App = () => {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
+  const updateSignIn = () => {
+    setIsSignedIn(true);
+  }
+
   return (
     <ApolloProvider client={client}>
       <Router>
 
         <div className="App">
-          
-          <SignedInContext.Provider value={isSignedIn}>
-            <TopNav/>
-          </SignedInContext.Provider>
+          <SignedInContext.Provider value={{ isSignedIn, updateSignIn }}>
+            <TopNav />
+            <Routes />
 
-          <Routes/>
-          {isSignedIn
-            &&
-            <BottomNav />
-          }
+            {isSignedIn
+              &&
+              <BottomNav />
+            }
+          </SignedInContext.Provider>
 
         </div>
       </Router>
