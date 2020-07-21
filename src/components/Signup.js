@@ -24,9 +24,9 @@ const Signup = () => {
   // };
 
   // const handleFormSubmit = (e) => {
-    // e.preventDefault();
-    // refreshPage();
-    // forceUpdate();
+  //   e.preventDefault();
+  //   e.target.reset();
+  //   // refreshPage();
   // }
 
   // const [username, setUsername] = useState('');

@@ -10,7 +10,7 @@ import Signup from "./Signup";
 import SearchUser from "./SearchUser";
 // import Comments from "./Comments";
 
-const Routes = ({ isSignedIn, setIsSignedIn }) => {
+const Routes = () => {
 
   return (
     <>
@@ -30,7 +30,7 @@ const Routes = ({ isSignedIn, setIsSignedIn }) => {
 
         <Route
           path="/signin"
-          render={() => <SignIn isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />}
+          render={() => <SignIn />}
           exact
         />
 

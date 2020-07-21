@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
+import { SignedInContext } from "../App"
 
-const TopNav = ({ isSignedIn, setIsSignedIn }) => {
+const TopNav = () => {
 
   let history = useHistory();
 
-  // console.log("isSignedIn", isSignedIn)
+  let { isSignedIn, updateSignIn } = useContext(SignedInContext);
 
   const handleSignOut = () => {
     // remove token cookie 
     Cookies.remove('token');
-    setIsSignedIn(false);
-    console.log(isSignedIn)
+    // updating the context isSignedIn to false
+    updateSignIn(false);
     // redirect to sign in page
     history.push('/signin');
   };
@@ -32,12 +33,13 @@ const TopNav = ({ isSignedIn, setIsSignedIn }) => {
         </Link>
 
         {!isSignedIn &&
-        <Link to="/signIn">
-          <li>Sign in</li>
-        </Link>}
+          <Link to="/signIn">
+            <li>Sign in</li>
+          </Link>}
 
-        {isSignedIn && <li onClick={() => handleSignOut()}>Sign out</li>}
-
+        {isSignedIn &&
+          <li onClick={() => handleSignOut()}>Sign out</li>
+        }
 
       </ul>
     </nav>
