@@ -13,11 +13,11 @@ import { createUserMutation } from "../mutations/mutations";
 const Signup = () => {
 
   //React-hook-form
-  const { register, handleSubmit, errors, reset } = useForm();
-  const onSubmit = (data, e) => {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => {
     alert("Thank you for signing up. your details are below:" + JSON.stringify(data));
     console.log("data", data);
-    e.target.reset();
+    // e.target.reset();
     console.log("error/s", errors);
   };
 
@@ -87,24 +87,24 @@ const Signup = () => {
 
         <div>
           <input type="text" placeholder="Username" name="Username" ref={register({ required: true, maxLength: 15 })} />
-          {errors.Username && errors.Username.type === 'required' && (< p > This is required</p>)}
+          {errors.Username && errors.Username.type === 'required' && (< p > This is required!</p>)}
           {errors.Username && errors.Username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
         </div>
 
         <div>
           <input type="text" placeholder="Email" name="Email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
-          {errors.Email && errors.Email.type === 'required' && (< p > This is required</p>)}
+          {errors.Email && errors.Email.type === 'required' && (< p > This is required!</p>)}
           {errors.Email && errors.Email.type === 'pattern' && (< p > This is not a valid email address</p>)}
         </div>
 
         <div>
           <input type="password" placeholder="Password" name="Password" ref={register({ required: true })} />
-          {errors.Password && (< p > This is required</p>)}
+          {errors.Password && (< p > This is required!</p>)}
         </div>
 
         <div>
           <input type="number" placeholder="Age" name="Age" ref={register({ required: true, max: 999, min: 1 })} />
-          {errors.Age && errors.Age.type === 'required' && (< p > This is required</p>)}
+          {errors.Age && errors.Age.type === 'required' && (< p > This is required!</p>)}
           {errors.Age && errors.Age.type === 'max' && (< p > surely your not 1000years old or over!</p>)}
         </div>
 

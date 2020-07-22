@@ -103,9 +103,23 @@ body,p,a,ul,li{
     justify-content: space-between;
     padding: 0 15px;
 
+    div {
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      
+      p {
+        color: red;
+      }
+    }
+
     input {
+      width: calc(100% - 10px);
       border-radius: 5px;
       padding: 5px;
       border: 1px solid black;
+      box-shadow: 0 0 4px rgba(20 ,20, 20, 0.5);
     }
   }
