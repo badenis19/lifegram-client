@@ -80,11 +80,10 @@ const Signup = () => {
     <div>
       <h3>Sign up now to share and see your friend's best life moments!</h3>
       <form className="signup-form" action="http://localhost:4001/sign" method="POST" onSubmit={handleSubmit(onSubmit)}>
+
         <input type="text" placeholder="Username" name="Username" ref={register({ required: true, maxLength: 15 })} />
         {errors.Username && errors.Username.type === 'required' && (< p > This is required</p>)}
         {errors.Username && errors.Username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
-
-
 
         <input type="text" placeholder="Email" name="Email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
         {errors.Email && errors.Email.type === 'required' && (< p > This is required</p>)}
