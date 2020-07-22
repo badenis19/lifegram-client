@@ -93,3 +93,19 @@ body,p,a,ul,li{
     border: 1px solid lightgrey;
     width: 50px;
   }
+
+  // SIGNUP FORM
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    input {
+      border-radius: 5px;
+      padding: 5px;
+      border: 1px solid black;
+    }
+  }
