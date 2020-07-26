@@ -10,7 +10,7 @@ import { createUserMutation } from "../mutations/mutations";
 const Signup = () => {
   
   let history = useHistory();
-
+  
   if (Cookies.get('token')) {
     history.push('/userprofile');
   }

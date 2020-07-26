@@ -26,7 +26,7 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-
+        
         <div className="App">
           {/* All the components nested inside of the Provider will have access to the context values */}
           <SignedInContext.Provider value={{ isSignedIn, updateSignIn }}>

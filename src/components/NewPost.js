@@ -11,8 +11,6 @@ import { getAllPostsQuery } from '../queries/queries';
 /* Mutations */
 import { createPostMutation } from "../mutations/mutations";
 
-// require("dotenv/config");
-
 // setting up the filestack client with API KEY
 const clientFS = require('filestack-js').init(process.env.REACT_APP_FILESTACK_API_KEY);
 

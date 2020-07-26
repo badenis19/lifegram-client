@@ -12,6 +12,14 @@ const createPostMutation = gql`
     }
 `;
 
+const toggleLike = gql`
+    mutation ToggleLike($likes: Number){
+        toggleUser(likes: $likes){ 
+            _id
+        }
+    }
+`;
+
 // Not used for now
 const createUserMutation = gql`
     mutation CreateUser($username: String!, $email: String!, $password: String!, $img: String, $age: Int, $description: String, $followers: [ID], $following: [ID]){
@@ -21,4 +29,4 @@ const createUserMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation }
+export { createPostMutation, createUserMutation, toggleLike }
