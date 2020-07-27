@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
-import { toggleLike } from '../mutations/mutations';
+import { updateLikeMutation } from '../mutations/mutations';
 import client from '../apollo';
 
 const PostsFeed = (props) => {
@@ -23,14 +23,14 @@ const PostsFeed = (props) => {
   let data = props.data;
   console.log(data)
 
-  const toggleLike = async (post) => {
+  const updateLike = async (post) => {
     console.log(post.likes);
 
     await client.mutate({
       variables: {
         likes: post.likes
       },
-      mutation: toggleLike,
+      mutation: updateLikeMutation,
       refetchQueries: () => [{ query: getAllPostsQuery }]
     });
     // refreshPage();
@@ -48,7 +48,7 @@ const PostsFeed = (props) => {
                 {/* <p>user: {post.user.username}</p> */}
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
-                <p onClick={() => toggleLike(post)}>likes {post.likes}</p>
+                <p onClick={() => updateLike(post)}>likes {post.likes}</p>
                 <p>comments:{post.comments}</p>
               </div>
             )
