@@ -29,7 +29,7 @@ const TopNav = () => {
           </Link>}
 
         <Link to="/">
-          <li><strong>LIFEGRAM</strong></li>
+          <li><strong>FITGRAM</strong></li>
         </Link>
 
         {!isSignedIn &&

@@ -69,28 +69,28 @@ class MyForm extends React.Component {
         <div>
             <label htmlFor="user-name">Username:&nbsp;</label>
             <input id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />
-            {/* {errors.username && errors.username.type === 'required' && (< p > This is required!</p>)}
-      {errors.username && errors.username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)} */}
+            {errors.username && errors.username.type === 'required' && (< p > This is required!</p>)}
+      {errors.username && errors.username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
         </div>
 
         <div>
             <label htmlFor="email">Email:&nbsp;</label>
             <input id="email" type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
-            {/* {errors.email && errors.email.type === 'required' && (< p > This is required!</p>)}
-      {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)} */}
+            {errors.email && errors.email.type === 'required' && (< p > This is required!</p>)}
+      {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
         </div>
 
         <div>
             <label htmlFor="password">Password:&nbsp;</label>
             <input id="password" type="password" placeholder="Password" name="password" ref={register({ required: true })} />
-            {/* {errors.password && (< p > This is required!</p>)} */}
+            {errors.password && (< p > This is required!</p>)}
         </div>
 
         <div>
             <label htmlFor="age">Age:&nbsp;</label>
             <input id="age" type="number" placeholder="Age" name="age" ref={register({ required: true, max: 999, min: 1 })} />
-            {/* {errors.age && errors.age.type === 'required' && (< p > This is required!</p>)}
-      {errors.age && errors.age.type === 'max' && (< p > surely your not 1000years old or over!</p>)} */}
+            {errors.age && errors.age.type === 'required' && (< p > This is required!</p>)}
+      {errors.age && errors.age.type === 'max' && (< p > surely your not 1000years old or over!</p>)}
         </div>
 
         <button> submit </button>
@@ -118,3 +118,21 @@ class MyForm extends React.Component {
     alert(result.message);
   };
 </script>
+
+
+return fetch('Your Rest url', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}).then(response => {
+    if (response.status >= 200 && response.status < 300) {
+        return response;
+        console.log(response);
+        window.location.reload();
+      } else {
+       console.log('Somthing happened wrong');
+      }
+}).catch(err => err);
+}
