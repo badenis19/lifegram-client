@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { graphql } from 'react-apollo';
+import { SignedInContext } from "../App";
 
 /* Queries */
 import { allUsersQuery } from "../queries/queries"
@@ -10,9 +11,13 @@ const SearchUser = (props) => {
 
   let history = useHistory();
 
+  let { updateSignIn } = useContext(SignedInContext);
+
   if (!Cookies.get('token')) {
     history.push('/signin');
-  };
+  } else {
+    updateSignIn(true);
+  }
 
   let [userList, setUserList] = useState([]);
   let [searchText, setSearchText] = useState("");

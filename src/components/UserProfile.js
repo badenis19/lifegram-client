@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
+import { SignedInContext } from "../App"
 
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
@@ -10,8 +11,12 @@ const UserProfile = (props) => {
 
   let history = useHistory();
 
+  let { isSignedIn, updateSignIn } = useContext(SignedInContext);
+
   if (!Cookies.get('token')) {
     history.push('/signin');
+  } else {
+     updateSignIn(true);
   }
 
   useEffect(() => {

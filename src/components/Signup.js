@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { SignedInContext } from "../App";
 
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
@@ -10,9 +11,13 @@ import { createUserMutation } from "../mutations/mutations";
 const Signup = () => {
   
   let history = useHistory();
+
+  let { updateSignIn } = useContext(SignedInContext);
   
   if (Cookies.get('token')) {
     history.push('/userprofile');
+  } else {
+    updateSignIn(false);
   }
 
   useEffect(() => {
