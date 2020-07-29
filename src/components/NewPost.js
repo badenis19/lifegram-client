@@ -19,7 +19,7 @@ const NewPost = () => {
 
   let history = useHistory();
 
-  let { isSignedIn, updateSignIn } = useContext(SignedInContext);
+  let { updateSignIn } = useContext(SignedInContext);
   
   if (!Cookies.get('token')) {
     history.push('/userprofile');

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
@@ -6,8 +6,8 @@ import { SignedInContext } from "../App";
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
-import { updateLikeMutation } from '../mutations/mutations';
-import client from '../apollo';
+// import { updateLikeMutation } from '../mutations/mutations';
+// import client from '../apollo';
 
 const PostsFeed = (props) => {
 
@@ -28,18 +28,18 @@ const PostsFeed = (props) => {
   let data = props.data;
   console.log(data)
 
-  const updateLike = async (post) => {
-    console.log(post.likes);
+  // const updateLike = async (post) => {
+  //   console.log(post.likes);
 
-    await client.mutate({
-      variables: {
-        likes: post.likes
-      },
-      mutation: updateLikeMutation,
-      refetchQueries: () => [{ query: getAllPostsQuery }]
-    });
-    // refreshPage();
-  }
+  //   await client.mutate({
+  //     variables: {
+  //       likes: post.likes
+  //     },
+  //     mutation: updateLikeMutation,
+  //     refetchQueries: () => [{ query: getAllPostsQuery }]
+  //   });
+  //   // refreshPage();
+  // }
 
   const displayAllPosts = () => {
     if (data.loading) {
@@ -53,7 +53,7 @@ const PostsFeed = (props) => {
                 {/* <p>user: {post.user.username}</p> */}
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
-                <p onClick={() => updateLike(post)}>likes {post.likes}</p>
+                {/* <p onClick={() => updateLike(post)}>likes {post.likes}</p> */}
                 <p>comments:{post.comments}</p>
               </div>
             )
