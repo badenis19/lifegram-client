@@ -28,19 +28,6 @@ const PostsFeed = (props) => {
   let data = props.data;
   console.log(data)
 
-  // const updateLike = async (post) => {
-  //   console.log(post.likes);
-
-  //   await client.mutate({
-  //     variables: {
-  //       likes: post.likes
-  //     },
-  //     mutation: updateLikeMutation,
-  //     refetchQueries: () => [{ query: getAllPostsQuery }]
-  //   });
-  //   // refreshPage();
-  // }
-
   const displayAllPosts = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
