@@ -86,33 +86,33 @@ const Signup = () => {
   return (
     <div>
       <div className="signup-intro">
-        <h3>Sign up now to share and see your friend's best life moments!</h3>
+        <h3>Create your account</h3>
       </div>
       <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} >
         <div>
-          <label htmlFor="username">Username:</label>
-          <input id="username" type="text" placeholder="Enter username" name="username" ref={register({ required: true, maxLength: 15 })} />
-          {errors.username && errors.username.type === 'required' && (< p > This is required!</p>)}
+          {/* <label htmlFor="username">Username:</label> */}
+          <input className="trial" id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />
+          {errors.username && errors.username.type === 'required' && (< p > This is required</p>)}
           {errors.username && errors.username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
         </div>
 
         <div>
-          <label htmlFor="email">Email:&nbsp;</label>
-          <input type="text" placeholder="Enter email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
-          {errors.email && errors.email.type === 'required' && (< p > This is required!</p>)}
+          {/* <label htmlFor="email">Email:&nbsp;</label> */}
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+          {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
           {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
         </div>
 
         <div>
-          <label htmlFor="password">Password:&nbsp;</label>
-          <input type="password" placeholder="Enter password" name="password" ref={register({ required: true })} />
-          {errors.password && (< p > This is required!</p>)}
+          {/* <label htmlFor="password">Password:&nbsp;</label> */}
+          <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
+          {errors.password && (< p > This is required</p>)}
         </div>
 
         <div>
-          <label htmlFor="age">Age:&nbsp;</label>
-          <input type="number" placeholder="Enter age" name="age" ref={register({ required: true, max: 999, min: 1 })} />
-          {errors.age && errors.age.type === 'required' && (< p > This is required!</p>)}
+          {/* <label htmlFor="age">Age:&nbsp;</label> */}
+          <input type="number" placeholder="Age" name="age" ref={register({ required: true, max: 999, min: 1 })} />
+          {errors.age && errors.age.type === 'required' && (< p > This is required</p>)}
           {errors.age && errors.age.type === 'max' && (< p > surely your not 1000years old or over!</p>)}
         </div>
 

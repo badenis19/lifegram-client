@@ -101,8 +101,11 @@ body,p,a,ul,li{
   .signup-intro {
     font-family: 'Roboto', sans-serif;
     padding: 0 15px;
-    border: 1px solid black;
     margin: 0 10px 15px;
+
+    h3 {
+      text-align: center;
+    }
   }
 
   .signup-form {
@@ -124,7 +127,7 @@ body,p,a,ul,li{
         color: red;
         font-size: 0.9rem;
         display: block;
-        padding: 6px 10px 0;
+        padding: 6px 0 0;
       }
 
       input {
@@ -132,14 +135,17 @@ body,p,a,ul,li{
         font-size: 0.9rem;
         box-sizing: border-box;
         display: block;
-        border-radius: 4px;
-        padding: 6px 10px;
-        border: 1px solid black;
-        box-shadow: 0 0 4px rgba(20 ,20, 20, 0.5);
+        
+        padding: 6px 0;
+        border: none;
+        border-bottom: 1px solid lightgrey;
+
+        &:focus{
+          border-bottom: 1px solid grey;
+          outline: none
+        }
       }
     }
-
-   
   }
 
 
