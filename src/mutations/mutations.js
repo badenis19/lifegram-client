@@ -28,6 +28,14 @@ const followUserMutation = gql`
     }
  `;
 
+ const unfollowUserMutation = gql`
+    mutation UnFollowUser($id: String){
+        unfollowUser(_id: $id){ 
+         _id
+        }
+    }
+ `;
+
 // Not used for now
 const createUserMutation = gql`
     mutation CreateUser($username: String!, $email: String!, $password: String!, $img: String, $age: Int, $description: String, $followers: [ID], $following: [ID]){
@@ -37,4 +45,4 @@ const createUserMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation, followUserMutation }
+export { createPostMutation, createUserMutation, followUserMutation, unfollowUserMutation }

@@ -6,8 +6,8 @@ import { SignedInContext } from "../App";
 import client from '../apollo';
 
 /* Queries */
-import { allUsersQuery, getAllPostsQuery, getMyProfileQuery } from "../queries/queries";
-import { followUserMutation } from "../mutations/mutations";
+import { allUsersQuery, getMyProfileQuery } from "../queries/queries";
+import { followUserMutation, unfollowUserMutation } from "../mutations/mutations";
 
 const SearchUser = (props) => {
 
@@ -43,10 +43,22 @@ const SearchUser = (props) => {
 
     await client.mutate({
       variables: {
-        following: user.following,
         id: user._id
       },
       mutation: followUserMutation,
+      refetchQueries: () => [{ query: getMyProfileQuery }]
+    });
+    // refreshPage();
+  }
+
+  const unfollowUser = async (user) => {
+    console.log("unfollowing");
+
+    await client.mutate({
+      variables: {
+        id: user._id
+      },
+      mutation: unfollowUserMutation,
       refetchQueries: () => [{ query: getMyProfileQuery }]
     });
     // refreshPage();
@@ -65,7 +77,8 @@ const SearchUser = (props) => {
             <div key={user._id}>
               <p>{user.username}</p>
               <img src={user.img} alt="" />
-              <span onClick={() => followUser(user)}> follow</span>
+              <span onClick={() => followUser(user)}>follow</span><br/>
+              <span onClick={() => unfollowUser(user)}>Unfollow</span><br/><br/>
             </div>
           )
         })
