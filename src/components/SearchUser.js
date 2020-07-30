@@ -39,7 +39,7 @@ const SearchUser = (props) => {
   }
 
   const followUser = async (user) => {
-    console.log(user);
+    console.log("following", user.username);
 
     await client.mutate({
       variables: {
@@ -52,7 +52,7 @@ const SearchUser = (props) => {
   }
 
   const unfollowUser = async (user) => {
-    console.log("unfollowing");
+    console.log("unfollowing", user.username);
 
     await client.mutate({
       variables: {
