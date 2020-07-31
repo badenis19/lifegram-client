@@ -3,18 +3,21 @@ import { graphql } from 'react-apollo';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App";
+import client from '../apollo';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
-// import { updateLikeMutation } from '../mutations/mutations';
-// import client from '../apollo';
+
+/* Mutations */
+import { likePostMutation } from '../mutations/mutations';
+
 
 const PostsFeed = (props) => {
 
   let history = useHistory();
 
   let { updateSignIn } = useContext(SignedInContext);
-  
+
   if (!Cookies.get('token')) {
     history.push('/userprofile');
   } else {
@@ -28,6 +31,19 @@ const PostsFeed = (props) => {
   let data = props.data;
   console.log(data)
 
+  const likePost = async (post) => {
+    console.log("Liked post", post)
+
+    await client.mutate({
+      variables: {
+        id: post._id
+      },
+      mutation: likePostMutation,
+      refetchQueries: () => [{ query: getAllPostsQuery }]
+    });
+    // refreshPage();
+  }
+
   const displayAllPosts = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
@@ -40,7 +56,10 @@ const PostsFeed = (props) => {
                 <p>user: {post.user.username}</p>
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
-                <p>likes {post.likes}</p>
+                <p onClick={() => likePost(post)}>likes {post.likes.length}</p>
+                {/* need Posts to get post */}
+                {/* need id of user to check if in array for post */}
+                {/* if id in likes color red, else do not  */}
                 <p>comments:{post.comments}</p>
               </div>
             )
