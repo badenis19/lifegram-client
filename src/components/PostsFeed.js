@@ -60,7 +60,11 @@ const PostsFeed = (props) => {
                 {/* need Posts to get post */}
                 {/* need id of user to check if in array for post */}
                 {/* if id in likes color red, else do not  */}
-                <p>comments:{post.comments}</p>
+                <p>comments:{post.comments.map(comment => {
+                  return (
+                    <p>{comment}</p>
+                  )
+                })}</p>
               </div>
             )
           })}
