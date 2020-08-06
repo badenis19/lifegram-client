@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import { useHistory } from 'react-router-dom';
@@ -10,17 +10,45 @@ import { useForm } from 'react-hook-form';
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
 
+
 const Signup = () => {
+  const [message, updateMessage] = useState('');
+
 
   //React-hook-form
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setError } = useForm();
 
-  const formRef = React.useRef();
-  const url = "http://localhost:4001/sign"
+  // const formRef = React.useRef();
+  // const url =
 
-  const onSubmit = (data, e) => {
-    formRef.current.submit();
-    e.target.reset();
+  // let result = null;
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [age, setAge] = useState("");
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    // formRef.current.submit();
+    return fetch("http://localhost:4001/sign", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      body: `username=${data.username}&email=${data.email}&password=${data.password}&age=${data.age}`
+    })
+      .then(response => console.log("-------", response));
+
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   console.log("Create Success: ", data);
+    // })
+    // .catch((error) => {
+    //   console.error("ERROR: ", error);
+    // })
+
+
+    // e.target.reset();
 
   }
 
@@ -88,7 +116,10 @@ const Signup = () => {
       <div className="signup-intro">
         <h3>Create your account</h3>
       </div>
-      <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} >
+      <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
+        {/* <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} > */}
+        {message}
+        {errors.serverError && errors.serverError.message}
         <div>
           <input className="trial" id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />
           {errors.username && errors.username.type === 'required' && (< p > This is required</p>)}
