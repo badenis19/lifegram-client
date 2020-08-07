@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 
 const SignIn = () => {
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -40,6 +40,7 @@ const SignIn = () => {
     // fetch() to make network request using promises (similar to XMLHttpRequest)
     fetch(url, options)
       .then(response => {
+        console.log("---------", response)
         // if response not ok, return error messages else return response 
         if (!response.ok) {
           if (response.status === 404) {
@@ -49,7 +50,7 @@ const SignIn = () => {
             alert('Email and password do not match, please retry')
           }
         }
-        
+
         return response
       }) // from string to Json object
       .then(response => response.json())

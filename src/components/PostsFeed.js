@@ -29,7 +29,7 @@ const PostsFeed = (props) => {
   });
 
   let data = props.data;
-  console.log(data)
+  console.log(data);
 
   const likePost = async (post) => {
     console.log("Liked post", post)

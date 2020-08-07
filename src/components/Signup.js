@@ -1,19 +1,39 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 
+// npm install react-hook-form
+import { useForm } from 'react-hook-form';
+
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
 
 const Signup = () => {
-  
+  const [message, setMessage] = useState('');
+  const { register, handleSubmit, errors } = useForm();
+  const url = "http://localhost:4001/sign"
+
+  const onSubmit = async (data, e) => {
+    console.log(data);
+
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      body: `username=${data.username}&email=${data.email}&password=${data.password}&age=${data.age}`
+    })
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+  }
+
   let history = useHistory();
 
   let { updateSignIn } = useContext(SignedInContext);
-  
+
   if (Cookies.get('token')) {
     history.push('/userprofile');
   } else {
@@ -57,21 +77,59 @@ const Signup = () => {
   // //   history.push('/userprofile'); // TO MODIFY TO LOGGED IN USER SESSION userprofile
   // }
 
+  // return (
+  //   <div>
+  //     <h3>Sign up now to share and see your friend's best life moments!</h3>
+  //     <form action="http://localhost:4001/sign" method="POST">
+  //       <label htmlFor="user-name">Username:&nbsp;</label>
+  //       <input type="text" placeholder="Enter your username" name="username" /><br />
+  //       <label htmlFor="email">Email:&nbsp;</label>
+  //       <input type="text" placeholder="Enter your email" name="email" /><br />
+  //       <label htmlFor="password">Password:&nbsp;</label>
+  //       <input type="password" placeholder="Enter your password" name="password" /><br />
+  //       <label htmlFor="age">Age:&nbsp;</label>
+  //       <input type="number" placeholder="Enter your age" name="age" /><br />
+  //       <button>Sign up</button>
+  //     </form>
+  //   </div>
+
   return (
     <div>
-      <h3>Sign up now to share and see your friend's best life moments!</h3>
-      <form action="http://localhost:4001/sign" method="POST">
-        <label htmlFor="user-name">Username:&nbsp;</label>
-        <input type="text" placeholder="Enter your username" name="username" /><br />
-        <label htmlFor="email">Email:&nbsp;</label>
-        <input type="text" placeholder="Enter your email" name="email" /><br />
-        <label htmlFor="password">Password:&nbsp;</label>
-        <input type="password" placeholder="Enter your password" name="password" /><br />
-        <label htmlFor="age">Age:&nbsp;</label>
-        <input type="number" placeholder="Enter your age" name="age" /><br />
-        <button>Sign up</button>
+      <div className="signup-intro">
+        <h3>Create your account</h3>
+      </div>
+      {message && <p className="" >{message}</p>}
+      <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
+        {/* <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} > */}
+        {errors.serverError && errors.serverError.message}
+        <div>
+          <input className="trial" id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />
+          {errors.username && errors.username.type === 'required' && (< p > This is required</p>)}
+          {errors.username && errors.username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
+        </div>
+
+        <div>
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+          {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
+          {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
+        </div>
+
+        <div>
+          <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
+          {errors.password && (< p > This is required</p>)}
+        </div>
+
+        <div>
+          <input type="number" placeholder="Age" name="age" ref={register({ required: true, max: 999, min: 1 })} />
+          {errors.age && errors.age.type === 'required' && (< p > This is required</p>)}
+          {errors.age && errors.age.type === 'max' && (< p > surely your not 1000years old or over!</p>)}
+        </div>
+
+        <div>
+          <input type="submit" />
+        </div>
       </form>
-    </div>
+    </div >
   )
 }
 
