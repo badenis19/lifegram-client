@@ -12,11 +12,13 @@ const SignIn = () => {
 
   let history = useHistory();
 
+  let { updateSignIn } = useContext(SignedInContext);
+
   if (Cookies.get('token')) {
     history.push('/userprofile');
-  };
-
-  let { updateSignIn } = useContext(SignedInContext);
+  } else {
+    updateSignIn(false);
+  }
 
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";

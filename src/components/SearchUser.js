@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { graphql } from 'react-apollo';
+import { SignedInContext } from "../App";
+import client from '../apollo';
 
 /* Queries */
-import { allUsersQuery } from "../queries/queries"
+import { allUsersQuery, getAllPostsQuery, getMyProfileQuery } from "../queries/queries";
+import { followUserMutation } from "../mutations/mutations";
 
 const SearchUser = (props) => {
 
   let history = useHistory();
 
+  let { updateSignIn } = useContext(SignedInContext);
+
   if (!Cookies.get('token')) {
     history.push('/signin');
-  };
+  } else {
+    updateSignIn(true);
+  }
 
   let [userList, setUserList] = useState([]);
   let [searchText, setSearchText] = useState("");
@@ -31,6 +38,20 @@ const SearchUser = (props) => {
     setUserList([]);
   }
 
+  const followUser = async (user) => {
+    console.log(user);
+
+    await client.mutate({
+      variables: {
+        following: user.following,
+        id: user._id
+      },
+      mutation: followUserMutation,
+      refetchQueries: () => [{ query: getMyProfileQuery }]
+    });
+    // refreshPage();
+  }
+
   return (
     <div>
       <h1>Search User</h1>
@@ -44,6 +65,7 @@ const SearchUser = (props) => {
             <div key={user._id}>
               <p>{user.username}</p>
               <img src={user.img} alt="" />
+              <span onClick={() => followUser(user)}> follow</span>
             </div>
           )
         })

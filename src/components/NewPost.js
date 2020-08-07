@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import client from '../apollo';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { SignedInContext } from "../App";
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
@@ -11,18 +12,20 @@ import { getAllPostsQuery } from '../queries/queries';
 /* Mutations */
 import { createPostMutation } from "../mutations/mutations";
 
-// require("dotenv/config");
-
 // setting up the filestack client with API KEY
 const clientFS = require('filestack-js').init(process.env.REACT_APP_FILESTACK_API_KEY);
 
 const NewPost = () => {
 
   let history = useHistory();
+
+  let { updateSignIn } = useContext(SignedInContext);
   
   if (!Cookies.get('token')) {
     history.push('/userprofile');
-  };
+  } else {
+    updateSignIn(true);
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0)

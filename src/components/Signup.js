@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { SignedInContext } from "../App";
 
 // npm install react-hook-form
 import { useForm } from 'react-hook-form';
@@ -31,8 +32,12 @@ const Signup = () => {
 
   let history = useHistory();
 
+  let { updateSignIn } = useContext(SignedInContext);
+
   if (Cookies.get('token')) {
     history.push('/userprofile');
+  } else {
+    updateSignIn(false);
   }
 
   useEffect(() => {

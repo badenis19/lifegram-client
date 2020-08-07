@@ -12,6 +12,22 @@ const createPostMutation = gql`
     }
 `;
 
+// const updateLikeMutation = gql`
+//     mutation UpdateLike($likes: Int){
+//         updateLike(_id: ID, likes: $likes){ 
+//             _id
+//         }
+//     }
+// `;
+
+const followUserMutation = gql`
+    mutation FollowUser($id: String){
+        followUser(_id: $id){ 
+         _id
+        }
+    }
+ `;
+
 // Not used for now
 const createUserMutation = gql`
     mutation CreateUser($username: String!, $email: String!, $password: String!, $img: String, $age: Int, $description: String, $followers: [ID], $following: [ID]){
@@ -21,4 +37,4 @@ const createUserMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation }
+export { createPostMutation, createUserMutation, followUserMutation }
