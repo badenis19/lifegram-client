@@ -27,7 +27,6 @@ const Signup = () => {
     })
       .then(response => response.json())
       .then(data => setMessage(data.message))
-    e.target.reset();
   }
 
   let history = useHistory();
@@ -94,6 +93,7 @@ const Signup = () => {
       <div className="signup-intro">
         <h3>Create your account</h3>
       </div>
+      {message && <p className="" >{message}</p>}
       <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
         {/* <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} > */}
         {errors.serverError && errors.serverError.message}
@@ -124,9 +124,6 @@ const Signup = () => {
           <input type="submit" />
         </div>
       </form>
-      {message &&
-        <p>{message}</p>
-      }
     </div >
   )
 }
