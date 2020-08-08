@@ -28,14 +28,6 @@ const followUserMutation = gql`
     }
  `;
 
- const unfollowUserMutation = gql`
-    mutation UnFollowUser($id: String){
-        unfollowUser(_id: $id){ 
-         _id
-        }
-    }
- `;
-
 const likePostMutation = gql`
     mutation LikePost($id: String){
         likePost(_id: $id){ 
@@ -53,4 +45,4 @@ const createUserMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation, followUserMutation, unfollowUserMutation, likePostMutation, addCommentMutation }
+export { createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation }
