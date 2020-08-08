@@ -25,22 +25,28 @@ const SignIn = () => {
   // signin endpoint URL
   const url = "http://localhost:4001/signIn";
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data, e) => {
+    // e.preventDefault();
 
-    const options = {
+    // const options = {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    //   },
+    //   body: `email=${email}&password=${password}`
+    // }
+
+    // fetch() to make network request using promises (similar to XMLHttpRequest)
+    fetch(url, {
       method: 'post',
       headers: {
         'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
-      body: `email=${email}&password=${password}`
-    }
-
-    // fetch() to make network request using promises (similar to XMLHttpRequest)
-    fetch(url, options)
+      body: `email=${data.email}&password=${data.password}`
+    })
       .then(response => {
         console.log("---------", response)
         // if response not ok, return error messages else return response 
@@ -84,9 +90,8 @@ const SignIn = () => {
       <p>------------------------------------------</p> */}
 
       <form className="signin-form" onSubmit={handleSubmit(onSubmit)} >
-        {/* {errors.serverError && errors.serverError.message} */}
         <div>
-          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true })} />
           {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
           {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
         </div>
