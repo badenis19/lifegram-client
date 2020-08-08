@@ -19,7 +19,6 @@ const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
   const url = "http://localhost:4001/sign";
   let history = useHistory();
-
   let { updateSignIn } = useContext(SignedInContext);
 
   if (Cookies.get('token')) {
