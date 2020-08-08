@@ -98,7 +98,7 @@ body,p,a,ul,li{
 
   // SIGNUP FORM
 
-  .signup-intro {
+  .sign-in-up-intro {
     font-family: 'Roboto', sans-serif;
     padding: 0 15px;
     margin: 0 10px 15px;
@@ -148,5 +148,42 @@ body,p,a,ul,li{
     }
   }
 
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+    // height: 40vh;
+    justify-content: space-between;
+    padding: 0 20px;
 
+    div {
+      margin:10px 0 0 0 ;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+
+      p {
+        color: red;
+        font-size: 0.9rem;
+        display: block;
+        padding: 6px 0 0;
+      }
+
+      input {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+        display: block;
+        
+        padding: 6px 0;
+        border: none;
+        border-bottom: 1px solid lightgrey;
+
+        &:focus{
+          border-bottom: 1px solid grey;
+          outline: none
+        }
+      }
+    }
+  }
   

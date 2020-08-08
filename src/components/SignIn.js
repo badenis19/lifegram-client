@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
+import { useForm } from 'react-hook-form';
 
 const SignIn = () => {
 
@@ -11,6 +12,7 @@ const SignIn = () => {
   });
 
   let history = useHistory();
+  const { register, handleSubmit, errors } = useForm();
 
   let { updateSignIn } = useContext(SignedInContext);
 
@@ -26,7 +28,7 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitForm = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const options = {
@@ -68,8 +70,10 @@ const SignIn = () => {
 
   return (
     <div>
-      <h1>Welcome to LifeGram</h1>
-      <form onSubmit={(e) => submitForm(e)} >
+      <div className="sign-in-up-intro">
+        <h3>Sign in</h3>
+      </div>
+      {/* <form onSubmit={(e) => submitForm(e)} >
         <label htmlFor="user-email">Email:&nbsp;</label>
         <input type="text" onChange={e => setEmail(e.target.value)} placeholder="Enter your email." name="user-email" /><br />
         <label htmlFor="user-password">Password:&nbsp;</label>
@@ -77,11 +81,31 @@ const SignIn = () => {
         <button>Sign in</button>
       </form>
 
-      <p>--------------------OR--------------------</p>
+      <p>------------------------------------------</p> */}
+
+      <form className="signin-form" onSubmit={handleSubmit(onSubmit)} >
+        {/* {errors.serverError && errors.serverError.message} */}
+        <div>
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+          {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
+          {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
+        </div>
+
+        <div>
+          <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
+          {errors.password && (< p > This is required</p>)}
+        </div>
+
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+
+      {/* <p>--------------------OR--------------------</p>
 
       <Link to="/signup">
         <button>Sign up</button>
-      </Link>
+      </Link> */}
     </div>
   )
 }
