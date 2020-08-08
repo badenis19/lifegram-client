@@ -7,7 +7,7 @@ import client from '../apollo';
 
 /* Queries */
 import { allUsersQuery, getMyProfileQuery } from "../queries/queries";
-import { followUserMutation, unfollowUserMutation } from "../mutations/mutations";
+import { followUserMutation } from "../mutations/mutations";
 
 const SearchUser = (props) => {
 
@@ -39,26 +39,13 @@ const SearchUser = (props) => {
   }
 
   const followUser = async (user) => {
-    console.log("following", user.username);
+    console.log("following/unfollow", user.username);
 
     await client.mutate({
       variables: {
         id: user._id
       },
       mutation: followUserMutation,
-      refetchQueries: () => [{ query: getMyProfileQuery }]
-    });
-    // refreshPage();
-  }
-
-  const unfollowUser = async (user) => {
-    console.log("unfollowing", user.username);
-
-    await client.mutate({
-      variables: {
-        id: user._id
-      },
-      mutation: unfollowUserMutation,
       refetchQueries: () => [{ query: getMyProfileQuery }]
     });
     // refreshPage();
@@ -77,13 +64,11 @@ const SearchUser = (props) => {
             <div key={user._id}>
               <p>{user.username}</p>
               <img src={user.img} alt="" />
-              <span onClick={() => followUser(user)}>follow</span><br/>
-              <span onClick={() => unfollowUser(user)}>Unfollow</span><br/><br/>
+              <span onClick={() => followUser(user)}>follow/unfollow</span><br/>
             </div>
           )
         })
       }
-
     </div>
   )
 };
