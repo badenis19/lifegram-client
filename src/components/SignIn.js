@@ -40,15 +40,12 @@ const SignIn = () => {
         // if response not ok, return error messages else return response 
         if (!response.ok) {
           if (response.status === 404) {
-            // alert('Email not found, please retry')
             setMessage("Email not found, please retry");
           }
           if (response.status === 401) {
-            // alert('Email and password do not match, please retry')
             setMessage("Email and password do not match, please retry")
           }
         }
-
         return response
       }) // from string to Json object
       .then(response => response.json())
@@ -72,8 +69,7 @@ const SignIn = () => {
        {message && <p className="" >{message}</p>}
       <form className="signin-form" onSubmit={handleSubmit(onSubmit)} >
         <div>
-          <input type="text" placeholder="Email" name="email" ref={register({ required: true })} /> 
-          {/* , pattern: /^\S+@\S+$/i */}
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} /> 
           {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
           {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
         </div>
