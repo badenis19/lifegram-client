@@ -24,7 +24,6 @@ const SignIn = () => {
   }
 
   const onSubmit = (data, e) => {
-    console.log("..")
     const options = {
       method: 'post',
       headers: {
@@ -36,7 +35,6 @@ const SignIn = () => {
     // fetch() to make network request using promises (similar to XMLHttpRequest)
     return fetch(url, options)
       .then(response => {
-        console.log("..", response)
         // if response not ok, return error messages else return response 
         if (!response.ok) {
           if (response.status === 404) {
@@ -66,7 +64,7 @@ const SignIn = () => {
       <div className="sign-in-up-intro">
         <h3>Sign in to Fitgram</h3>
       </div>
-       {message && <p className="" >{message}</p>}
+       {message && <p className="error-signin" >{message}</p>}
       <form className="signin-form" onSubmit={handleSubmit(onSubmit)} >
         <div>
           <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} /> 
