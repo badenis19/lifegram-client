@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
+import { useForm } from 'react-hook-form';
 
 const SignIn = () => {
 
@@ -10,8 +11,10 @@ const SignIn = () => {
     window.scrollTo(0, 0);
   });
 
+  const url = "http://localhost:4001/signIn";
+  const [message, setMessage] = useState('');
   let history = useHistory();
-
+  const { register, handleSubmit, errors } = useForm();
   let { updateSignIn } = useContext(SignedInContext);
 
   if (Cookies.get('token')) {
@@ -20,37 +23,29 @@ const SignIn = () => {
     updateSignIn(false);
   }
 
-  // signin endpoint URL
-  const url = "http://localhost:4001/signIn";
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const submitForm = (e) => {
-    e.preventDefault();
-
+  const onSubmit = (data, e) => {
+    console.log("..")
     const options = {
       method: 'post',
       headers: {
         'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
-      body: `email=${email}&password=${password}`
+      body: `email=${data.email}&password=${data.password}`
     }
 
     // fetch() to make network request using promises (similar to XMLHttpRequest)
-    fetch(url, options)
+    return fetch(url, options)
       .then(response => {
-        console.log("---------", response)
+        console.log("..", response)
         // if response not ok, return error messages else return response 
         if (!response.ok) {
           if (response.status === 404) {
-            alert('Email not found, please retry')
+            setMessage("Email not found, please retry");
           }
           if (response.status === 401) {
-            alert('Email and password do not match, please retry')
+            setMessage("Email and password do not match, please retry")
           }
         }
-
         return response
       }) // from string to Json object
       .then(response => response.json())
@@ -68,20 +63,32 @@ const SignIn = () => {
 
   return (
     <div>
-      <h1>Welcome to LifeGram</h1>
-      <form onSubmit={(e) => submitForm(e)} >
-        <label htmlFor="user-email">Email:&nbsp;</label>
-        <input type="text" onChange={e => setEmail(e.target.value)} placeholder="Enter your email." name="user-email" /><br />
-        <label htmlFor="user-password">Password:&nbsp;</label>
-        <input type="password" onChange={e => setPassword(e.target.value)} placeholder="Enter your password" name="user-password" /><br />
-        <button>Sign in</button>
+      <div className="sign-in-up-intro">
+        <h3>Sign in to Fitgram</h3>
+      </div>
+       {message && <p className="" >{message}</p>}
+      <form className="signin-form" onSubmit={handleSubmit(onSubmit)} >
+        <div>
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} /> 
+          {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
+          {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
+        </div>
+
+        <div>
+          <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
+          {errors.password && (< p > This is required</p>)}
+        </div>
+
+        <div>
+          <input type="submit" />
+        </div>
       </form>
 
-      <p>--------------------OR--------------------</p>
+      {/* <p>--------------------OR--------------------</p>
 
       <Link to="/signup">
         <button>Sign up</button>
-      </Link>
+      </Link> */}
     </div>
   )
 }
