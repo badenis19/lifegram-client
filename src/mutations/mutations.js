@@ -45,4 +45,12 @@ const createUserMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation }
+const deletePostMutation = gql`
+    mutation DeletePost($id: String){
+        deletePost(_id: $id){
+            _id
+        }
+    }
+`;
+
+export { createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation, deletePostMutation }

@@ -2,10 +2,15 @@ import React, { useEffect, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
-import { SignedInContext } from "../App"
+import { SignedInContext } from "../App";
+import client from '../apollo';
+
 
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
+
+/* Mutations */
+import { deletePostMutation } from '../mutations/mutations';
 
 const UserProfile = (props) => {
 
@@ -16,12 +21,25 @@ const UserProfile = (props) => {
   if (!Cookies.get('token')) {
     history.push('/signin');
   } else {
-     updateSignIn(true);
+    updateSignIn(true);
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  const deletePost = async (post) => {
+    console.log("deleted");    
+    console.log(post);    
+
+    await client.mutate({
+      variables: {
+        id: post._id
+      },
+      mutation: deletePostMutation,
+      refetchQueries: () => [{ query: getMyProfileQuery }]
+    });
+  }
 
   let data = props.data;
 
@@ -40,13 +58,14 @@ const UserProfile = (props) => {
           <p>Following: {data.myProfile.following.length}</p>
           <p>Posts: {data.myProfile.posts.length}</p>
           <br />
-          {data.myProfile.posts.map((post) => {
+          {data.myProfile.posts.map(post => {
             return (
               <div className="post" key={post._id}>
                 <img src={post.img} alt="post_image" />
                 <p>description: {post.description}</p>
                 <p>likes {post.likes}</p>
                 <p>comments:{post.comments}</p>
+                <p onClick={() => deletePost(post)}>DELETE</p>
               </div>
             )
           })}
