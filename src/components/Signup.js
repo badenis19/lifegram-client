@@ -4,28 +4,17 @@ import { flowRight as compose } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
+
+// npm install react-hook-form
 import { useForm } from 'react-hook-form';
 
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
 
 const Signup = () => {
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   const [message, setMessage] = useState('');
   const { register, handleSubmit, errors } = useForm();
-  const url = "http://localhost:4001/sign";
-  let history = useHistory();
-  let { updateSignIn } = useContext(SignedInContext);
-
-  if (Cookies.get('token')) {
-    history.push('/userprofile');
-  } else {
-    updateSignIn(false);
-  }
+  const url = "http://localhost:4001/sign"
 
   const onSubmit = async (data, e) => {
     console.log(data);
@@ -41,48 +30,19 @@ const Signup = () => {
       .then(data => setMessage(data.message))
   }
 
-  return (
-    <div>
-      <div className="sign-in-up-intro">
-        <h3>Create your account</h3>
-      </div>
-      {message && <p className="" >{message}</p>}
-      <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
-        {errors.serverError && errors.serverError.message}
-        <div>
-          <input className="trial" id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />
-          {errors.username && errors.username.type === 'required' && (< p > This is required</p>)}
-          {errors.username && errors.username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
-        </div>
+  let history = useHistory();
 
-        <div>
-          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
-          {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
-          {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
-        </div>
+  let { updateSignIn } = useContext(SignedInContext);
 
-        <div>
-          <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
-          {errors.password && (< p > This is required</p>)}
-        </div>
+  if (Cookies.get('token')) {
+    history.push('/userprofile');
+  } else {
+    updateSignIn(false);
+  }
 
-        <div>
-          <input type="number" placeholder="Age" name="age" ref={register({ required: true, max: 999, min: 1 })} />
-          {errors.age && errors.age.type === 'required' && (< p > This is required</p>)}
-          {errors.age && errors.age.type === 'max' && (< p > surely your not 1000years old or over!</p>)}
-        </div>
-
-        <div>
-          <input type="submit" />
-        </div>
-      </form>
-    </div >
-  )
-}
-
-export default compose(
-  graphql(createUserMutation, { name: "createUserMutation" }),
-)(Signup);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   // const refreshPage = () => {
   //   window.location.reload(false);
@@ -132,3 +92,47 @@ export default compose(
   //       <button>Sign up</button>
   //     </form>
   //   </div>
+
+  return (
+    <div>
+      <div className="signup-intro">
+        <h3>Create your account</h3>
+      </div>
+      {message && <p className="" >{message}</p>}
+      <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
+        {/* <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} > */}
+        {errors.serverError && errors.serverError.message}
+        <div>
+          <input className="trial" id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />
+          {errors.username && errors.username.type === 'required' && (< p > This is required</p>)}
+          {errors.username && errors.username.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
+        </div>
+
+        <div>
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+          {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
+          {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
+        </div>
+
+        <div>
+          <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
+          {errors.password && (< p > This is required</p>)}
+        </div>
+
+        <div>
+          <input type="number" placeholder="Age" name="age" ref={register({ required: true, max: 999, min: 1 })} />
+          {errors.age && errors.age.type === 'required' && (< p > This is required</p>)}
+          {errors.age && errors.age.type === 'max' && (< p > surely your not 1000years old or over!</p>)}
+        </div>
+
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+    </div >
+  )
+}
+
+export default compose(
+  graphql(createUserMutation, { name: "createUserMutation" }),
+)(Signup);
