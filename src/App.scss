@@ -123,7 +123,7 @@ body,p,a,ul,li{
       width: 100%;
 
       
-      p {
+      .err {
         color: red;
         font-size: 0.9rem;
         display: block;
@@ -163,7 +163,6 @@ body,p,a,ul,li{
       width: 100%;
 
       p {
-        color: red;
         font-size: 0.9rem;
         display: block;
         padding: 6px 0 0;
@@ -191,5 +190,46 @@ body,p,a,ul,li{
     color: red;
     text-align: center;
     font-weight: bolder;
+  }
+
+  .edit-user-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    .change-img {
+      text-align: center;
+    }
+
+    div {
+      margin:10px 0 0 0 ;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+
+      p {
+        font-size: 0.9rem;
+        display: block;
+        padding: 6px 0 0;
+      }
+
+      input {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+        display: block;
+        
+        padding: 6px 0;
+        border: none;
+        border-bottom: 1px solid lightgrey;
+
+        &:focus{
+          border-bottom: 1px solid grey;
+          outline: none
+        }
+      }
+    }
   }
   

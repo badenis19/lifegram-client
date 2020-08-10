@@ -95,12 +95,11 @@ const Signup = () => {
 
   return (
     <div>
-      <div className="signup-intro">
+      <div className="sign-in-up-intro">
         <h3>Create your account</h3>
       </div>
       {message && <p className="" >{message}</p>}
       <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
-        {/* <form className="signup-form" ref={formRef} action={url} method="POST" onSubmit={handleSubmit(onSubmit)} > */}
         {errors.serverError && errors.serverError.message}
         <div>
           <input className="trial" id="username" type="text" placeholder="Username" name="username" ref={register({ required: true, maxLength: 15 })} />

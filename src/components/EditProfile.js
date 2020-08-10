@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { graphql } from 'react-apollo';
 import UserForm from './UserForm';
+import { useHistory } from 'react-router-dom';
 import { getMyProfileQuery } from '../queries/queries';
-
+import Cookies from 'js-cookie';
+import { SignedInContext } from "../App";
 // Connected user data
 
 const EditProfile = (props) => {
 
-  const [userData, setUserData] = useState("")
+  let history = useHistory();
 
-  // console.log(props.data.myProfile)
-  // extracting id from props (params)
-  // const { id } = props.match.params;
-  // useEffect(() => {
-  //   if(!props.userData){
-  //     setuserData(props.data.myProfile)
-  //     console.log("nuono")
-  //   }
-  // },[])
+  let { updateSignIn } = useContext(SignedInContext);
+  
+  if (!Cookies.get('token')) {
+    history.push('/userprofile');
+  } else {
+    updateSignIn(true);
+  }
 
   let data = props.data;
-  console.log(data)
+  // console.log(data)
 
   const displayForm = () => {
     if (data.loading) {
@@ -30,26 +30,17 @@ const EditProfile = (props) => {
     } else if (!data.loading) {
       return (
         <div>
-          <p>okokok</p>
-          <UserForm preloadedValues={data.myProfile} /> 
-          {/* {userData ? <UserForm preloadedValues={userData} /> : <div>Loading...</div>} */}
+          <UserForm preloadedValues={data.myProfile} />
         </div>
       )
     }
   }
 
-  
-
-  // const data = {
-  // username: "a",
-  // email: "b",
-  // password: "c",
-  // age: 23
-  // }
-
   return (
     <div>
-      <h1>EditProfile</h1>
+      <div className="sign-in-up-intro">
+        <h3>Edit your profile</h3>
+      </div>
       {displayForm()}
     </div>
   )
