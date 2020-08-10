@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
+import { ColorspaceType } from 'filestack-js';
 
 const Signup = () => {
 
@@ -27,6 +28,7 @@ const Signup = () => {
     updateSignIn(false);
   }
 
+  console.log("Message>>", message);
   const onSubmit = async (data, e) => {
     console.log(data);
 
@@ -46,7 +48,7 @@ const Signup = () => {
       <div className="sign-in-up-intro">
         <h3>Create your account</h3>
       </div>
-      {message && <p className="" >{message}</p>}
+      {message && <p className={message === "User created succesfully" ? "signup-created" : "signup-failed"} >{message}</p>}
       <form className="signup-form" onSubmit={handleSubmit(onSubmit)} >
         {errors.serverError && errors.serverError.message}
         <div>

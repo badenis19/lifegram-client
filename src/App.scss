@@ -91,10 +91,10 @@ body,p,a,ul,li{
 }
 
 .image-upload-btn {
-    padding: 5px;
-    border: 1px solid lightgrey;
-    width: 50px;
-  }
+  padding: 5px;
+  border: 1px solid lightgrey;
+  width: 50px;
+}
 
   // SIGNUP FORM
 
@@ -189,7 +189,21 @@ body,p,a,ul,li{
 
   .error-signin {
     color: red;
-    text-align: center;
-    font-weight: bolder;
+   
   }
   
+  .signup-failed  {
+    color: red !important;
+    font-weight: bold;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0 20px;
+  }
+
+  .signup-created  {
+    color: green !important;
+    font-weight: bold;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0 20px;
+  }
