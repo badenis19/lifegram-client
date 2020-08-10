@@ -8,6 +8,8 @@ import UserProfile from './UserProfile';
 import SignIn from "./SignIn";
 import Signup from "./Signup";
 import SearchUser from "./SearchUser";
+import EditProfile from "./EditProfile";
+
 // import Comments from "./Comments";
 
 const Routes = () => {
@@ -40,11 +42,6 @@ const Routes = () => {
           exact
         />
 
-        {/* <Route
-          path="/:postid/comments"
-          render={() => <Comments />}
-        /> */}
-
         <Route
           path="/newpost"
           render={() => <NewPost />}
@@ -54,17 +51,19 @@ const Routes = () => {
         <Route
           path="/userprofile"
           render={() => <UserProfile />}
+          exact
         />
 
         <Route
+          path="/userprofile/:id/edit"
+          render={(props) => <EditProfile {...props} />}
+          exact
+        />
+        <Route
           path="/searchuser"
           render={() => <SearchUser />}
+          exact
         />
-
-        {/* <Route
-            path="/products/:id"
-            render={(props) => <SingleProduct {...props} products={products} />}
-          /> */}
 
       </Switch>
     </>
