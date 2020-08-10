@@ -62,7 +62,7 @@ body,p,a,ul,li{
   li {
     align-items: center;
     color: black;
-    padding: 10px 10px;
+    padding: 10px 10px 3px;
     opacity: 0.7;
   }
 
@@ -70,6 +70,7 @@ body,p,a,ul,li{
     svg {
       border-bottom: 2px solid grey;
       border-radius: 13%;
+      padding-bottom: 1px;
     }
   }
 }
@@ -86,6 +87,10 @@ body,p,a,ul,li{
   
   :last-child {
     margin-bottom: 40px;
+  }
+
+  img {
+    max-width: 100%;
   }
 }
 
