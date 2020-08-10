@@ -1,10 +1,10 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import { UserForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const UserForm = ({ preloadedValues }) => {
 
-  const { register, handleSubmit } = ({
+  const { register, handleSubmit } = useForm({
     defaultValues: preloadedValues
   });
 
@@ -14,8 +14,7 @@ const UserForm = ({ preloadedValues }) => {
 
   return (
     <div>
-      <h1>UserForm</h1>
-      
+    
       <form onSubmit={handleSubmit(onSubmit)}>
         <input 
           ref={register}

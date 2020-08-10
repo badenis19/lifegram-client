@@ -8,7 +8,14 @@ const EditProfile = (props) => {
 
   console.log(props)
   // extracting id from props (params)
-  const { id } = props.match.params
+  // const { id } = props.match.params;
+
+  const data = {
+    username: "a",
+    email: "b",
+    password: "c",
+    age: 23
+  }
 
   return (
     <div>
