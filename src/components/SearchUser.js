@@ -43,7 +43,9 @@ const SearchUser = (props) => {
 
     await client.mutate({
       variables: {
-        id: user._id
+        id: user._id,
+        username: user.username,
+        img: user.img
       },
       mutation: followUserMutation,
       refetchQueries: () => [{ query: getMyProfileQuery }]

@@ -22,16 +22,17 @@ const Followers = (props) => {
   const data = props.data;
   console.log(data)
 
+  // using id of follower return follower or store entire object of follower
   const displayFollowers = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
-    } else if (data.myProfile.followers > 0 && !data.loading) {
+    } else if (data.myProfile.followers.length > 0 && !data.loading) {
       return (
         <div>
-          {data.myProfile.followers.map((follower) => {
+          {data.myProfile.followers.map(follower => {
             return (
               <div className="" key={follower._id}>
-                <p>{follower.email}</p>
+                <p>{follower}</p>
               </div>
             )
           })}
