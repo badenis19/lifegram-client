@@ -9,6 +9,7 @@ import SignIn from "./SignIn";
 import Signup from "./Signup";
 import SearchUser from "./SearchUser";
 import EditProfile from "./EditProfile";
+import Followers from "./Followers";
 
 // import Comments from "./Comments";
 
@@ -59,6 +60,19 @@ const Routes = () => {
           render={(props) => <EditProfile {...props} />}
           exact
         />
+
+        <Route
+          path="/userprofile/:id/followers"
+          render={(props) => <Followers {...props} />}
+          exact
+        />
+
+        {/* <Route
+          path="/userprofile/:id/following"
+          render={(props) => < {...props} />}
+          exact
+        /> */}
+
         <Route
           path="/searchuser"
           render={() => <SearchUser />}

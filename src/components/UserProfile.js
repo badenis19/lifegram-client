@@ -55,7 +55,9 @@ const UserProfile = (props) => {
           <p>username: {data.myProfile.username}</p>
           <p>description: {data.myProfile.description}</p>
           <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
-          <p>Followers: {data.myProfile.followers.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/followers`}>
+            <p>Followers: {data.myProfile.followers.length}</p>
+          </Link>
           <p>Following: {data.myProfile.following.length}</p>
           <p>Posts: {data.myProfile.posts.length}</p>
           <Link to={`/userprofile/${data.myProfile._id}/edit`}>

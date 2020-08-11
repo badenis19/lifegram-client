@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { getMyProfileQuery } from '../queries/queries';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
-// Connected user data
+
 
 const EditProfile = (props) => {
 
