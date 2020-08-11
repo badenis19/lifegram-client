@@ -28,6 +28,9 @@ const getMyProfileQuery = gql`
     myProfile{
       _id
       username
+      email
+      password
+      age
       description
       img
       followers

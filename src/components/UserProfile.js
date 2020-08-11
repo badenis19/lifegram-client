@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App";
 import client from '../apollo';
-
+import { Link } from 'react-router-dom';
 
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
@@ -29,8 +29,8 @@ const UserProfile = (props) => {
   });
 
   const deletePost = async (post) => {
-    console.log("deleted");    
-    console.log(post);    
+    console.log("deleted");
+    console.log(post);
 
     await client.mutate({
       variables: {
@@ -42,6 +42,7 @@ const UserProfile = (props) => {
   }
 
   let data = props.data;
+  console.log(data)
 
   const displayUserDetails = () => {
     if (data.loading) {
@@ -54,9 +55,16 @@ const UserProfile = (props) => {
           <p>username: {data.myProfile.username}</p>
           <p>description: {data.myProfile.description}</p>
           <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
-          <p>Followers: {data.myProfile.followers.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/followers`}>
+            <p>Followers: {data.myProfile.followers.length}</p>
+          </Link>
           <p>Following: {data.myProfile.following.length}</p>
           <p>Posts: {data.myProfile.posts.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/edit`}>
+            <p>Edit Profile</p>
+          </Link>
+
+
           <br />
           {data.myProfile.posts.map(post => {
             return (

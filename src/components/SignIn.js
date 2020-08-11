@@ -82,11 +82,6 @@ const SignIn = () => {
         </div>
       </form>
 
-      {/* <p>--------------------OR--------------------</p>
-
-      <Link to="/signup">
-        <button>Sign up</button>
-      </Link> */}
     </div>
   )
 }
