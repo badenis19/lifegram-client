@@ -7,6 +7,8 @@ import client from '../apollo';
 
 /* Queries */
 import { allUsersQuery, getMyProfileQuery } from "../queries/queries";
+
+/* Mutations */
 import { followUserMutation } from "../mutations/mutations";
 
 const SearchUser = (props) => {
@@ -50,7 +52,6 @@ const SearchUser = (props) => {
       mutation: followUserMutation,
       refetchQueries: () => [{ query: getMyProfileQuery }]
     });
-    // refreshPage();
   }
 
   return (
