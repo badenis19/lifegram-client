@@ -58,7 +58,9 @@ const UserProfile = (props) => {
           <Link to={`/userprofile/${data.myProfile._id}/followers`}>
             <p>Followers: {data.myProfile.followers.length}</p>
           </Link>
-          <p>Following: {data.myProfile.following.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/following`}>
+            <p>Following: {data.myProfile.following.length}</p>
+          </Link>
           <p>Posts: {data.myProfile.posts.length}</p>
           <Link to={`/userprofile/${data.myProfile._id}/edit`}>
             <p>Edit Profile</p>

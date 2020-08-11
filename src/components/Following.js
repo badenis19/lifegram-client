@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
 
-const Followers = (props) => {
+const Following = (props) => {
 
   let history = useHistory;
 
@@ -20,35 +20,33 @@ const Followers = (props) => {
   }
 
   const data = props.data;
-  console.log(data)
 
-  // using id of follower return follower or store entire object of follower
-  const displayFollowers = () => {
+  const displayFollowing = () => {
     if (data.loading) {
       return (<p>Loading...</p>)
-    } else if (data.myProfile.followers.length > 0 && !data.loading) {
+    } else if (data.myProfile.following.length > 0 && !data.loading) {
       return (
         <div>
-          {data.myProfile.followers.map(follower => {
+          {data.myProfile.following.map(user => {
             return (
-              <div className="" key={follower._id}>
-                <p>{follower}</p>
+              <div className="" key={user._id}>
+                <p>{user}</p>
               </div>
             )
           })}
         </div>
       )
     } else {
-      return (<p>No followers</p>)
+      return (<p>You are not following any user.</p>)
     }
   }
 
   return (
     <div>
-      <p>Followers:</p>
-      {displayFollowers()}
+      <p>Following:</p>
+      {displayFollowing()}
     </div>
   )
 };
 
-export default graphql(getMyProfileQuery)(Followers);
+export default graphql(getMyProfileQuery)(Following);

@@ -10,7 +10,7 @@ import Signup from "./Signup";
 import SearchUser from "./SearchUser";
 import EditProfile from "./EditProfile";
 import Followers from "./Followers";
-
+import Following from "./Following";
 // import Comments from "./Comments";
 
 const Routes = () => {
@@ -67,11 +67,11 @@ const Routes = () => {
           exact
         />
 
-        {/* <Route
+        <Route
           path="/userprofile/:id/following"
-          render={(props) => < {...props} />}
+          render={(props) => <Following {...props} />}
           exact
-        /> */}
+        />
 
         <Route
           path="/searchuser"
