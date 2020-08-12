@@ -72,8 +72,9 @@ const UserProfile = (props) => {
             return (
               <div className="post" key={post._id}>
                 <img src={post.img} alt="post_image" />
+                <p>{post.likes.length > 0 ? `${post.likes.length} like(s)` : "No likes yet"}</p>
                 <p>description: {post.description}</p>
-                <p>likes {post.likes}</p>
+                <p>like</p>
                 <p>comments:{post.comments}</p>
                 <p onClick={() => deletePost(post)}>DELETE</p>
               </div>

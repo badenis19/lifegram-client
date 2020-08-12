@@ -29,7 +29,7 @@ const Following = (props) => {
         <div>
           {data.myProfile.following.map(user => {
             return (
-              <div className="" key={user._id}>
+              <div className="" key={user}>
                 <p>{user}</p>
               </div>
             )
