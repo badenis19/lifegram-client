@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-// import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
@@ -82,11 +81,6 @@ const SignIn = () => {
         </div>
       </form>
 
-      {/* <p>--------------------OR--------------------</p>
-
-      <Link to="/signup">
-        <button>Sign up</button>
-      </Link> */}
     </div>
   )
 }

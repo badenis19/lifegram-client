@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App";
 import client from '../apollo';
-
+import { Link } from 'react-router-dom';
 
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
@@ -29,8 +29,8 @@ const UserProfile = (props) => {
   });
 
   const deletePost = async (post) => {
-    console.log("deleted");    
-    console.log(post);    
+    console.log("deleted");
+    console.log(post);
 
     await client.mutate({
       variables: {
@@ -42,6 +42,7 @@ const UserProfile = (props) => {
   }
 
   let data = props.data;
+  console.log(data)
 
   const displayUserDetails = () => {
     if (data.loading) {
@@ -54,16 +55,26 @@ const UserProfile = (props) => {
           <p>username: {data.myProfile.username}</p>
           <p>description: {data.myProfile.description}</p>
           <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
-          <p>Followers: {data.myProfile.followers.length}</p>
-          <p>Following: {data.myProfile.following.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/followers`}>
+            <p>Followers: {data.myProfile.followers.length}</p>
+          </Link>
+          <Link to={`/userprofile/${data.myProfile._id}/following`}>
+            <p>Following: {data.myProfile.following.length}</p>
+          </Link>
           <p>Posts: {data.myProfile.posts.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/edit`}>
+            <p>Edit Profile</p>
+          </Link>
+
+
           <br />
           {data.myProfile.posts.map(post => {
             return (
               <div className="post" key={post._id}>
                 <img src={post.img} alt="post_image" />
+                <p>{post.likes.length > 0 ? `${post.likes.length} like(s)` : "No likes yet"}</p>
                 <p>description: {post.description}</p>
-                <p>likes {post.likes}</p>
+                <p>like</p>
                 <p>comments:{post.comments}</p>
                 <p onClick={() => deletePost(post)}>DELETE</p>
               </div>

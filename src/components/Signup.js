@@ -4,6 +4,8 @@ import { flowRight as compose } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
+
+// npm install react-hook-form
 import { useForm } from 'react-hook-form';
 
 /* Mutations */
@@ -11,22 +13,9 @@ import { createUserMutation } from "../mutations/mutations";
 import { ColorspaceType } from 'filestack-js';
 
 const Signup = () => {
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   const [message, setMessage] = useState('');
   const { register, handleSubmit, errors } = useForm();
-  const url = "http://localhost:4001/sign";
-  let history = useHistory();
-  let { updateSignIn } = useContext(SignedInContext);
-
-  if (Cookies.get('token')) {
-    history.push('/userprofile');
-  } else {
-    updateSignIn(false);
-  }
+  const url = "http://localhost:4001/sign"
 
   console.log("Message>>", message);
   const onSubmit = async (data, e) => {
@@ -42,6 +31,21 @@ const Signup = () => {
       .then(response => response.json())
       .then(data => setMessage(data.message))
   }
+
+  let history = useHistory();
+
+  let { updateSignIn } = useContext(SignedInContext);
+
+  if (Cookies.get('token')) {
+    history.push('/userprofile');
+  } else {
+    updateSignIn(false);
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
 
   return (
     <div>
@@ -86,7 +90,7 @@ export default compose(
   graphql(createUserMutation, { name: "createUserMutation" }),
 )(Signup);
 
-  // const refreshPage = () => {
+// const refreshPage = () => {
   //   window.location.reload(false);
   // };
 

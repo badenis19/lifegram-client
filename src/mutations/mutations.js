@@ -21,8 +21,8 @@ mutation AddComment($comment: String!){
 `;
 
 const followUserMutation = gql`
-    mutation FollowUser($id: String){
-        followUser(_id: $id){ 
+    mutation FollowUser($id: String, $username: String, $img: String){
+        followUser(_id: $id, username: $username, img: $img){ 
          _id
         }
     }
