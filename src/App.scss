@@ -22,7 +22,7 @@ body,p,a,ul,li{
 
 // NAV //
 .top-nav {
-  height: 43px;
+  
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -33,6 +33,7 @@ body,p,a,ul,li{
   background: #ffffff;
 
   ul {
+    height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
@@ -50,6 +51,16 @@ body,p,a,ul,li{
     display:flex; 
     flex-direction: column;
     padding: 3px 10px 3px ;
+      svg {
+        font-size: 1.5em;
+        opacity: 0.5;
+     }
+     &:focus {
+       opacity: 1;
+     }
+     &:hover {
+      opacity: 1;
+     }
 
     span {
       font-size: 0.5em;
@@ -59,7 +70,7 @@ body,p,a,ul,li{
 }
 
 .bottom-nav {
-  height: 43px;
+  
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -68,13 +79,32 @@ body,p,a,ul,li{
   bottom: 0;
   border: 1px solid lightgray;
   background: #ffffff;
+  // box-shadow: 0 -5px 5px -5px #333;
+  // box-shadow:  0.125em 1.5em 1em rgba(0, 0, 0, 1);
+  
+  div {
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+  }
 
   ul {
+    height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
-    justify-content: space-between;
-    padding: 0 10px;
+    justify-content: space-evenly;
+  }
+
+  a {
+    display: flex;  
+    align-items: center;
+    flex-direction: column;
+
+    span {
+      font-size: 0.5em;
+    }
   }
 
   li {
@@ -82,25 +112,21 @@ body,p,a,ul,li{
     flex-direction: column;
     align-items: center;
     color: black;
-    padding: 3px 10px 2px;
-    opacity: 0.7;
+    opacity: 0.5;
+    font-size: 1.5em;
     
-    span {
-      font-size: 0.5em;
-    }
   }
 
   .is-active {
-    span {
-      color: var(--myRed);
-      // font-weight: bold;
-    }
-    svg {
-      fill: var(--myRed);
-    }
     li {
+      animation: grow 350ms forwards;
+      // color: var(--myRed);
+      // font-weight: bold;
+      opacity: 1;
     }
-
+    span {
+      font-weight: bolder;
+    }
   }
 }
 
