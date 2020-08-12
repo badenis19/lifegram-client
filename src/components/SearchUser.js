@@ -67,7 +67,7 @@ const SearchUser = (props) => {
             <div key={user._id}>
               <p>{user.username}</p>
               <img src={user.img} alt="" />
-              <span onClick={() => followUser(user)}>follow/unfollow</span><br/>
+              <span onClick={() => followUser(user)}>follow/unfollow</span><br />
             </div>
           )
         })

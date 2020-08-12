@@ -75,10 +75,14 @@ body,p,a,ul,li{
   p {
     padding-left: 5px;
   }
-  
-  :last-child {
-    margin-bottom: 40px;
+
+  .post-icons {
+    display: flex;
   }
+  
+  // :last-child {
+  //   margin-bottom: 40px;
+  // }
 }
 
 // USER PROFILE
