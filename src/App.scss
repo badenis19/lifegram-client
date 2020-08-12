@@ -1,3 +1,9 @@
+:root {
+  --myRed: red ;
+  --backgroundBlack: black;
+  --powerBlue: #02a5e0;
+}
+
 .App {
   // border: solid red;
   min-height: 100vh;
@@ -16,6 +22,7 @@ body,p,a,ul,li{
 
 // NAV //
 .top-nav {
+  height: 43px;
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -35,13 +42,24 @@ body,p,a,ul,li{
   li {
     align-items: center;
     color: black;
-    padding: 10px 10px;
+    padding: 11.9px 10px;
     opacity: 0.7;
+  }
+
+  .sign-out {
+    display:flex; 
+    flex-direction: column;
+    padding: 3px 10px 3px ;
+
+    span {
+      font-size: 0.5em;
+    }
   }
   
 }
 
 .bottom-nav {
+  height: 43px;
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -56,13 +74,33 @@ body,p,a,ul,li{
     display: flex;
     list-style: none;
     justify-content: space-between;
+    padding: 0 10px;
   }
 
   li {
+    display: flex;  
+    flex-direction: column;
     align-items: center;
     color: black;
-    padding: 10px 10px;
+    padding: 3px 10px 2px;
     opacity: 0.7;
+    
+    span {
+      font-size: 0.5em;
+    }
+  }
+
+  .is-active {
+    span {
+      color: var(--myRed);
+      // font-weight: bold;
+    }
+    svg {
+      fill: var(--myRed);
+    }
+    li {
+    }
+
   }
 }
 
@@ -78,6 +116,10 @@ body,p,a,ul,li{
 
   .post-icons {
     display: flex;
+  }
+
+  img {
+    max-width: 100%;
   }
   
   // :last-child {
@@ -95,10 +137,10 @@ body,p,a,ul,li{
 }
 
 .image-upload-btn {
-    padding: 5px;
-    border: 1px solid lightgrey;
-    width: 50px;
-  }
+  padding: 5px;
+  border: 1px solid lightgrey;
+  width: 50px;
+}
 
   // SIGNUP FORM
 
@@ -192,9 +234,25 @@ body,p,a,ul,li{
 
   .error-signin {
     color: red;
+   
+  }
+  
+  .signup-failed  {
+    color: red !important;
+    font-weight: bold;
     text-align: center;
     font-weight: bolder;
+    padding: 0 20px;
   }
+
+  .signup-created  {
+    color: green !important;
+    font-weight: bold;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0 20px;
+  }
+
 
   .edit-user-form {
     display: flex;
