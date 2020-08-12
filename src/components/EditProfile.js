@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { graphql } from 'react-apollo';
 import UserForm from './UserForm';
 import { useHistory } from 'react-router-dom';
-import { getMyProfileQuery } from '../queries/queries';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 
+/* Queries */
+import { getMyProfileQuery } from '../queries/queries';
 
 const EditProfile = (props) => {
 
@@ -20,7 +21,6 @@ const EditProfile = (props) => {
   }
 
   let data = props.data;
-  // console.log(data)
 
   const displayForm = () => {
     if (data.loading) {
