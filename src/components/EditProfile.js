@@ -36,44 +36,11 @@ const EditProfile = (props) => {
     }
   }
 
-  const editProfileButtons = () => {
-    return (
-      <div className="button-grid-container">
-        <div className="profile-pic"></div>
-        <div className="grid-item">
-          <div className="button-text">
-            <span className="edit-span1">{data.myProfile.posts.length}</span>
-            <span className="edit-span2">Posts</span>
-          </div>
-        </div>
-        <div className="grid-item">
-          <div className="button-text">
-            <span>{data.myProfile.followers.length}</span>
-            <span>Followers</span>
-          </div>
-        </div>
-        <div className="grid-item">
-          <div className="button-text">
-            <span className="edit-span1" >Edit profile</span>
-            <span className="edit-span2">picture +</span>
-          </div>
-        </div>
-        <div className="grid-item">
-          <div className="button-text">
-            <span>{data.myProfile.following.length}</span>
-            <span>Following</span>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div>
       <div className="sign-in-up-intro">
         <h3>Edit your profile</h3>
       </div>
-      {editProfileButtons()}
       {displayForm()}
     </div>
   )
