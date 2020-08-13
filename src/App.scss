@@ -104,7 +104,11 @@ body,p,a,ul,li{
     flex-direction: column;
 
     span {
-      font-size: 0.5em;
+      font-size: 0.6em;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      opacity: 0.5;
     }
   }
 
@@ -115,17 +119,17 @@ body,p,a,ul,li{
     color: black;
     opacity: 0.5;
     font-size: 1.5em;
-    
   }
 
   .is-active {
     li {
-      animation: grow 350ms forwards;
-      // color: var(--myRed);
-      // font-weight: bold;
       opacity: 1;
+      color: var(--powerBlue)
     }
     span {
+      text-decoration:  none;
+      opacity: 1;
+      color: var(--powerBlue);
       font-weight: bolder;
     }
   }
