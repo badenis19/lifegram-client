@@ -16,6 +16,7 @@ const getAllPostsQuery = gql`
     timeStamp
      user{
       username
+      img
     }
   }
 }

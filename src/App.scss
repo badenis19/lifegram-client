@@ -29,7 +29,7 @@ body,p,a,ul,li{
   position: fixed;
   width: 100%;
   top: 0;
-  border: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   background: #ffffff;
 
   ul {
@@ -133,19 +133,35 @@ body,p,a,ul,li{
 // POST
 
 .post {
-  border: 1px solid lightgrey;
+  // border: 1px solid lightgrey;
   margin-bottom: 3px;
   
   p {
-    padding-left: 5px;
+    padding-left: 10px;
+    margin: 2px 0;
+  }
+
+  .user-details {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px 5px 7px;
   }
 
   .post-icons {
     display: flex;
   }
 
-  img {
+  .profil-avatar {
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .post-img {
+    min-width: 100%;
     max-width: 100%;
+    margin-bottom: 10px;
+    // border: 1px  solid lightgray;
   }
   
   // :last-child {
