@@ -1,7 +1,7 @@
 :root {
   --myRed: red ;
   --backgroundBlack: black;
-  --powerBlue: #02a5e0;
+  --powerBlue: rgba(2, 165, 224, 1);
 }
 
 .App {
@@ -333,11 +333,7 @@ body,p,a,ul,li{
   .anchor-img {
     position: relative;
 
-    .profile-pic {
-      background-image: url("https://kitt.lewagon.com/placeholder/users/FreddieWarren") ;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover; 
+    #profile-picture {
       height: 100px;
       width: 100px;
       border-radius: 50%;
@@ -412,7 +408,6 @@ body,p,a,ul,li{
   }
 
   .item1 {
-    border: 1px solid black;
     margin-right: 5px;
     text-align: start;
     border-radius: 20px 0 0 0;
@@ -420,13 +415,11 @@ body,p,a,ul,li{
 
   .item2 {
     margin-left: 5px;
-    border: 1px solid black;
     text-align: end;
     border-radius: 0 20px 0 0;
   }
 
   .item3 {
-    border: 1px solid black;
     margin-right: 5px;
     text-align: start;
     border-radius: 0 0 0 20px;
@@ -434,22 +427,21 @@ body,p,a,ul,li{
 
   .item4 {
     margin-left: 5px;
-    border: 1px solid black;
     text-align: end;
     border-radius: 0 0 20px 0;
   }
 
   .grid-item {
+    border: 1px solid black;
     font-weight: bold;
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(235, 235, 235, 0.6);
+    background: rgba(229, 246, 251, 0.5);
     width: 50%;
     text-align: center;
-    color: var(--powerBlue);
 
     .grid1-circle {
       position: absolute;
@@ -496,12 +488,15 @@ body,p,a,ul,li{
     }
 
     .item-text {
+      color: var(--powerBlue);
+      text-decoration: none;
       text-shadow: 1px 1px 1px #000000;
       font-size: 0.8em;
       display: flex;
       align-items: center;
       flex-direction: column;
-      width: min-content;
+      width: inherit;
+      padding: 24px 264px;
       div {
         width: fit-content;
       }

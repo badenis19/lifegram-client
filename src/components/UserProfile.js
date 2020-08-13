@@ -77,47 +77,41 @@ const UserProfile = (props) => {
                   <div>Height</div>
                 </div>
               </div>
-              <div className="profile-pic"></div>
-              <div className="img-overlay">
-                <div>
-                  <span> Edit </span>
-                  <Icon icon={plusCircleFill} />
+              <Link to={`/userprofile/${data.myProfile._id}/edit`}>
+                <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
+                <div className="img-overlay">
+                  <div>
+                    <span> Edit </span>
+                    <Icon icon={plusCircleFill} />
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className="circle-white"></div>
             </div>
 
             <div className="bottom-grid">
               <div className="grid-item item3">
                 <div className="grid3-circle"></div>
-                <div className="item-text">
-                  <div>{data.myProfile.followers.length}</div>
-                  <div>Followers</div>
-                </div>
+                <Link to={`/userprofile/${data.myProfile._id}/followers`}>
+                  <div className="item-text">
+                    <div>{data.myProfile.followers.length}</div>
+                    <div>Followers</div>
+                  </div>
+                </Link>
               </div>
               <div className="grid-item item4">
                 <div className="grid4-circle"></div>
-                <div className="item-text">
-                  <div>{data.myProfile.following.length}</div>
-                  <div>Following</div>
-                </div>
+                <Link to={`/userprofile/${data.myProfile._id}/following`}>
+                  <div className="item-text">
+                    <div>{data.myProfile.following.length}</div>
+                    <div>Following</div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
 
           <p>description: {data.myProfile.description}</p>
-          {/* <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
-          <Link to={`/userprofile/${data.myProfile._id}/followers`}>
-            <p>Followers: {data.myProfile.followers.length}</p>
-          </Link>
-          <Link to={`/userprofile/${data.myProfile._id}/following`}>
-            <p>Following: {data.myProfile.following.length}</p>
-          </Link>
-          <p>Posts: {data.myProfile.posts.length}</p>
-          <Link to={`/userprofile/${data.myProfile._id}/edit`}>
-            <p>Edit Profile</p>
-          </Link> */}
-
 
           <br />
           {data.myProfile.posts.map(post => {
