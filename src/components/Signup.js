@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 
 /* Mutations */
 import { createUserMutation } from "../mutations/mutations";
-import { ColorspaceType } from 'filestack-js';
+// import { ColorspaceType } from 'filestack-js';
 
 const Signup = () => {
   const [message, setMessage] = useState('');
@@ -45,7 +45,6 @@ const Signup = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-
 
   return (
     <div>

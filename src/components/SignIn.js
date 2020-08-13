@@ -63,10 +63,10 @@ const SignIn = () => {
       <div className="sign-in-up-intro">
         <h3>Sign in to Fitgram</h3>
       </div>
-       {message && <p className="error-signin" >{message}</p>}
+      {message && <p className="error-signin" >{message}</p>}
       <form className="signin-form" onSubmit={handleSubmit(onSubmit)} >
         <div>
-          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} /> 
+          <input type="text" placeholder="Email" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
           {errors.email && errors.email.type === 'required' && (< p > This is required</p>)}
           {errors.email && errors.email.type === 'pattern' && (< p > This is not a valid email address</p>)}
         </div>

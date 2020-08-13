@@ -43,6 +43,7 @@ const EditProfile = (props) => {
       </div>
       {displayForm()}
     </div>
+
   )
 };
 

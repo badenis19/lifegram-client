@@ -5,7 +5,6 @@
 }
 
 .App {
-  // border: solid red;
   min-height: 100vh;
   margin: 0 auto;
   padding-top: 61.44px;
@@ -20,19 +19,24 @@ body,p,a,ul,li{
   text-decoration: none;
 }
 
+.main {
+  margin-bottom: 70px;
+}
+
 // NAV //
 .top-nav {
-  height: 43px;
+  
   display: flex;
   justify-content: space-between;
   z-index: 1;
   position: fixed;
   width: 100%;
   top: 0;
-  border: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   background: #ffffff;
 
   ul {
+    height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
@@ -50,6 +54,16 @@ body,p,a,ul,li{
     display:flex; 
     flex-direction: column;
     padding: 3px 10px 3px ;
+      svg {
+        font-size: 1.5em;
+        opacity: 0.5;
+     }
+     &:focus {
+       opacity: 1;
+     }
+     &:hover {
+      opacity: 1;
+     }
 
     span {
       font-size: 0.5em;
@@ -59,22 +73,39 @@ body,p,a,ul,li{
 }
 
 .bottom-nav {
-  height: 43px;
+  
   display: flex;
   justify-content: space-between;
   z-index: 1;
   width: 100%;
   position: fixed;
   bottom: 0;
-  border: 1px solid lightgray;
+  border-top: 1px solid lightgray;
   background: #ffffff;
+  
+  div {
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+  }
 
   ul {
+    height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
-    justify-content: space-between;
-    padding: 0 10px;
+    justify-content: space-evenly;
+  }
+
+  a {
+    display: flex;  
+    align-items: center;
+    flex-direction: column;
+
+    span {
+      font-size: 0.5em;
+    }
   }
 
   li {
@@ -82,49 +113,56 @@ body,p,a,ul,li{
     flex-direction: column;
     align-items: center;
     color: black;
-    padding: 3px 10px 2px;
-    opacity: 0.7;
+    opacity: 0.5;
+    font-size: 1.5em;
     
-    span {
-      font-size: 0.5em;
-    }
   }
 
   .is-active {
-    span {
-      color: var(--myRed);
-      // font-weight: bold;
-    }
-    svg {
-      fill: var(--myRed);
-    }
     li {
+      animation: grow 350ms forwards;
+      // color: var(--myRed);
+      // font-weight: bold;
+      opacity: 1;
     }
-
+    span {
+      font-weight: bolder;
+    }
   }
 }
 
 // POST
 
 .post {
-  border: 1px solid lightgrey;
   margin-bottom: 3px;
   
   p {
-    padding-left: 5px;
+    padding-left: 10px;
+    margin: 2px 0;
+  }
+
+  .user-details {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px 5px 7px;
   }
 
   .post-icons {
     display: flex;
   }
 
-  img {
+  .profil-avatar {
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .post-img {
+    min-width: 100%;
     max-width: 100%;
+    margin-bottom: 10px;
   }
   
-  // :last-child {
-  //   margin-bottom: 40px;
-  // }
 }
 
 // USER PROFILE
