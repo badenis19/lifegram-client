@@ -24,8 +24,13 @@ body,p,a,ul,li{
 }
 
 // NAV //
+
+.hidden {
+  // visibility: hidden;
+  width: 50px;
+}
+
 .top-nav {
-  
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -35,25 +40,38 @@ body,p,a,ul,li{
   border-bottom: 1px solid lightgray;
   background: #ffffff;
 
+  .fitgram {
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: var(--powerBlue);
+  }
+
   ul {
     height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
     justify-content: space-between;
+    align-items: center;
   }
 
   li {
     align-items: center;
     color: black;
-    padding: 11.9px 10px;
+    // padding: 11.9px 10px;
     opacity: 0.7;
   }
 
+  .signage {
+    text-align: center;
+    width: 70px;
+  }
+
   .sign-out {
+    width: 50px;
     display:flex; 
     flex-direction: column;
-    padding: 3px 10px 3px ;
+    // padding-right: 10px;
       svg {
         font-size: 1.5em;
         opacity: 0.5;
@@ -335,4 +353,14 @@ body,p,a,ul,li{
   
 .red {
   color: red;
+}
+
+//NEW POST
+
+.new-post-container {
+  h1{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
 }

@@ -25,18 +25,23 @@ const TopNav = () => {
     <nav className="top-nav">
       <ul>
 
-        {!isSignedIn &&
+        {/* {!isSignedIn &&
           <Link to="/signup">
             <li>Sign up</li>
-          </Link>}
+          </Link>} */}
+
+        {!isSignedIn
+          ? <Link to="/signup"><li className="signage">Sign up</li></Link>
+          : <li className="hidden" >
+          </li>}
 
         <Link to="/">
-          <li><strong>FITGRAM</strong></li>
+          <li className="fitgram">FITGRAM</li>
         </Link>
 
         {!isSignedIn &&
           <Link to="/signIn">
-            <li>Sign in</li>
+            <li className="signage">Sign in</li>
           </Link>}
 
         {isSignedIn &&

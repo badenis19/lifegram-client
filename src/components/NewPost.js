@@ -20,7 +20,7 @@ const NewPost = () => {
   let history = useHistory();
 
   let { updateSignIn } = useContext(SignedInContext);
-  
+
   if (!Cookies.get('token')) {
     history.push('/userprofile');
   } else {
@@ -69,7 +69,8 @@ const NewPost = () => {
   }
 
   return (
-    <div >
+    <div className="new-post-container" >
+      <h1>New Post</h1>
       <form className="share-form" onSubmit={(e) => submitForm(e)}>
         <label htmlFor="post-description">Description:&nbsp;</label>
         <input type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" /><br />
