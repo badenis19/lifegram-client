@@ -298,3 +298,53 @@ body,p,a,ul,li{
 .red {
   color: red;
 }
+
+//EDIT PROFILE
+.button-grid-container {
+  position: relative;
+  margin: 0 5%;
+  width: 90%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15px;
+
+  .profile-pic {
+    background: red;
+    width: 35%;
+    height: 70%;
+    z-index: 999;
+    position: absolute;
+    top: 14%;
+    left: 29%;
+    border: 1px solid black;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0px 10px white;
+  }
+
+  .grid-item {
+    box-shadow: 0 0 4px 0px grey;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+
+    .3 {
+    
+    }
+  }
+
+  .button-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.4em;
+  }
+
+  .edit-span1 {
+    text-align: start;
+  }
+
+  .edit-span2 {
+    text-align: start;
+  }
+}

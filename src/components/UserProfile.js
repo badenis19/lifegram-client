@@ -42,9 +42,10 @@ const UserProfile = (props) => {
   }
 
   let data = props.data;
-  console.log(data)
+  console.log(">>>", data)
 
   const displayUserDetails = () => {
+    console.log("+++", data)
     if (data.loading) {
       return (<p>Loading...</p>)
     } else if (!data.myProfile) {
