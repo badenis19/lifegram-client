@@ -5,6 +5,9 @@ import client from '../apollo';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
+import { Icon, InlineIcon } from '@iconify/react';
+import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
+
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
@@ -70,17 +73,19 @@ const NewPost = () => {
 
   return (
     <div className="new-post-container" >
-      <h1>New Post</h1>
+      <h2>New Post</h2>
       <form className="share-form" onSubmit={(e) => submitForm(e)}>
-        <label htmlFor="post-description">Description:&nbsp;</label>
-        <input type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" /><br />
+        <div className="image-upload-btn" onClick={() => handleImageUpload()}><Icon icon={plusCircleFill} /></div>
+        {/* <label htmlFor="post-description"></label> */}
+        {/* <div className="description-input"> */}
+        <input className="new-post-desc" type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" />
+        {/* </div> */}
         {
           imageUrl ?
-            <img src={imageUrl} alt="" />
+            <img className="display-none" src={imageUrl} alt="" />
             :
             ""
         }
-        <p className="image-upload-btn" onClick={() => handleImageUpload()}>Upload</p>
         <button>Share</button>
       </form>
     </div>

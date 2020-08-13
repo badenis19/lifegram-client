@@ -2,6 +2,7 @@
   --myRed: red ;
   --backgroundBlack: black;
   --powerBlue: #02a5e0;
+  --subBlue: rgba(2, 165, 224, 0.6);
 }
 
 .App {
@@ -26,7 +27,7 @@ body,p,a,ul,li{
 // NAV //
 
 .hidden {
-  // visibility: hidden;
+  visibility: hidden;
   width: 50px;
 }
 
@@ -192,12 +193,6 @@ body,p,a,ul,li{
   }
 }
 
-.image-upload-btn {
-  padding: 5px;
-  border: 1px solid lightgrey;
-  width: 50px;
-}
-
   // SIGNUP FORM
 
   .sign-in-up-intro {
@@ -358,9 +353,80 @@ body,p,a,ul,li{
 //NEW POST
 
 .new-post-container {
-  h1{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  h2{
     display: flex;
     justify-content: center;
     margin: 0;
+    font-weight: lighter;
   }
+
+  .image-upload-btn {
+    color: var(--subBlue);
+    font-size: 2em;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 20px 0;
+    width: inherit;
+    height: 30vh;
+    border: 1px solid rgba(0,0,0, 0.4);
+    border-radius: 5px;
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+  }
+
+  input {
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border: 1px solid rgba(0,0,0, 0.4);
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+    
+  }
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--subBlue);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border: 1px solid rgba(0,0,0, 0.4);
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+    
+  }
+
+
 }
