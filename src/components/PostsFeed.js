@@ -96,7 +96,7 @@ const PostsFeed = (props) => {
   }
 
   return (
-    <div>
+    <div className="main">
       {displayAllPosts()}
     </div>
   )

@@ -5,7 +5,6 @@
 }
 
 .App {
-  // border: solid red;
   min-height: 100vh;
   margin: 0 auto;
   padding-top: 61.44px;
@@ -18,6 +17,10 @@ body,p,a,ul,li{
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+
+.main {
+  margin-bottom: 70px;
 }
 
 // NAV //
@@ -77,10 +80,8 @@ body,p,a,ul,li{
   width: 100%;
   position: fixed;
   bottom: 0;
-  border: 1px solid lightgray;
+  border-top: 1px solid lightgray;
   background: #ffffff;
-  // box-shadow: 0 -5px 5px -5px #333;
-  // box-shadow:  0.125em 1.5em 1em rgba(0, 0, 0, 1);
   
   div {
     display: flex;  
@@ -133,7 +134,6 @@ body,p,a,ul,li{
 // POST
 
 .post {
-  // border: 1px solid lightgrey;
   margin-bottom: 3px;
   
   p {
@@ -161,12 +161,8 @@ body,p,a,ul,li{
     min-width: 100%;
     max-width: 100%;
     margin-bottom: 10px;
-    // border: 1px  solid lightgray;
   }
   
-  // :last-child {
-  //   margin-bottom: 40px;
-  // }
 }
 
 // USER PROFILE
