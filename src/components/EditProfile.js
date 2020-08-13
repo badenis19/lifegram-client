@@ -13,7 +13,7 @@ const EditProfile = (props) => {
   let history = useHistory();
 
   let { updateSignIn } = useContext(SignedInContext);
-  
+
   if (!Cookies.get('token')) {
     history.push('/userprofile');
   } else {
@@ -43,6 +43,7 @@ const EditProfile = (props) => {
       </div>
       {displayForm()}
     </div>
+
   )
 };
 
