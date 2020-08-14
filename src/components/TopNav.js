@@ -6,7 +6,6 @@ import { SignedInContext } from "../App"
 import { Icon } from '@iconify/react';
 import bxLogOut from '@iconify/icons-bx/bx-log-out';
 
-
 const TopNav = () => {
 
   let history = useHistory();
@@ -25,16 +24,9 @@ const TopNav = () => {
   return (
     <nav className="top-nav">
       <ul>
-
-        {/* {!isSignedIn &&
-          <Link to="/signup">
-            <li>Sign up</li>
-          </Link>} */}
-
         {!isSignedIn
           ? <Link to="/signup"><li className="signage">Sign up</li></Link>
-          : <li className="hidden" >
-          </li>}
+          : <li className="hidden"></li>}
 
         <Link to="/">
           <li className="fitgram">FITGRAM</li>

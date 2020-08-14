@@ -8,8 +8,6 @@ import { SignedInContext } from "../App";
 import { Icon, InlineIcon } from '@iconify/react';
 import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
 
-
-
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 
@@ -77,10 +75,7 @@ const NewPost = () => {
       <h2>New Post</h2>
       <form className="share-form" onSubmit={(e) => submitForm(e)}>
         <div className="image-upload-btn" onClick={() => handleImageUpload()}><Icon icon={plusCircleFill} /></div>
-        {/* <label htmlFor="post-description"></label> */}
-        {/* <div className="description-input"> */}
         <input className="new-post-desc" type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" />
-        {/* </div> */}
         {
           imageUrl ?
             <img className="display-none" src={imageUrl} alt="" />
@@ -90,7 +85,6 @@ const NewPost = () => {
         <button>Share</button>
       </form>
     </div>
-
   )
 };
 
