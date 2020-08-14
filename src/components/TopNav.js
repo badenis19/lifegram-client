@@ -6,6 +6,7 @@ import { SignedInContext } from "../App"
 import { Icon } from '@iconify/react';
 import bxLogOut from '@iconify/icons-bx/bx-log-out';
 
+
 const TopNav = () => {
 
   let history = useHistory();
