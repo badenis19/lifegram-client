@@ -1,7 +1,7 @@
 :root {
   --myRed: red ;
   --backgroundBlack: black;
-  --powerBlue: #02a5e0;
+  --powerBlue: rgba(2, 165, 224, 1);
 }
 
 .App {
@@ -104,7 +104,11 @@ body,p,a,ul,li{
     flex-direction: column;
 
     span {
-      font-size: 0.5em;
+      font-size: 0.6em;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      opacity: 0.5;
     }
   }
 
@@ -115,17 +119,17 @@ body,p,a,ul,li{
     color: black;
     opacity: 0.5;
     font-size: 1.5em;
-    
   }
 
   .is-active {
     li {
-      animation: grow 350ms forwards;
-      // color: var(--myRed);
-      // font-weight: bold;
       opacity: 1;
+      color: var(--powerBlue)
     }
     span {
+      text-decoration:  none;
+      opacity: 1;
+      color: var(--powerBlue);
       font-weight: bolder;
     }
   }
@@ -171,6 +175,11 @@ body,p,a,ul,li{
 
   #profile-picture {
     border-radius: 50%;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 0;
   }
 }
 
@@ -336,3 +345,280 @@ body,p,a,ul,li{
 .red {
   color: red;
 }
+
+//EDIT PROFILE
+
+.button-grid-container {
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  @media (min-width: 768px) {
+    .button-grid-container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .button-grid-container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .button-grid-container {
+      width: 1170px;
+    }
+  }
+
+  .anchor-img {
+    position: relative;
+
+    #profile-picture {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border: none;
+      box-shadow: inset 0 0 0px 1px black;
+      position: absolute;
+      bottom: 0; 
+      left: 0;
+      right: 0;
+      margin-bottom: -55px;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 998;
+    }
+
+    .img-overlay {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.4) ;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border: none;
+      position: absolute;
+      bottom: 0; 
+      left: 0;
+      right: 0;
+      margin-bottom: -55px;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 999;
+      div {
+        margin-top: 62px;
+        text-shadow: 1px 1px 1px #000000;
+        svg {
+          font-size: 0.8em;
+        }
+      }
+    }
+    
+    .circle-white {
+      color: white;
+      font-size: 0.8em;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      height:112px;
+      width: 112px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: -60.5px;
+      z-index: 997;
+    }
+  }
+
+  .top-grid {
+    display: flex;
+    margin-bottom:  10px;
+    height: 80px;
+  }
+
+  .bottom-grid {
+    margin-top: 10px;
+    height: 80px;
+    display: flex;
+  }
+
+  .item1 {
+    margin-right: 5px;
+    text-align: start;
+    border-radius: 20px 0 0 0;
+  }
+
+  .item2 {
+    margin-left: 5px;
+    text-align: end;
+    border-radius: 0 20px 0 0;
+  }
+
+  .item3 {
+    margin-right: 5px;
+    text-align: start;
+    border-radius: 0 0 0 20px;
+  }
+
+  .item4 {
+    margin-left: 5px;
+    text-align: end;
+    border-radius: 0 0 20px 0;
+  }
+
+  .grid-item {
+    border: 1px solid black;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(229, 246, 251, 0.5);
+    width: 50%;
+    text-align: center;
+
+    .grid1-circle {
+      position: absolute;
+      background: white;
+      border: 1px solid black;
+      height:110px;
+      width: 110px;
+      border-radius: 50%;
+      right: -61px;    
+      bottom: -61px;
+    }
+
+    .grid2-circle {
+      position: absolute;
+      background: white;
+      border: 1px solid black;
+      height:110px;
+      width: 110px;
+      border-radius: 50%;
+      left: -61px;    
+      bottom: -61px;
+    }
+
+    .grid3-circle {
+      position: absolute;
+      background: white;
+      border: 1px solid black;
+      height:110px;
+      width: 110px;
+      border-radius: 50%;
+      right: -61px;    
+      top: -61px;
+    }
+
+    .grid4-circle {
+      position: absolute;
+      background: white;
+      border: 1px solid black;
+      height:110px;
+      width: 110px;
+      border-radius: 50%;
+      left: -61px;    
+      top: -61px;
+    }
+
+    .item-text {
+      color: var(--powerBlue);
+      text-decoration: none;
+      text-shadow: 1px 1px 1px #000000;
+      font-size: 0.8em;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: inherit;
+      padding: 24px 264px;
+      div {
+        width: fit-content;
+      }
+    }
+  }
+
+
+
+
+
+  // .item1{
+  //   margin-right: 5px;
+  // }
+}
+
+// .button-grid-container {
+//   padding:10px;
+//   margin: 0 auto;
+//   width: 90%;
+//   display: grid;
+//   grid-template-columns: 47% 47%;
+//   row-gap: 12%;
+//   column-gap: 6%;
+//   grid-template-rows: 44% 44%;
+
+
+//   .profile-pic {
+//     background-image: url("https://kitt.lewagon.com/placeholder/users/FreddieWarren") ;
+//     background-position: center; /* Center the image */
+//     background-repeat: no-repeat; /* Do not repeat the image */
+//     background-size: cover; /* Resize the background image to cover the entire container */
+//     height: 80px;
+//     width: 80px;
+//     z-index: 999;
+//     position: absolute;
+//     border: 2px solid white;
+//     border-radius: 50%;
+//     margin-left: -44px;
+//     margin-top: -44px;
+//     left: 50%;
+//     // right: 0;
+//     top: 50%;
+//     filter: drop-shadow(0 0 0.75rem black);
+    
+//   }
+
+//   .grid-item {
+//     box-shadow: 0 0 4px 0px grey;
+//     background-color: var(--powerBlue);
+//     padding: 20px 20px;
+//     font-size: 30px;
+//     text-align: center;
+//     // border: 1px solid rgba(0, 0, 0, 0.8);
+//   }
+//   .grid-item1 {
+//     border-radius: 10px 0px 0px 0px ;
+//   }
+//   .grid-item2 {
+//     border-radius: 0px 10px 0px 0px ;
+//   }
+//   .grid-item3 {
+//     border-radius: 0px 0px 0px 10px ;
+//   }
+//   .grid-item4 {
+//     border-radius: 0px 0px 10px 0px ;
+//   }
+
+  
+
+//   .button-text {
+//     display: flex;
+//     flex-direction: column;
+//     font-size: 0.4em;
+//   }
+
+//   .edit-span1 {
+//     text-align: start;
+//   }
+
+//   .edit-span2 {
+//     text-align: start;
+//   }
+// }
