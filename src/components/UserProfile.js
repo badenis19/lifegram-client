@@ -49,7 +49,6 @@ const UserProfile = (props) => {
   }
 
   let data = props.data;
-  console.log(">>>", data)
 
   const displayUserDetails = () => {
     console.log("+++", data)

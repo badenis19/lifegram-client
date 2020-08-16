@@ -6,13 +6,11 @@
 
 .App {
   min-height: 100vh;
-  margin: 0 auto;
-  padding-top: 61.44px;
+  margin: 43px auto;
 }
 
 // reset - Removes default behavior
 body,p,a,ul,li{
-  // font-family: 'Roboto', sans-serif;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
@@ -309,6 +307,13 @@ body,p,a,ul,li{
 
     .change-img {
       text-align: center;
+
+      img {
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
     }
 
     div {
