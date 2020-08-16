@@ -1,22 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { graphql } from 'react-apollo';
-// import UserForm from './UserForm';
 import { useHistory } from 'react-router-dom';
 import { getMyProfileQuery } from '../queries/queries';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 import { useForm } from "react-hook-form";
-// Connected user data
 
 const EditProfile = (props) => {
 
   let history = useHistory();
-
-  // let [preloadedValues, setPreloadedValues] = useState("");
-
-  // const { register, handleSubmit, errors } = useForm({
-  //   defaultValues: preloadedValues
-  // });
 
   const { register, handleSubmit, errors, reset } = useForm();
 
@@ -33,36 +25,23 @@ const EditProfile = (props) => {
   }
 
   let data = props.data;
-  console.log(data)
 
   useEffect(() => {
 
     const fetchUserData = () => {
-      // return (<p>Loading...</p>)
       if (data.loading) {
         console.log("loading")
-        return (<p>Loading...</p>)
       } else if (data.myProfile) {
-        console.log("ok")
-        console.log(data.myProfile)
         return data.myProfile
       } else {
-        return (<p>There are no posts...</p>)
-        // console.log("There are no posts...")
+        console.log("Error, please contact the admin.")
       }
     }
 
-     let userDetailsToEdit = fetchUserData();
-    //  console.log(userDetailsToEdit)
+    let userDetailsToEdit = fetchUserData();
 
-      reset(userDetailsToEdit)
-  },[reset])
-
-  // useEffect(async () => {
-  //   const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
-  //   reset(result); // asynchronously reset your form values
-  // }, [reset])
-
+    reset(userDetailsToEdit)
+  }, [])
 
   return (
     <div>
