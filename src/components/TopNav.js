@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App"
+import { Icon } from '@iconify/react';
+import bxLogOut from '@iconify/icons-bx/bx-log-out';
 
 const TopNav = () => {
 
@@ -38,9 +40,11 @@ const TopNav = () => {
           </Link>}
 
         {isSignedIn &&
-          <li onClick={() => handleSignOut()}>Sign out</li>
+          <li className="sign-out" onClick={() => handleSignOut()}>
+            <Icon icon={bxLogOut} />
+            <span>Signout</span>
+          </li>
         }
-
       </ul>
     </nav>
   )

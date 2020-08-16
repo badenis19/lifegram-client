@@ -9,7 +9,8 @@ import SignIn from "./SignIn";
 import Signup from "./Signup";
 import SearchUser from "./SearchUser";
 import EditProfile from "./EditProfile";
-
+import Followers from "./Followers";
+import Following from "./Following";
 // import Comments from "./Comments";
 
 const Routes = () => {
@@ -59,6 +60,19 @@ const Routes = () => {
           render={(props) => <EditProfile {...props} />}
           exact
         />
+
+        <Route
+          path="/userprofile/:id/followers"
+          render={(props) => <Followers {...props} />}
+          exact
+        />
+
+        <Route
+          path="/userprofile/:id/following"
+          render={(props) => <Following {...props} />}
+          exact
+        />
+
         <Route
           path="/searchuser"
           render={() => <SearchUser />}

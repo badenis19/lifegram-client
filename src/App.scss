@@ -1,31 +1,40 @@
+:root {
+  --myRed: red ;
+  --backgroundBlack: black;
+  --powerBlue: #02a5e0;
+}
+
 .App {
-  // border: solid red;
   min-height: 100vh;
-  margin: 0 auto;
-  margin-top: 43px auto;
+  margin: 43px auto;
 }
 
 // reset - Removes default behavior
 body,p,a,ul,li{
-  // font-family: 'Roboto', sans-serif;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
 
+.main {
+  margin-bottom: 70px;
+}
+
 // NAV //
 .top-nav {
+  
   display: flex;
   justify-content: space-between;
   z-index: 1;
   position: fixed;
   width: 100%;
   top: 0;
-  border: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   background: #ffffff;
 
   ul {
+    height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
@@ -35,50 +44,123 @@ body,p,a,ul,li{
   li {
     align-items: center;
     color: black;
-    padding: 10px 10px;
+    padding: 11.9px 10px;
     opacity: 0.7;
+  }
+
+  .sign-out {
+    display:flex; 
+    flex-direction: column;
+    padding: 3px 10px 3px ;
+      svg {
+        font-size: 1.5em;
+        opacity: 0.5;
+     }
+     &:focus {
+       opacity: 1;
+     }
+     &:hover {
+      opacity: 1;
+     }
+
+    span {
+      font-size: 0.5em;
+    }
   }
   
 }
 
 .bottom-nav {
+  
   display: flex;
   justify-content: space-between;
   z-index: 1;
   width: 100%;
   position: fixed;
   bottom: 0;
-  border: 1px solid lightgray;
+  border-top: 1px solid lightgray;
   background: #ffffff;
+  
+  div {
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+  }
 
   ul {
+    height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
-    justify-content: space-between;
+    justify-content: space-evenly;
+  }
+
+  a {
+    display: flex;  
+    align-items: center;
+    flex-direction: column;
+
+    span {
+      font-size: 0.5em;
+    }
   }
 
   li {
+    display: flex;  
+    flex-direction: column;
     align-items: center;
     color: black;
-    padding: 10px 10px;
-    opacity: 0.7;
+    opacity: 0.5;
+    font-size: 1.5em;
+    
+  }
+
+  .is-active {
+    li {
+      animation: grow 350ms forwards;
+      // color: var(--myRed);
+      // font-weight: bold;
+      opacity: 1;
+    }
+    span {
+      font-weight: bolder;
+    }
   }
 }
 
 // POST
 
 .post {
-  border: 1px solid lightgrey;
   margin-bottom: 3px;
   
   p {
-    padding-left: 5px;
+    padding-left: 10px;
+    margin: 2px 0;
+  }
+
+  .user-details {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px 5px 7px;
+  }
+
+  .post-icons {
+    display: flex;
+  }
+
+  .profil-avatar {
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .post-img {
+    min-width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
   }
   
-  :last-child {
-    margin-bottom: 40px;
-  }
 }
 
 // USER PROFILE
@@ -91,10 +173,10 @@ body,p,a,ul,li{
 }
 
 .image-upload-btn {
-    padding: 5px;
-    border: 1px solid lightgrey;
-    width: 50px;
-  }
+  padding: 5px;
+  border: 1px solid lightgrey;
+  width: 50px;
+}
 
   // SIGNUP FORM
 
@@ -123,7 +205,7 @@ body,p,a,ul,li{
       width: 100%;
 
       
-      .err {
+      p {
         color: red;
         font-size: 0.9rem;
         display: block;
@@ -151,7 +233,6 @@ body,p,a,ul,li{
   .signin-form {
     display: flex;
     flex-direction: column;
-    // height: 40vh;
     justify-content: space-between;
     padding: 0 20px;
 
@@ -163,6 +244,7 @@ body,p,a,ul,li{
       width: 100%;
 
       p {
+        color: red;
         font-size: 0.9rem;
         display: block;
         padding: 6px 0 0;
@@ -188,9 +270,25 @@ body,p,a,ul,li{
 
   .error-signin {
     color: red;
+   
+  }
+  
+  .signup-failed  {
+    color: red !important;
+    font-weight: bold;
     text-align: center;
     font-weight: bolder;
+    padding: 0 20px;
   }
+
+  .signup-created  {
+    color: green !important;
+    font-weight: bold;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0 20px;
+  }
+
 
   .edit-user-form {
     display: flex;
@@ -240,3 +338,6 @@ body,p,a,ul,li{
     }
   }
   
+.red {
+  color: red;
+}

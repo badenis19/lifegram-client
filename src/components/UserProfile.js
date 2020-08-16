@@ -55,8 +55,13 @@ const UserProfile = (props) => {
           <p>username: {data.myProfile.username}</p>
           <p>description: {data.myProfile.description}</p>
           <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
-          <p>Followers: {data.myProfile.followers.length}</p>
-          <p>Following: {data.myProfile.following.length}</p>
+          <Link to={`/userprofile/${data.myProfile._id}/followers`}>
+            <p>Followers: {data.myProfile.followers.length}</p>
+          </Link>
+          <Link to={`/userprofile/${data.myProfile._id}/following`}>
+            <p>Following: {data.myProfile.following.length}</p>
+          </Link>
+          <p>Posts: {data.myProfile.posts.length}</p>
           <p>About: {data.myProfile.description}</p>
           <Link to={`/userprofile/${data.myProfile._id}/edit`}>
             <p>Edit Profile</p>
@@ -68,8 +73,9 @@ const UserProfile = (props) => {
             return (
               <div className="post" key={post._id}>
                 <img src={post.img} alt="post_image" />
+                <p>{post.likes.length > 0 ? `${post.likes.length} like(s)` : "No likes yet"}</p>
                 <p>description: {post.description}</p>
-                <p>likes {post.likes}</p>
+                <p>like</p>
                 <p>comments:{post.comments}</p>
                 <p onClick={() => deletePost(post)}>DELETE</p>
               </div>

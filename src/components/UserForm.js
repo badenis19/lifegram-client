@@ -1,74 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import { graphql } from 'react-apollo';
-import { useHistory } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { SignedInContext } from "../App";
+import React from 'react';
 import { useForm } from "react-hook-form";
-import client from '../apollo';
 
-/* Queries */
-import { getMyProfileQuery } from '../queries/queries';
-import { getAllPostsQuery } from '../queries/queries';
+const UserForm = ({ preloadedValues }) => {
 
-/* Mutations */
-import { editUserProfileMutation } from '../mutations/mutations'
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues: preloadedValues
+  });
 
-const EditProfile = (props) => {
-
-  let history = useHistory();
-  const { register, handleSubmit, errors, reset } = useForm();
-  let { updateSignIn } = useContext(SignedInContext);
-
-  if (!Cookies.get('token')) {
-    history.push('/userprofile');
-  } else {
-    updateSignIn(true);
+  const onSubmit = data => {
+    console.log(data);
   }
-
-  const onSubmit = async ({ username, email, password, age, img, description }) => {
-
-    await client.mutate({
-      variables: {
-        username: username,
-        email: email,
-        password: password,
-        img: img,
-        age: Number(age),
-        description: description
-      },
-      mutation: editUserProfileMutation,
-      refetchQueries: () => [{ query: getMyProfileQuery }, { query: getAllPostsQuery }]
-    });
-  }
-
-  let data = props.data;
-
-  useEffect(() => {
-
-    const fetchUserData = () => {
-      if (data.loading) {
-        console.log("loading")
-      } else if (data.myProfile) {
-        return data.myProfile
-      } else {
-        console.log("Error, please contact the admin.")
-      }
-    }
-
-    let userDetailsToEdit = fetchUserData();
-
-    reset(userDetailsToEdit)
-  }, [])
 
   return (
     <div>
-      <div className="sign-in-up-intro">
-        <h3>Edit your profile</h3>
-      </div>
       <form className="edit-user-form" onSubmit={handleSubmit(onSubmit)} >
         {errors.serverError && errors.serverError.message}
 
         <div className="change-img">
+          {/* image here */}
           <p >Change profile photo</p>
         </div>
 
@@ -91,7 +40,7 @@ const EditProfile = (props) => {
         </div>
 
         <div>
-          <input className="trial" id="description" type="text" placeholder="Description" name="description" ref={register({ maxLength: 50 })} />
+          <input className="trial" id="description" type="text" placeholder="description" name="description" ref={register({ maxLength: 50 })} />
           {errors.description && errors.description.type === 'required' && (< p > This is required</p>)}
           {errors.description && errors.description.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
         </div>
@@ -106,8 +55,7 @@ const EditProfile = (props) => {
         </div>
       </form>
     </div>
-
   )
 };
 
-export default graphql(getMyProfileQuery)(EditProfile);
+export default UserForm;
