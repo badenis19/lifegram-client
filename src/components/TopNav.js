@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App"
-import { Icon } from '@iconify/react';
+import { Icon, InlineIcon } from '@iconify/react';
 import bxLogOut from '@iconify/icons-bx/bx-log-out';
 
 const TopNav = () => {
