@@ -25,20 +25,20 @@ const EditProfile = (props) => {
     updateSignIn(true);
   }
 
-  // const url = "http://localhost:4001/sign"
-
-  const onSubmit = async ({username, email, password, age, img, description}) => {
-    console.log("ok");
-    // console.log("data", email);
+  const onSubmit = async ({ username, email, password, age, img, description }) => {
 
     await client.mutate({
       variables: {
-        username: username
+        username: username,
+        email: email,
+        password: password,
+        img: img,
+        age: Number(age),
+        description: description
       },
       mutation: editUserProfileMutation,
-      refetchQueries: () => [{ query: getAllPostsQuery }]
+      refetchQueries: () => [{ query: getMyProfileQuery }, { query: getAllPostsQuery }]
     });
-
   }
 
   let data = props.data;
@@ -69,7 +69,6 @@ const EditProfile = (props) => {
         {errors.serverError && errors.serverError.message}
 
         <div className="change-img">
-          {/* { preloadedValues &&  <img src= {preloadedValues.img} alt=""/>} */}
           <p >Change profile photo</p>
         </div>
 
@@ -106,11 +105,8 @@ const EditProfile = (props) => {
           <input type="submit" />
         </div>
       </form>
-      {/* {fetchUserData()} */}
-      {/* {displayForm()} */}
     </div>
   )
 };
 
-// export default EditProfile;
 export default graphql(getMyProfileQuery)(EditProfile);

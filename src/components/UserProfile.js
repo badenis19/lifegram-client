@@ -57,7 +57,7 @@ const UserProfile = (props) => {
           <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
           <p>Followers: {data.myProfile.followers.length}</p>
           <p>Following: {data.myProfile.following.length}</p>
-          <p>Posts: {data.myProfile.posts.length}</p>
+          <p>About: {data.myProfile.description}</p>
           <Link to={`/userprofile/${data.myProfile._id}/edit`}>
             <p>Edit Profile</p>
           </Link>
