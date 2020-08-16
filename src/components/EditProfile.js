@@ -18,7 +18,7 @@ const EditProfile = (props) => {
   //   defaultValues: preloadedValues
   // });
 
-   const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
 
   let { updateSignIn } = useContext(SignedInContext);
 
@@ -35,35 +35,34 @@ const EditProfile = (props) => {
   let data = props.data;
   console.log(data)
 
-  useEffect( () => {
-    const fetchUserData = async () => {
+  useEffect(() => {
+
+    const fetchUserData = () => {
+      // return (<p>Loading...</p>)
       if (data.loading) {
         console.log("loading")
-      } else if (!data.myProfile) {
-        console.log("No user data")
-      } else if (!data.loading) {
-        console.log("the data:", data)
-        const result = await data.myProfile
-        // return await data.myProfile
-        console.log("::", result)
-        return result
+        return (<p>Loading...</p>)
+      } else if (data.myProfile) {
+        console.log("ok")
+        console.log(data.myProfile)
+        return data.myProfile
+      } else {
+        return (<p>There are no posts...</p>)
+        // console.log("There are no posts...")
       }
     }
 
-    console.log(fetchUserData())
+     let userDetailsToEdit = fetchUserData();
+    //  console.log(userDetailsToEdit)
 
-    // reset(result);
-  },[data])
-
-  // useEffect(async () => {
-  //   const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
-  //   reset(result); // asynchronously reset your form values
-  // }, [reset])
+      reset(userDetailsToEdit)
+  },[reset])
 
   // useEffect(async () => {
   //   const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
   //   reset(result); // asynchronously reset your form values
   // }, [reset])
+
 
   return (
     <div>
@@ -74,7 +73,7 @@ const EditProfile = (props) => {
         {errors.serverError && errors.serverError.message}
 
         <div className="change-img">
-        {/* { preloadedValues &&  <img src= {preloadedValues.img} alt=""/>} */}
+          {/* { preloadedValues &&  <img src= {preloadedValues.img} alt=""/>} */}
           <p >Change profile photo</p>
         </div>
 
@@ -111,6 +110,7 @@ const EditProfile = (props) => {
           <input type="submit" />
         </div>
       </form>
+      {/* {fetchUserData()} */}
       {/* {displayForm()} */}
     </div>
   )
