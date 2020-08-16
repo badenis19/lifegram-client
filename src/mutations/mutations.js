@@ -36,6 +36,14 @@ const likePostMutation = gql`
     }
 `;
 
+const editUserProfileMutation = gql`
+    mutation EditUserProfile($username: String, $email: String, $password: String, $img: String, $age: Int, $description: String){
+        editUserProfile(username: $username, email: $email, password: $password, img: $img, age: $age, description: $description){ 
+            age
+        }
+    }
+`;
+
 // Not used for now
 const createUserMutation = gql`
     mutation CreateUser($username: String!, $email: String!, $password: String!, $img: String, $age: Int, $description: String, $followers: [ID], $following: [ID]){
@@ -53,4 +61,4 @@ const deletePostMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation, deletePostMutation }
+export { createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation, deletePostMutation, editUserProfileMutation }
