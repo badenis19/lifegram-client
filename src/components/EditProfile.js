@@ -1,17 +1,22 @@
 import React, { useContext, useEffect } from 'react';
 import { graphql } from 'react-apollo';
 import { useHistory } from 'react-router-dom';
-import { getMyProfileQuery } from '../queries/queries';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 import { useForm } from "react-hook-form";
+import client from '../apollo';
+
+/* Queries */
+import { getMyProfileQuery } from '../queries/queries';
+import { getAllPostsQuery } from '../queries/queries';
+
+/* Mutations */
+import { editUserProfileMutation } from '../mutations/mutations'
 
 const EditProfile = (props) => {
 
   let history = useHistory();
-
   const { register, handleSubmit, errors, reset } = useForm();
-
   let { updateSignIn } = useContext(SignedInContext);
 
   if (!Cookies.get('token')) {
@@ -20,8 +25,20 @@ const EditProfile = (props) => {
     updateSignIn(true);
   }
 
-  const onSubmit = () => {
+  // const url = "http://localhost:4001/sign"
+
+  const onSubmit = async ({username, email, password, age, img, description}) => {
     console.log("ok");
+    // console.log("data", email);
+
+    await client.mutate({
+      variables: {
+        username: username
+      },
+      mutation: editUserProfileMutation,
+      refetchQueries: () => [{ query: getAllPostsQuery }]
+    });
+
   }
 
   let data = props.data;

@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 
-// npm install react-hook-form
 import { useForm } from 'react-hook-form';
 
 /* Mutations */

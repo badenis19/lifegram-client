@@ -41,7 +41,6 @@ const PostsFeed = (props) => {
       mutation: likePostMutation,
       refetchQueries: () => [{ query: getAllPostsQuery }]
     });
-    // refreshPage();
   }
 
   const displayAllPosts = () => {
