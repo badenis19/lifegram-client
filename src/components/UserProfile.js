@@ -5,12 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App";
 import client from '../apollo';
 import { Link } from 'react-router-dom';
-
 import { Icon } from '@iconify/react';
 import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
-
-
-
 
 
 /* Queries */
@@ -144,32 +140,3 @@ const UserProfile = (props) => {
 }
 
 export default graphql(getMyProfileQuery)(UserProfile); // query result accessible via props
-
-
-{/* <div className="button-grid-container anchor-img">
-            <div className="profile-pic"></div>
-            <div className="grid-item grid-item1">
-              <div className="button-text">
-                <span className="edit-span1">{data.myProfile.posts.length}</span>
-                <span className="edit-span2">Posts</span>
-              </div>
-            </div>
-            <div className="grid-item grid-item2">
-              <div className="button-text">
-                <span>{data.myProfile.followers.length}</span>
-                <span>Followers</span>
-              </div>
-            </div>
-            <div className="grid-item grid-item3">
-              <div className="button-text">
-                <span className="edit-span1" >Ed</span>
-                <span className="edit-span2">pic</span>
-              </div>
-            </div>
-            <div className="grid-item grid-item4">
-              <div className="button-text">
-                <span>{data.myProfile.following.length}</span>
-                <span>Following</span>
-              </div>
-            </div>
-          </div> */}
