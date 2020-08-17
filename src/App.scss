@@ -299,6 +299,21 @@ body,p,a,ul,li{
   }
 
 
+  // EDIT USER FORM
+
+  .edit-user-form-top {
+  
+    .profil-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin: 60px auto 0 auto;
+      display: block;
+      border: 1px solid lightgrey;
+    }
+  }
+
+
   .edit-user-form {
     display: flex;
     flex-direction: column;
@@ -307,6 +322,10 @@ body,p,a,ul,li{
 
     .change-img {
       text-align: center;
+
+      p {
+        color: var(--powerBlue);
+      }
 
       img {
         margin: 0 auto;
@@ -351,7 +370,7 @@ body,p,a,ul,li{
   color: red;
 }
 
-//EDIT PROFILE
+//USER PROFILE
 
 .button-grid-container {
   margin-bottom: 20px;
@@ -549,14 +568,6 @@ body,p,a,ul,li{
       }
     }
   }
-
-
-
-
-
-  // .item1{
-  //   margin-right: 5px;
-  // }
 }
 
 // .button-grid-container {
