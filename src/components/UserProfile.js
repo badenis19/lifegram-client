@@ -5,8 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { SignedInContext } from "../App";
 import client from '../apollo';
 import { Link } from 'react-router-dom';
-import { Icon } from '@iconify/react';
-import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
+// import { Icon } from '@iconify/react';
+// import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
 
 
 /* Queries */
@@ -61,24 +61,20 @@ const UserProfile = (props) => {
               <div className="grid-item item1">
                 <div className="grid1-circle"></div>
                 <div className="item-text">
-                  <div>{data.myProfile.age}</div>
-                  <div>Age</div>
+                  <div>{data.myProfile.following.length}</div>
+                  <div>Following</div>
                 </div>
               </div>
               <div className="grid-item item2">
                 <div className="grid2-circle"></div>
                 <div className="item-text">
-                  <div>1.77m</div>
-                  <div>Height</div>
+                  <div>{data.myProfile.followers.length}</div>
+                  <div>Followers</div>
                 </div>
               </div>
               <Link to={`/userprofile/${data.myProfile._id}/edit`}>
                 <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
                 <div className="img-overlay">
-                  <div>
-                    <span> Edit </span>
-                    <Icon icon={plusCircleFill} />
-                  </div>
                 </div>
               </Link>
               <div className="circle-white"></div>
@@ -89,17 +85,17 @@ const UserProfile = (props) => {
                 <div className="grid3-circle"></div>
                 <Link to={`/userprofile/${data.myProfile._id}/followers`}>
                   <div className="item-text">
-                    <div>{data.myProfile.followers.length}</div>
-                    <div>Followers</div>
+                    <div>{data.myProfile.age}</div>
+                    <div>Age</div>
                   </div>
                 </Link>
               </div>
               <div className="grid-item item4">
                 <div className="grid4-circle"></div>
                 <Link to={`/userprofile/${data.myProfile._id}/following`}>
-                  <div className="item-text">
-                    <div>{data.myProfile.following.length}</div>
-                    <div>Following</div>
+                  <div id="edit-button" className="item-text">
+                    <div>Edit </div>
+                    <div>profile</div>
                   </div>
                 </Link>
               </div>

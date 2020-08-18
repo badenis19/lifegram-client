@@ -19,6 +19,7 @@ const TopNav = () => {
     updateSignIn(false);
     // redirect to sign in page
     history.push('/signin');
+    console.log(">>>>>>>", history);
   };
 
   return (

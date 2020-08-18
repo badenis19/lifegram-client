@@ -5,7 +5,7 @@ import client from '../apollo';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
 
 /* Queries */
