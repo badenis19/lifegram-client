@@ -2,6 +2,7 @@
   --myRed: red ;
   --backgroundBlack: black;
   --powerBlue: rgba(2, 165, 224, 1);
+  --subBlue: rgba(2, 165, 224, 0.6);
 }
 
 .App {
@@ -22,8 +23,13 @@ body,p,a,ul,li{
 }
 
 // NAV //
+
+.hidden {
+  visibility: hidden;
+  width: 50px;
+}
+
 .top-nav {
-  
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -33,25 +39,38 @@ body,p,a,ul,li{
   border-bottom: 1px solid lightgray;
   background: #ffffff;
 
+  .fitgram {
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: var(--powerBlue);
+  }
+
   ul {
     height: 43px;
     width: 100%;
     display: flex;
     list-style: none;
     justify-content: space-between;
+    align-items: center;
   }
 
   li {
     align-items: center;
     color: black;
-    padding: 11.9px 10px;
+    // padding: 11.9px 10px;
     opacity: 0.7;
   }
 
+  .signage {
+    text-align: center;
+    width: 70px;
+  }
+
   .sign-out {
+    width: 50px;
     display:flex; 
     flex-direction: column;
-    padding: 3px 10px 3px ;
+    // padding-right: 10px;
       svg {
         font-size: 1.5em;
         opacity: 0.5;
@@ -179,12 +198,6 @@ body,p,a,ul,li{
     text-align: center;
     margin: 0;
   }
-}
-
-.image-upload-btn {
-  padding: 5px;
-  border: 1px solid lightgrey;
-  width: 50px;
 }
 
   // SIGNUP FORM
@@ -370,31 +383,76 @@ body,p,a,ul,li{
   color: red;
 }
 
-//USER PROFILE
+//NEW POST
 
-.button-grid-container {
-  margin-bottom: 20px;
-  padding-top: 20px;
+.new-post-container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  
-  @media (min-width: 768px) {
-    .button-grid-container {
-      width: 750px;
-    }
+
+  .display-none {
+  display: none;
   }
-  @media (min-width: 992px) {
-    .button-grid-container {
-      width: 970px;
-    }
+
+  h2{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font-weight: lighter;
   }
-  @media (min-width: 1200px) {
-    .button-grid-container {
-      width: 1170px;
-    }
+
+  .image-upload-btn {
+    color: var(--subBlue);
+    font-size: 2em;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 20px 0;
+    width: inherit;
+    height: 30vh;
+    border: 1px solid rgba(0,0,0, 0.4);
+    border-radius: 5px;
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
   }
+
+  input {
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border: 1px solid rgba(0,0,0, 0.4);
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+    
+  }
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--subBlue);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border: 1px solid rgba(0,0,0, 0.4);
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+    
+  }
+
+
+}
+
+.button-grid-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 
   .anchor-img {
     position: relative;
@@ -421,7 +479,6 @@ body,p,a,ul,li{
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: rgba(0,0,0,0.4) ;
       height: 100px;
       width: 100px;
       border-radius: 50%;
@@ -569,72 +626,3 @@ body,p,a,ul,li{
     }
   }
 }
-
-// .button-grid-container {
-//   padding:10px;
-//   margin: 0 auto;
-//   width: 90%;
-//   display: grid;
-//   grid-template-columns: 47% 47%;
-//   row-gap: 12%;
-//   column-gap: 6%;
-//   grid-template-rows: 44% 44%;
-
-
-//   .profile-pic {
-//     background-image: url("https://kitt.lewagon.com/placeholder/users/FreddieWarren") ;
-//     background-position: center; /* Center the image */
-//     background-repeat: no-repeat; /* Do not repeat the image */
-//     background-size: cover; /* Resize the background image to cover the entire container */
-//     height: 80px;
-//     width: 80px;
-//     z-index: 999;
-//     position: absolute;
-//     border: 2px solid white;
-//     border-radius: 50%;
-//     margin-left: -44px;
-//     margin-top: -44px;
-//     left: 50%;
-//     // right: 0;
-//     top: 50%;
-//     filter: drop-shadow(0 0 0.75rem black);
-    
-//   }
-
-//   .grid-item {
-//     box-shadow: 0 0 4px 0px grey;
-//     background-color: var(--powerBlue);
-//     padding: 20px 20px;
-//     font-size: 30px;
-//     text-align: center;
-//     // border: 1px solid rgba(0, 0, 0, 0.8);
-//   }
-//   .grid-item1 {
-//     border-radius: 10px 0px 0px 0px ;
-//   }
-//   .grid-item2 {
-//     border-radius: 0px 10px 0px 0px ;
-//   }
-//   .grid-item3 {
-//     border-radius: 0px 0px 0px 10px ;
-//   }
-//   .grid-item4 {
-//     border-radius: 0px 0px 10px 0px ;
-//   }
-
-  
-
-//   .button-text {
-//     display: flex;
-//     flex-direction: column;
-//     font-size: 0.4em;
-//   }
-
-//   .edit-span1 {
-//     text-align: start;
-//   }
-
-//   .edit-span2 {
-//     text-align: start;
-//   }
-// }
