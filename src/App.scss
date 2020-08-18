@@ -312,6 +312,21 @@ body,p,a,ul,li{
   }
 
 
+  // EDIT USER FORM
+
+  .edit-user-form-top {
+  
+    .profil-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin: 60px auto 0 auto;
+      display: block;
+      border: 1px solid lightgrey;
+    }
+  }
+
+
   .edit-user-form {
     display: flex;
     flex-direction: column;
@@ -320,6 +335,10 @@ body,p,a,ul,li{
 
     .change-img {
       text-align: center;
+
+      p {
+        color: var(--powerBlue);
+      }
 
       img {
         margin: 0 auto;
@@ -460,7 +479,6 @@ body,p,a,ul,li{
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: rgba(0,0,0,0.4) ;
       height: 100px;
       width: 100px;
       border-radius: 50%;

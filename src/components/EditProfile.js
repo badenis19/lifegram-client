@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { graphql } from 'react-apollo';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -11,13 +11,17 @@ import { getMyProfileQuery } from '../queries/queries';
 import { getAllPostsQuery } from '../queries/queries';
 
 /* Mutations */
-import { editUserProfileMutation } from '../mutations/mutations'
+import { editUserProfileMutation } from '../mutations/mutations';
+
+// setting up the filestack client with API KEY
+const clientFS = require('filestack-js').init(process.env.REACT_APP_FILESTACK_API_KEY);
 
 const EditProfile = (props) => {
 
   let history = useHistory();
   const { register, handleSubmit, errors, reset } = useForm();
   let { updateSignIn } = useContext(SignedInContext);
+  let [imageUrl, setImageUrl] = useState("");
 
   if (!Cookies.get('token')) {
     history.push('/userprofile');
@@ -25,14 +29,27 @@ const EditProfile = (props) => {
     updateSignIn(true);
   }
 
-  const onSubmit = async ({ username, email, password, age, img, description }) => {
+  const options = {
+    fromSources: ["local_file_system", "webcam", "url", "instagram", "facebook"],
+    accept: ["image/*", "video/*"],
+    onUploadDone: file => {
+      setImageUrl(file.filesUploaded[0].url);
+    }
+  };
+
+  const handleImageUpload = () => {
+    // to open the widget for image upload
+    clientFS.picker(options).open();
+  };
+
+  const onSubmit = async ({ username, email, password, age, description }) => {
 
     await client.mutate({
       variables: {
         username: username,
         email: email,
         password: password,
-        img: img,
+        img: imageUrl,
         age: Number(age),
         description: description
       },
@@ -57,19 +74,22 @@ const EditProfile = (props) => {
 
     let userDetailsToEdit = fetchUserData();
 
-    reset(userDetailsToEdit)
+    reset(userDetailsToEdit);
+
+    setImageUrl(userDetailsToEdit.img);
+
   }, [])
 
   return (
     <div>
-      <div className="sign-in-up-intro">
-        <h3>Edit your profile</h3>
+      <div className="edit-user-form-top">
+        <img className="profil-avatar" src={imageUrl} alt="" />
       </div>
       <form className="edit-user-form" onSubmit={handleSubmit(onSubmit)} >
         {errors.serverError && errors.serverError.message}
 
         <div className="change-img">
-          <p >Change profile photo</p>
+          <p onClick={() => handleImageUpload()}>Change profile photo</p>
         </div>
 
         <div>
