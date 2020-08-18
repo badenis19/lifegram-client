@@ -372,24 +372,8 @@ body,p,a,ul,li{
   margin-right: auto;
   margin-left: auto;
 
-  @media (min-width: 768px) {
-    .container {
-      width: 750px;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      width: 970px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .container {
-      width: 1170px;
-    }
-  }
-
   .display-none {
-    display: none;
+  display: none;
   }
 
   h2{
@@ -444,6 +428,13 @@ body,p,a,ul,li{
 
 
 }
+
+.button-grid-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
   .anchor-img {
     position: relative;
 
@@ -616,3 +607,4 @@ body,p,a,ul,li{
       }
     }
   }
+}
