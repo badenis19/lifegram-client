@@ -119,13 +119,13 @@ const EditProfile = (props) => {
         </div>
 
         <div>
-          <input className="trial" id="weight" type="text" placeholder="Your weight" name="weight" ref={register({ maxLength: 6 })} />
+          <input className="trial" id="weight" type="text" placeholder="Weight (e.g. 95kg)" name="weight" ref={register({ maxLength: 6 })} />
           {errors.weight && errors.weight.type === 'required' && (< p > This is required</p>)}
           {errors.weight && errors.weight.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
         <div>
-          <input className="trial" id="height" type="text" placeholder="Your height" name="height" ref={register({ maxLength: 6 })} />
+          <input className="trial" id="height" type="text" placeholder="Height (e.g. 1m62)" name="height" ref={register({ maxLength: 6 })} />
           {errors.height && errors.height.type === 'required' && (< p > This is required</p>)}
           {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
