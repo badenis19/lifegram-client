@@ -36,6 +36,8 @@ const getMyProfileQuery = gql`
       img
       followers
       following
+      height
+      weight
       posts {
         _id
         img

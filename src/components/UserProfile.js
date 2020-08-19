@@ -46,8 +46,6 @@ const UserProfile = (props) => {
 
   let data = props.data;
 
-  // let lowerCaseUSername =
-
   const displayUserDetails = () => {
     console.log("+++", data)
     if (data.loading) {
@@ -90,8 +88,8 @@ const UserProfile = (props) => {
               <div className="grid-item item3">
                 <div className="grid3-circle"></div>
                 <div className="item-text item-left">
-                  <div>{data.myProfile.age}</div>
-                  <div>Age</div>
+                  <div>{data.myProfile.height} | {data.myProfile.age} </div>
+                  <div>height | age </div>
                 </div>
               </div>
               <div className="grid-item item4">
@@ -128,12 +126,6 @@ const UserProfile = (props) => {
       )
     }
   }
-
-  // const editProfileButtons = () => {
-  //   return (
-
-  //   )
-  // }
 
   return (
     <div>
