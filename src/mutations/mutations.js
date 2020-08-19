@@ -37,8 +37,8 @@ const likePostMutation = gql`
 `;
 
 const editUserProfileMutation = gql`
-    mutation EditUserProfile($username: String, $email: String, $password: String, $img: String, $age: Int, $description: String){
-        editUserProfile(username: $username, email: $email, password: $password, img: $img, age: $age, description: $description){ 
+    mutation EditUserProfile($username: String, $email: String, $password: String, $img: String, $age: Int, $description: String, $height: String, $weight: String){
+        editUserProfile(username: $username, email: $email, password: $password, img: $img, age: $age, description: $description, height: $height, weight: $weight ){ 
             age
         }
     }

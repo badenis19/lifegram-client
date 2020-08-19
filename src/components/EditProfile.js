@@ -42,7 +42,7 @@ const EditProfile = (props) => {
     clientFS.picker(options).open();
   };
 
-  const onSubmit = async ({ username, email, password, age, description }) => {
+  const onSubmit = async ({ username, email, password, age, description, height, weight }) => {
 
     await client.mutate({
       variables: {
@@ -51,7 +51,9 @@ const EditProfile = (props) => {
         // password: password,
         img: imageUrl,
         age: Number(age),
-        description: description
+        description: description,
+        height: height,
+        weight: weight
       },
       mutation: editUserProfileMutation,
       refetchQueries: () => [{ query: getMyProfileQuery }, { query: getAllPostsQuery }]
@@ -114,6 +116,18 @@ const EditProfile = (props) => {
           <input className="trial" id="description" type="text" placeholder="Description" name="description" ref={register({ maxLength: 50 })} />
           {errors.description && errors.description.type === 'required' && (< p > This is required</p>)}
           {errors.description && errors.description.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
+        </div>
+
+        <div>
+          <input className="trial" id="weight" type="text" placeholder="Your weight" name="weight" ref={register({ maxLength: 6 })} />
+          {errors.weight && errors.weight.type === 'required' && (< p > This is required</p>)}
+          {errors.weight && errors.weight.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
+        </div>
+
+        <div>
+          <input className="trial" id="height" type="text" placeholder="Your height" name="height" ref={register({ maxLength: 6 })} />
+          {errors.height && errors.height.type === 'required' && (< p > This is required</p>)}
+          {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
         {/* <div>

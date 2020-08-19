@@ -14,7 +14,7 @@ import { createUserMutation } from "../mutations/mutations";
 const Signup = () => {
   const [message, setMessage] = useState('');
   const { register, handleSubmit, errors } = useForm();
-  const url = "http://localhost:4001/sign"
+  const url = "http://localhost:4001/sign";
 
   console.log("Message>>", message);
   const onSubmit = async (data, e) => {
