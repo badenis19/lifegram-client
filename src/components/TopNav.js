@@ -20,17 +20,21 @@ const TopNav = () => {
     // redirect to sign in page
     history.push('/signin');
   };
-
+  console.log(typeof window.location.href)
   return (
     <nav className="top-nav">
       <ul>
-        {!isSignedIn
-          ? <Link to="/signup"><li className="signage">Sign up</li></Link>
-          : <li className="hidden"></li>}
+        {!isSignedIn ?
+          <Link to="/signup"><li className="signage">Sign up</li></Link>
+          :
+          <li className="hidden"></li>
+        }
 
-        <Link to="/">
-          <li className="fitgram">FITGRAM</li>
-        </Link>
+        {window.location.href.includes("sign") ?
+          <Link to="/"><li className="fitgram">FITGRAM</li></Link>
+          :
+          <Link to="/"><li className="fitgram"></li></Link>
+        }
 
         {!isSignedIn &&
           <Link to="/signIn">

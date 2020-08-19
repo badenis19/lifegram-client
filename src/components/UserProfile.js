@@ -46,6 +46,8 @@ const UserProfile = (props) => {
 
   let data = props.data;
 
+  // let lowerCaseUSername =
+
   const displayUserDetails = () => {
     console.log("+++", data)
     if (data.loading) {
@@ -55,30 +57,30 @@ const UserProfile = (props) => {
     } else {
       return (
         <div className="user-info-and-stats">
-          <h2>{data.myProfile.username}</h2>
+          <h3>{data.myProfile.username.toLowerCase()}</h3>
           <div className="button-grid-container">
             <div className="top-grid anchor-img">
               <div className="grid-item item1">
                 <div className="grid1-circle"></div>
-                <div className="item-text">
-                  <div>{data.myProfile.age}</div>
-                  <div>Age</div>
-                </div>
+                <Link to={`/userprofile/${data.myProfile._id}/following`}>
+                  <div className="item-text item-left">
+                    <div>{data.myProfile.following.length}</div>
+                    <div>Following</div>
+                  </div>
+                </Link>
               </div>
               <div className="grid-item item2">
                 <div className="grid2-circle"></div>
-                <div className="item-text">
-                  <div>1.77m</div>
-                  <div>Height</div>
-                </div>
+                <Link to={`/userprofile/${data.myProfile._id}/followers`}>
+                  <div className="item-text item-right">
+                    <div>{data.myProfile.followers.length}</div>
+                    <div>Followers</div>
+                  </div>
+                </Link>
               </div>
               <Link to={`/userprofile/${data.myProfile._id}/edit`}>
                 <img id="profile-picture" src={data.myProfile.img} alt="user_image" />
                 <div className="img-overlay">
-                  <div>
-                    <span> Edit </span>
-                    <Icon icon={plusCircleFill} />
-                  </div>
                 </div>
               </Link>
               <div className="circle-white"></div>
@@ -87,19 +89,20 @@ const UserProfile = (props) => {
             <div className="bottom-grid">
               <div className="grid-item item3">
                 <div className="grid3-circle"></div>
-                <Link to={`/userprofile/${data.myProfile._id}/followers`}>
-                  <div className="item-text">
-                    <div>{data.myProfile.followers.length}</div>
-                    <div>Followers</div>
-                  </div>
-                </Link>
+                <div className="item-text item-left">
+                  <div>{data.myProfile.age}</div>
+                  <div>Age</div>
+                </div>
               </div>
               <div className="grid-item item4">
+                <div className="plus-icon">
+                  <Icon icon={plusCircleFill} />
+                </div>
                 <div className="grid4-circle"></div>
-                <Link to={`/userprofile/${data.myProfile._id}/following`}>
-                  <div className="item-text">
-                    <div>{data.myProfile.following.length}</div>
-                    <div>Following</div>
+                <Link to={`/userprofile/${data.myProfile._id}/edit`}>
+                  <div id="edit-button" className="item-text item-right">
+                    <div>Edit </div>
+                    <div>profile</div>
                   </div>
                 </Link>
               </div>

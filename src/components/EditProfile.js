@@ -48,7 +48,7 @@ const EditProfile = (props) => {
       variables: {
         username: username,
         email: email,
-        password: password,
+        // password: password,
         img: imageUrl,
         age: Number(age),
         description: description
@@ -116,10 +116,10 @@ const EditProfile = (props) => {
           {errors.description && errors.description.type === 'maxLength' && (< p > This has a maximum length of 15</p>)}
         </div>
 
-        <div>
+        {/* <div>
           <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
           {errors.password && (< p > This is required</p>)}
-        </div>
+        </div> */}
 
         <div>
           <input type="submit" />

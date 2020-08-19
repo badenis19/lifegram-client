@@ -1,4 +1,6 @@
 :root {
+  --myGrey:  rgba(117, 117, 117, 0.8);
+  --solidGrey: #cccccc;
   --myRed: red ;
   --backgroundBlack: black;
   --powerBlue: rgba(2, 165, 224, 1);
@@ -194,9 +196,11 @@ body,p,a,ul,li{
     border-radius: 50%;
   }
 
-  h2 {
+  h3 {
     text-align: center;
     margin: 0;
+    padding: 20px 0;
+    font-weight: 100;
   }
 }
 
@@ -427,7 +431,6 @@ body,p,a,ul,li{
     border-width: 1px;
     border: 1px solid rgba(0,0,0, 0.4);
     box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
-    
   }
 
   button {
@@ -442,15 +445,11 @@ body,p,a,ul,li{
     border-width: 1px;
     border: 1px solid rgba(0,0,0, 0.4);
     box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
-    
   }
-
-
 }
 
 .button-grid-container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0 20px 20px;
   margin-right: auto;
   margin-left: auto;
 
@@ -462,7 +461,7 @@ body,p,a,ul,li{
       width: 100px;
       border-radius: 50%;
       border: none;
-      box-shadow: inset 0 0 0px 1px black;
+      box-shadow: inset 0 0 0px 1px grey;
       position: absolute;
       bottom: 0; 
       left: 0;
@@ -491,9 +490,11 @@ body,p,a,ul,li{
       margin-left: auto;
       margin-right: auto;
       z-index: 999;
+
       div {
         margin-top: 62px;
         text-shadow: 1px 1px 1px #000000;
+        
         svg {
           font-size: 0.8em;
         }
@@ -552,24 +553,42 @@ body,p,a,ul,li{
     margin-left: 5px;
     text-align: end;
     border-radius: 0 0 20px 0;
+    background: var(--powerBlue);
+
+    .plus-icon {
+      border: 1px solid var(--solidGrey);
+      position: absolute;
+      top: 25px;
+      left: 30px;
+      color: var(--powerBlue);
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 996;
+      height:20px;
+      width: 20px;
+      background: white;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+      align-items: center;
+    }
   }
 
   .grid-item {
-    border: 1px solid black;
-    font-weight: bold;
+    border: 1px solid var(--solidGrey);
+    font-weight: 100;
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(229, 246, 251, 0.5);
     width: 50%;
     text-align: center;
 
     .grid1-circle {
       position: absolute;
       background: white;
-      border: 1px solid black;
+      border: 1px solid var(--solidGrey);
       height:110px;
       width: 110px;
       border-radius: 50%;
@@ -580,7 +599,7 @@ body,p,a,ul,li{
     .grid2-circle {
       position: absolute;
       background: white;
-      border: 1px solid black;
+      border: 1px solid var(--solidGrey);
       height:110px;
       width: 110px;
       border-radius: 50%;
@@ -591,7 +610,7 @@ body,p,a,ul,li{
     .grid3-circle {
       position: absolute;
       background: white;
-      border: 1px solid black;
+      border: 1px solid var(--solidGrey);
       height:110px;
       width: 110px;
       border-radius: 50%;
@@ -602,7 +621,7 @@ body,p,a,ul,li{
     .grid4-circle {
       position: absolute;
       background: white;
-      border: 1px solid black;
+      border: 1px solid var(--solidGrey);
       height:110px;
       width: 110px;
       border-radius: 50%;
@@ -610,19 +629,34 @@ body,p,a,ul,li{
       top: -61px;
     }
 
+    #edit-button {
+      color: white;
+    }
+
+    .item-right {
+      position: absolute;
+      margin-top: -15px;
+      margin-right: -45px;
+      top: 50%;
+      right: 40%;
+    }
+
+    .item-left {
+      position: absolute;
+      margin-top: -15px;
+      margin-left: -45px;
+      top: 50%;
+      left: 40%;
+    }
+
     .item-text {
       color: var(--powerBlue);
       text-decoration: none;
-      text-shadow: 1px 1px 1px #000000;
       font-size: 0.8em;
       display: flex;
       align-items: center;
       flex-direction: column;
-      width: inherit;
-      padding: 24px 264px;
-      div {
-        width: fit-content;
-      }
+      min-width: 90px;
     }
   }
 }
