@@ -31,10 +31,16 @@ const EditProfile = (props) => {
 
   const options = {
     fromSources: ["local_file_system", "webcam", "url", "instagram", "facebook"],
-    accept: ["image/*", "video/*"],
+    accept: ["image/*"],
     onUploadDone: file => {
       setImageUrl(file.filesUploaded[0].url);
-    }
+    },
+    transformations: {
+      crop: false,
+      circle: true,
+      rotate: false,
+      force: true
+  }
   };
 
   const handleImageUpload = () => {
