@@ -167,7 +167,7 @@ body,p,a,ul,li{
   .user-details {
     display: flex;
     align-items: center;
-    padding: 15px 0px 5px 7px;
+    padding: 15px 0px 10px 7px;
   }
 
   .post-icons {
@@ -183,7 +183,15 @@ body,p,a,ul,li{
   .post-img {
     min-width: 100%;
     max-width: 100%;
+    min-height: 375px;
+    max-height: 375px;
     margin-bottom: 10px;
+  }
+
+  .date {
+    color: lightgrey;
+    font-size: 12px;
+    font-style: italic;
   }
   
 }
