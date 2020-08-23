@@ -161,7 +161,7 @@ body,p,a,ul,li{
   
   p {
     padding-left: 10px;
-    margin: 2px 0;
+    margin-bottom: 7px;
   }
 
   .user-details {
@@ -169,17 +169,13 @@ body,p,a,ul,li{
     align-items: center;
     padding: 15px 0px 10px 7px;
   }
-
-  .post-icons {
-    display: flex;
-  }
-
+  
   .profil-avatar {
     width:30px;
     height: 30px;
     border-radius: 50%;
   }
-
+  
   .post-img {
     min-width: 100%;
     max-width: 100%;
@@ -187,9 +183,24 @@ body,p,a,ul,li{
     max-height: 375px;
     margin-bottom: 10px;
   }
+  
+  .post-icons {
+    display: flex;
+  }
+
+  .post-details {
+
+    p {
+      margin-bottom: 5px;
+    }
+  }
+  .comment-link{
+    font-size: 12px;
+    color: gray;
+  }
 
   .date {
-    color: lightgrey;
+    color: gray;
     font-size: 12px;
     font-style: italic;
   }
