@@ -6,8 +6,10 @@ import { SignedInContext } from "../App";
 import client from '../apollo';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
 import moment from 'moment';
+import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
+import crossMark from '@iconify/icons-emojione-v1/cross-mark';
+
 
 
 /* Queries */
@@ -167,7 +169,7 @@ const UserProfile = (props) => {
                     </div>
 
                     <div className="icon-right">
-                      <p onClick={() => deletePost(post)}>X</p>
+                      <p onClick={() => deletePost(post)}><Icon icon={crossMark} /></p>
                     </div>
 
                   </div>
