@@ -20,7 +20,7 @@ const TopNav = () => {
     // redirect to sign in page
     history.push('/signin');
   };
-  console.log(typeof window.location.href)
+  // console.log(typeof window.location.href)
   return (
     <nav className="top-nav">
       <ul>

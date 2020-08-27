@@ -7,9 +7,14 @@
   --subBlue: rgba(2, 165, 224, 0.6);
 }
 
+.powerBlue {
+  color: var(--powerBlue);
+}
+
 .App {
   min-height: 100vh;
-  margin: 43px auto;
+  margin: 43px auto 60px auto ;
+  // margin: 43px auto;
 }
 
 // reset - Removes default behavior
@@ -160,33 +165,73 @@ body,p,a,ul,li{
   margin-bottom: 3px;
   
   p {
-    padding-left: 10px;
-    margin: 2px 0;
+    margin-left: 10px;
+    margin-bottom: 7px;
   }
 
   .user-details {
     display: flex;
     align-items: center;
-    padding: 15px 0px 5px 7px;
+    padding: 15px 0px 10px 7px;
   }
-
-  .post-icons {
-    display: flex;
-  }
-
+  
   .profil-avatar {
     width:30px;
     height: 30px;
     border-radius: 50%;
   }
-
+  
   .post-img {
     min-width: 100%;
     max-width: 100%;
+    min-height: 375px;
+    max-height: 375px;
     margin-bottom: 10px;
   }
   
+  .post-icons {
+    display: flex;
+  }
+
+  .post-icons-in-profile {
+    display: flex;
+    justify-content: space-between;
+
+    .icon-left {
+      margin-left: 10px;
+      font-size: 25px;
+      display: flex;
+      margin-bottom: 7px;
+
+      .dumbell {
+        padding-right: 10px;
+      }
+    }
+
+    .icon-right {
+      margin-right: 10px;
+    }
+  }
+
+  .post-details {
+
+    p {
+      margin-bottom: 5px;
+    }
+  }
+  .comment-link{
+    font-size: 12px;
+    color: gray;
+  }
+
+  .date {
+    color: gray;
+    font-size: 12px;
+    font-style: italic;
+  }
+  
 }
+
 
 // USER PROFILE
 
@@ -202,7 +247,18 @@ body,p,a,ul,li{
     padding: 20px 0;
     font-weight: 100;
   }
+
+  .description {
+    margin: 0 20px 0 20px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10px;
+
+    p {
+      padding: 2px 0 2px 0;
+    }
+  }
 }
+
 
   // SIGNUP FORM
 
@@ -452,6 +508,7 @@ body,p,a,ul,li{
   padding: 0 20px 20px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 53px;
 
   .anchor-img {
     position: relative;
@@ -659,4 +716,8 @@ body,p,a,ul,li{
       min-width: 90px;
     }
   }
+}
+
+Icon {
+  color: red;
 }
