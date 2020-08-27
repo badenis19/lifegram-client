@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
 import Cookies from 'js-cookie';
@@ -75,8 +75,6 @@ const UserProfile = (props) => {
       refetchQueries: () => [{ query: getAllPostsQuery }]
     });
   }
-
-  let data = props.data;
 
   const displayUserDetails = () => {
     if (profileData.loading) {
