@@ -88,7 +88,7 @@ const PostsFeed = (props) => {
                   return (
                     <p>{comment}</p>
                   )
-                })}</p> */}
+                  })}</p> */}
                   </div>
                 </div>
               </div>

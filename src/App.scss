@@ -188,6 +188,15 @@ body,p,a,ul,li{
     display: flex;
   }
 
+  .post-icons-in-profile {
+    display: flex;
+    justify-content: space-between;
+
+    .icon-right {
+      margin-right: 10px;
+    }
+  }
+
   .post-details {
 
     p {
@@ -207,6 +216,7 @@ body,p,a,ul,li{
   
 }
 
+
 // USER PROFILE
 
 .user-info-and-stats {
@@ -222,6 +232,7 @@ body,p,a,ul,li{
     font-weight: 100;
   }
 }
+
 
   // SIGNUP FORM
 
