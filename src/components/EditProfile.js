@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 import { useForm } from "react-hook-form";
 import client from '../apollo';
+import Modal from "./Modal";
 
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
@@ -18,10 +19,12 @@ const clientFS = require('filestack-js').init(process.env.REACT_APP_FILESTACK_AP
 
 const EditProfile = (props) => {
 
+  let [show, setShow] = useState(false);
   let history = useHistory();
   const { register, handleSubmit, errors, reset } = useForm();
   let { updateSignIn } = useContext(SignedInContext);
   let [imageUrl, setImageUrl] = useState("");
+
 
   if (!Cookies.get('token')) {
     history.push('/userprofile');
@@ -40,6 +43,14 @@ const EditProfile = (props) => {
   const handleImageUpload = () => {
     // to open the widget for image upload
     clientFS.picker(options).open();
+  };
+
+  let showModal = () => {
+    setShow(true);
+  };
+
+  let hideModal = () => {
+    setShow(false);
   };
 
   const onSubmit = async ({ username, email, password, age, description, height, weight }) => {
@@ -84,6 +95,9 @@ const EditProfile = (props) => {
 
   return (
     <div>
+      <Modal
+        show={show}
+        hideModal={hideModal} />
       <div className="edit-user-form-top">
         <img className="profil-avatar" src={imageUrl} alt="" />
       </div>
@@ -129,6 +143,10 @@ const EditProfile = (props) => {
           {errors.height && errors.height.type === 'required' && (< p > This is required</p>)}
           {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
+
+        <button onClick={() => showModal()}>
+          Change Password
+        </button>
 
         {/* <div>
           <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
