@@ -690,6 +690,7 @@ body,p,a,ul,li{
       font-size: 1.2em;
     }
     form {
+      margin-top: 15px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -697,7 +698,7 @@ body,p,a,ul,li{
     }
     .input-pass {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 0.9rem;
       box-sizing: border-box;
       display: block;
@@ -779,7 +780,7 @@ background: linear-gradient(0deg, rgba(1, 148, 201, 1) 0%, rgba(1, 148, 201, 1) 
 }
 
 .btn-submit-pass {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 110px;
   background: rgb(2, 165, 224);
   background: linear-gradient(0deg, rgba(43, 180, 0, 1) 0%, rgba(64, 187, 25, 1) 100%);
@@ -787,14 +788,14 @@ background: linear-gradient(0deg, rgba(1, 148, 201, 1) 0%, rgba(1, 148, 201, 1) 
 }
 
 .btn-submit-pass:hover {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 110px;
   background: rgb(0,3,255);
 background: linear-gradient(0deg, rgba(57, 168, 22, 1) 0%, rgba(51, 151, 19, 1) 100%);
 }
 
 .btn-cancel {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 110px;
   background: rgb(2, 165, 224);
   background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
@@ -805,7 +806,7 @@ background: linear-gradient(0deg, rgba(57, 168, 22, 1) 0%, rgba(51, 151, 19, 1) 
 }
 
 .btn-cancel:hover {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 110px;
   background: rgb(0,3,255);
   background: linear-gradient(0deg, rgba(1, 148, 201, 1) 0%, rgba(1, 148, 201, 1) 100%);

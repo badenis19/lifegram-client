@@ -16,7 +16,7 @@ const Modal = ({ hideModal, show }) => {
                         <input className="input-pass" type="password" placeholder="Password" name="password" />
                     </div>
                     <div>
-                        <input className="input-pass" type="password" placeholder="Re-type password" name="retype-password" />
+                        <input className="input-pass retype" type="password" placeholder="Re-type password" name="retype-password" />
                     </div>
                     <div className="buttons-container">
                         <button className="custom-btn btn-cancel" onClick={hideModal}><span>Cancel</span></button>
