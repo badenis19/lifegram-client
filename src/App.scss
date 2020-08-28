@@ -743,6 +743,7 @@ body,p,a,ul,li{
     .user-card {
       // border: 1px solid lightgray;
       max-width: 100%;
+      height: 60px;
       display: flex;
       margin-bottom: 7px;
 
@@ -763,8 +764,17 @@ body,p,a,ul,li{
       .right {
         width: 80%;
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: center;
+
+        .username-and-follow {
+          display: flex;
+        }
+
+        // .follow-btn {
+        //   margin-right: 10px;
+        //   // border: 1px solid red;
+        // }
 
       }
 

@@ -73,12 +73,13 @@ const SearchUser = (props) => {
                   <img src={user.img} alt="" />
                 </div>
                 <div className="right">
-                  <div>
-                    <p>{user.username}</p>
-
-                  </div>
-                  <div>
-                    <span onClick={() => followUser(user)}>follow/unfollow</span><br />
+                  <div className="username-and-follow">
+                    <span>
+                      <p><strong>{user.username}</strong></p>
+                    </span>
+                    <span>
+                      <p onClick={() => followUser(user)}>follow</p><br />
+                    </span>
                   </div>
                 </div>
               </div>
