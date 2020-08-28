@@ -39,7 +39,7 @@ body,p,a,ul,li{
 .top-nav {
   display: flex;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   width: 100%;
   top: 0;
@@ -100,7 +100,7 @@ body,p,a,ul,li{
   
   display: flex;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 999;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -426,7 +426,6 @@ body,p,a,ul,li{
         font-size: 0.9rem;
         box-sizing: border-box;
         display: block;
-        
         padding: 6px 0;
         border: none;
         border-bottom: 1px solid lightgrey;
@@ -508,7 +507,7 @@ body,p,a,ul,li{
   padding: 0 20px 20px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 53px;
+  margin-top: 68px;
 
   .anchor-img {
     position: relative;
@@ -546,7 +545,7 @@ body,p,a,ul,li{
       margin-bottom: -55px;
       margin-left: auto;
       margin-right: auto;
-      z-index: 999;
+      z-index: 997;
 
       div {
         margin-top: 62px;
@@ -718,6 +717,163 @@ body,p,a,ul,li{
   }
 }
 
-Icon {
-  color: red;
+//MODAL
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  min-width: 256px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+  position:fixed;
+  background: white;
+  width:35%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+    .title {
+      text-align: center;
+      font-size: 1.2em;
+    }
+    form {
+      margin-top: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    .input-pass {
+      width: 100%;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      display: block;
+      padding: 6px 0;
+      border: none;
+      border-bottom: 1px solid lightgrey;
+
+      &:focus{
+        border-bottom: 1px solid grey;
+        outline: none
+      }
+    }
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-back-link{
+  text-align: center;
+
+  &:hover  {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+    opacity: 1;
+  }
+}
+
+.custom-btn {
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.btn-pass {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 160px;
+  background: rgb(2, 165, 224);
+  background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
+  border: none;
+}
+.btn-pass:hover {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 160px;
+   background: rgb(0,3,255);
+background: linear-gradient(0deg, rgba(1, 148, 201, 1) 0%, rgba(1, 148, 201, 1) 100%);
+}
+
+.btn-submit {
+  margin: 0 auto;
+  width: 160px;
+  background: rgb(2, 165, 224);
+  background: linear-gradient(0deg, rgba(43, 180, 0, 1) 0%, rgba(64, 187, 25, 1) 100%);
+  border: none;
+}
+
+.btn-submit:hover {
+  margin: 0 auto;
+  width: 160px;
+  background: rgb(0,3,255);
+  background: linear-gradient(0deg, rgba(57, 168, 22, 1) 0%, rgba(51, 151, 19, 1) 100%);
+}
+
+.btn-submit-pass {
+  margin-top: 30px;
+  width: 110px;
+  background: rgb(2, 165, 224);
+  background: linear-gradient(0deg, rgba(43, 180, 0, 1) 0%, rgba(64, 187, 25, 1) 100%);
+  border: none;
+}
+
+.btn-submit-pass:hover {
+  margin-top: 30px;
+  width: 110px;
+  background: rgb(0,3,255);
+background: linear-gradient(0deg, rgba(57, 168, 22, 1) 0%, rgba(51, 151, 19, 1) 100%);
+}
+
+.btn-cancel {
+  margin-top: 30px;
+  width: 110px;
+  background: rgb(2, 165, 224);
+  background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
+  border: none;
+    > * {
+      vertical-align: middle;
+    }
+}
+
+.btn-cancel:hover {
+  margin-top: 30px;
+  width: 110px;
+  background: rgb(0,3,255);
+  background: linear-gradient(0deg, rgba(1, 148, 201, 1) 0%, rgba(1, 148, 201, 1) 100%);
+    > * {
+      vertical-align: middle;
+    }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

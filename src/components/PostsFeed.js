@@ -65,7 +65,6 @@ const PostsFeed = (props) => {
       return (
         <div>
           {postData.posts.map((post) => {
-            console.log(post)
             return (
               <div className="post" key={post._id}>
                 <div className="user-details">
@@ -84,11 +83,6 @@ const PostsFeed = (props) => {
                     <p className="comment-link">{post.comments.length > 0 ? `view comments` : ""}</p>
                     {/* <p className="comment-link">View comments </p> */}
                     <p className="date">{moment.unix(post.timeStamp / 1000).format('LL')}</p>
-                    {/* <p>comments:{post.comments.map(comment => {
-                  return (
-                    <p>{comment}</p>
-                  )
-                  })}</p> */}
                   </div>
                 </div>
               </div>
