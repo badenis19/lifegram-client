@@ -47,7 +47,12 @@ const NewPost = () => {
     accept: ["image/*", "video/*"],
     onUploadDone: file => {
       setImageUrl(file.filesUploaded[0].url) // to save url from upload
-    }
+    },
+    transformations: {
+      crop: true,
+      circle: false,
+      rotate: false
+  }
   };
 
   const handleImageUpload = () => {
