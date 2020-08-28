@@ -43,7 +43,7 @@ const EditProfile = (props) => {
       circle: true,
       rotate: false,
       force: true
-  }
+    }
   };
 
   const handleImageUpload = () => {
@@ -156,7 +156,7 @@ const EditProfile = (props) => {
           {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
-        <button className="custom-btn btn-pass" onClick={() => showModal()}>
+        <button className="custom-btn btn-1" onClick={() => showModal()}>
           Change Password
         </button>
 
