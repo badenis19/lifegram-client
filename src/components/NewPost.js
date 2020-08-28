@@ -91,12 +91,7 @@ const NewPost = () => {
         </div>
 
         <input className="new-post-desc" type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" />
-        {
-          imageUrl ?
-            <img className="display-none" src={imageUrl} alt="" />
-            :
-            ""
-        }
+
         <button >Share</button>
       </form>
     </div>
