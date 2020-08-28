@@ -92,7 +92,8 @@ const NewPost = () => {
 
         <input className="new-post-desc" type="text" placeholder="Write a caption.." onChange={(e) => setDescription(e.target.value)} name="post-description" />
 
-        <button >Share</button>
+        <button className="custom-button btn-blue btn-w-100">Share</button>
+
       </form>
     </div>
   )

@@ -150,13 +150,13 @@ const EditProfile = (props) => {
           {errors.weight && errors.weight.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
-        <div>
+        <div className="mb-20">
           <input className="trial" id="height" type="text" placeholder="Height (e.g. 1m62)" name="height" ref={register({ maxLength: 6 })} />
           {errors.height && errors.height.type === 'required' && (< p > This is required</p>)}
           {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
-        <button className="custom-btn btn-1" onClick={() => showModal()}>
+        <button className="custom-button btn-blue btn-160 m-auto" onClick={() => showModal()}>
           Change Password
         </button>
 
@@ -166,7 +166,7 @@ const EditProfile = (props) => {
         </div> */}
 
         <div>
-          <input className="custom-btn btn-submit" type="submit" />
+          <input className="custom-button btn-submit btn-160 m-auto" type="submit" />
         </div>
       </form>
     </div>

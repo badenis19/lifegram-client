@@ -17,10 +17,10 @@ const Modal = ({ hideModal, show, userID }) => {
                     </div>
                     <div className="buttons-container">
                         <Link to={`/userprofile/${userID}/edit`}>
-                            <button className="custom-btn btn-cancel" onClick={hideModal}><span>Cancel</span></button>
+                            <button className="custom-button btn-blue btn-110" onClick={hideModal}><span>Cancel</span></button>
                         </Link>
                         {/* <button className="custom-btn btn-cancel" onClick={hideModal}><span>Cancel</span></button> */}
-                        <input className="custom-btn btn-submit-pass" type="submit" />
+                        <input className="custom-button btn-submit btn-110" type="submit" />
                     </div>
                 </form>
             </div>
