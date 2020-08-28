@@ -9,7 +9,7 @@ const Modal = ({ hideModal, show }) => {
                 <div>
                     form and inputs
                 </div>
-                <button className="modal-back-link" onClick={hideModal}>back to products</button>
+                <button className="custom-btn btn-pass" onClick={hideModal}>back to products</button>
             </div>
         </div>
     );

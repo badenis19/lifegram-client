@@ -47,10 +47,12 @@ const EditProfile = (props) => {
 
   let showModal = () => {
     setShow(true);
+    document.body.style.overflow = 'hidden';
   };
 
   let hideModal = () => {
     setShow(false);
+    document.body.style.overflow = "unset";
   };
 
   const onSubmit = async ({ username, email, password, age, description, height, weight }) => {
@@ -144,7 +146,7 @@ const EditProfile = (props) => {
           {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
-        <button onClick={() => showModal()}>
+        <button className="custom-btn btn-pass" onClick={() => showModal()}>
           Change Password
         </button>
 
@@ -154,7 +156,7 @@ const EditProfile = (props) => {
         </div> */}
 
         <div>
-          <input type="submit" />
+          <input className="custom-btn btn-submit" type="submit" />
         </div>
       </form>
     </div>
