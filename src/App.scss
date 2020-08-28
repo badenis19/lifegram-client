@@ -718,6 +718,63 @@ body,p,a,ul,li{
   }
 }
 
-Icon {
-  color: red;
+// SEARCH USER
+
+.search-bar-and-users {
+  width: 100%;
+
+  .top {
+    width: 95%;
+    // border: solid;
+    margin: 50px auto 20px auto;
+
+    #search-user-input {
+      width: 80%;
+    }
+    
+    #cancel-btn {
+      width: 17%;
+      border: none;
+    }
+  }
+
+  .bottom {
+
+    .user-card {
+      // border: 1px solid lightgray;
+      max-width: 100%;
+      display: flex;
+      margin-bottom: 7px;
+
+      .left {
+        width: 20%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+
+        img {
+          border: 1px solid lightgray;
+          border-radius: 50%;
+          width: 55px;
+          height: 55px;
+        }
+      }
+
+      .right {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+      }
+
+
+
+    }
+  }
+
+
+
+
 }
+
