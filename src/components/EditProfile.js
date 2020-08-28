@@ -45,6 +45,7 @@ const EditProfile = (props) => {
     clientFS.picker(options).open();
   };
 
+
   let showModal = () => {
     setShow(true);
     document.body.style.overflow = 'hidden';
@@ -74,6 +75,7 @@ const EditProfile = (props) => {
   }
 
   let data = props.data;
+  const userID = data.myProfile._id;
 
   useEffect(() => {
 
@@ -93,13 +95,15 @@ const EditProfile = (props) => {
 
     setImageUrl(userDetailsToEdit.img);
 
+
   }, [])
 
   return (
     <div>
       <Modal
         show={show}
-        hideModal={hideModal} />
+        hideModal={hideModal}
+        userID={userID} />
       <div className="edit-user-form-top">
         <img className="profil-avatar" src={imageUrl} alt="" />
       </div>

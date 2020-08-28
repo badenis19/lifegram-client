@@ -1,10 +1,7 @@
 import React from 'react';
-import { Icon, InlineIcon } from '@iconify/react';
-import outlineArrowBackIos from '@iconify/icons-ic/outline-arrow-back-ios';
+import { Link } from 'react-router-dom';
 
-
-
-const Modal = ({ hideModal, show }) => {
+const Modal = ({ hideModal, show, userID }) => {
 
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     return (
@@ -19,13 +16,16 @@ const Modal = ({ hideModal, show }) => {
                         <input className="input-pass retype" type="password" placeholder="Re-type password" name="retype-password" />
                     </div>
                     <div className="buttons-container">
-                        <button className="custom-btn btn-cancel" onClick={hideModal}><span>Cancel</span></button>
+                        <Link to={`/userprofile/${userID}/edit`}>
+                            <button className="custom-btn btn-cancel" onClick={hideModal}><span>Cancel</span></button>
+                        </Link>
+                        {/* <button className="custom-btn btn-cancel" onClick={hideModal}><span>Cancel</span></button> */}
                         <input className="custom-btn btn-submit-pass" type="submit" />
                     </div>
                 </form>
             </div>
-        </div>
+        </div >
     );
 };
 
-export default Modal; 
+export default Modal;
