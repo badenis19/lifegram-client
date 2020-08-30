@@ -69,19 +69,20 @@ const SearchUser = (props) => {
           userList.map(user => {
             return (
               <div className="user-card" key={user._id}>
+
                 <div className="left">
                   <img src={user.img} alt="" />
                 </div>
+
                 <div className="right">
-                  <div className="username-and-follow">
-                    <span>
-                      <p><strong>{user.username}</strong></p>
-                    </span>
-                    <span>
-                      <p onClick={() => followUser(user)}>follow</p><br />
-                    </span>
+                  <div>
+                    <span className="username">{user.username}</span>
+                  </div>
+                  <div>
+                    <span className="follow-btn" onClick={() => followUser(user)}>follow</span><br />
                   </div>
                 </div>
+                
               </div>
             )
           })
