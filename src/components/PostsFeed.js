@@ -59,13 +59,28 @@ const PostsFeed = (props) => {
     });
   }
 
+  const getConnectedUserFollowingArray = () => {
+    if (profileData.loading) {
+      return (<p>Loading...</p>)
+    } else if (!profileData.loading) {
+      return profileData.myProfile.following
+    }
+  }
+
+  // following array from currently connected user
+  const followingArray = getConnectedUserFollowingArray();
+
+  console.log("sign", followingArray)
+
+
   const displayAllPosts = () => {
+
     if (postData.loading) {
       return (<p>Loading...</p>)
     } else if (postData.posts) {
       return (
         <div>
-          {postData.posts.map((post) => {
+          {postData.posts.filter(post => followingArray.includes(post.user._id)).map((post) => {
             return (
               <div className="post" key={post._id}>
                 <div className="user-details">
@@ -107,7 +122,6 @@ const PostsFeed = (props) => {
   )
 }
 
-// export default graphql(getAllPostsQuery)(PostsFeed);
 export default compose(
   graphql(getAllPostsQuery, { name: "getAllPostsQuery" }),
   graphql(getMyProfileQuery, { name: "getMyProfileQuery" })
