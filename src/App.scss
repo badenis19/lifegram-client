@@ -496,26 +496,6 @@ body,p,a,ul,li{
     border: 1px solid rgba(0,0,0, 0.4);
     box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
   }
-
-  // button {
-  //   font-family: 'Montserrat', sans-serif;
-  //   height: 40px;
-  //   color: #fff;
-  //   border-radius: 5px;
-  //   padding: 10px 25px;
-  //   font-weight: 500;
-  //   cursor: pointer;
-  //   transition: all 0.3s ease;
-  //   display: inline-block;
-  //    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-  //    7px 7px 20px 0px rgba(0,0,0,.1),
-  //    4px 4px 5px 0px rgba(0,0,0,.1);
-  //   outline: none;
-  //   margin: 0 auto;
-  //   width: 100%;
-  //   background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
-  //   border: none;
-  // }
 }
 
 .button-grid-container {
@@ -732,6 +712,83 @@ body,p,a,ul,li{
   }
 }
 
+// SEARCH USER
+
+.search-bar-and-users {
+  width: 100%;
+
+  .top {
+    width: 95%;
+    margin: 50px auto 20px auto;
+
+    input {
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 5px;
+      width: 80%;
+      box-sizing: border-box;
+      padding: 5px 5px;
+      margin: 0;
+      border-width: 1px;
+      border: 1px solid rgba(0,0,0, 0.4);
+      box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+    }
+    
+    #cancel-btn {
+      border-radius: 5px;
+      width: 20%;
+      padding: 8px 0;
+      border: none;
+    }
+  }
+
+  .bottom {
+
+    .user-card {
+      max-width: 100%;
+      height: 60px;
+      display: flex;
+      margin-bottom: 7px;
+
+      .left {
+        width: 20%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+
+        img {
+          border: 1px solid lightgray;
+          border-radius: 50%;
+          width: 55px;
+          height: 55px;
+        }
+      }
+
+      .right {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .username-and-follow {
+          display: flex;
+        }
+
+        .username {
+          font-weight: 500;
+        }
+
+        .follow-btn {
+          margin-right: 20px;
+          // border: 1px solid red;
+        }
+
+      }
+
+    }
+  }
+
+}
+
 //MODAL
 
 .modal {
@@ -757,6 +814,7 @@ body,p,a,ul,li{
   left:50%;
   transform: translate(-50%,-50%);
   padding: 20px;
+
     .title {
       text-align: center;
       font-size: 1.2em;
@@ -832,6 +890,22 @@ body,p,a,ul,li{
   background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
 }
 
+.custom-button-follow {
+  color: #fff;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+  background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
+}
+
 .btn-blue {
   background: linear-gradient(0deg, rgba(2, 165, 224, 1) 0%, rgb(3, 149, 202) 100%);
   
@@ -863,5 +937,6 @@ body,p,a,ul,li{
 .m-auto {
   margin: 0 auto;
 }
+
 
 

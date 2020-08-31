@@ -55,23 +55,40 @@ const SearchUser = (props) => {
   }
 
   return (
-    <div>
-      <h1>Search User</h1>
-      <input id="search-user-input" onKeyUp={() => searchUsers()} onChange={(e) => setSearchText(e.target.value.toLowerCase())} type="text" placeholder="Search" />
-      <button onClick={() => handleCancel()}>cancel</button>
+    <div className="search-bar-and-users">
+      {/* <h1>Search User</h1> */}
 
-      <h3>List of user below:</h3>
-      {searchText.length > 0 &&
-        userList.map(user => {
-          return (
-            <div key={user._id}>
-              <p>{user.username}</p>
-              <img src={user.img} alt="" />
-              <span onClick={() => followUser(user)}>follow/unfollow</span><br />
-            </div>
-          )
-        })
-      }
+      <div className="top">
+        <input id="search-user-input" onKeyUp={() => searchUsers()} onChange={(e) => setSearchText(e.target.value.toLowerCase())} type="text" placeholder="Search" />
+        <button id="cancel-btn" onClick={() => handleCancel()}>cancel</button>
+      </div>
+
+
+      <div className="bottom">
+        {searchText.length > 0 &&
+          userList.map(user => {
+            return (
+              <div className="user-card" key={user._id}>
+
+                <div className="left">
+                  <img src={user.img} alt="" />
+                </div>
+
+                <div className="right">
+                  <div>
+                    <span className="username">{user.username.toLowerCase()}</span>
+                  </div>
+                  <div>
+                    <span className="custom-button-follow btn-blue " onClick={() => followUser(user)}>follow</span><br />
+                  </div>
+                </div>
+                
+              </div>
+            )
+          })
+        }
+      </div>
+
     </div>
   )
 };
