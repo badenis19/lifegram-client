@@ -80,7 +80,7 @@ const PostsFeed = (props) => {
     } else if (postData.posts) {
       return (
         <div>
-          {postData.posts.filter(post => followingArray.includes(post.user._id)).map((post) => {
+          {postData.posts.filter(post => followingArray.includes(post.user._id)).sort((a, b) => b.timeStamp - a.timeStamp).map((post) => {
             return (
               <div className="post" key={post._id}>
                 <div className="user-details">
