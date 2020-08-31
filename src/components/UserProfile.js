@@ -135,7 +135,6 @@ const UserProfile = (props) => {
             </div>
           </div>
 
-
           <div className="description">
             <p><strong>{profileData.myProfile.username}</strong> </p>
             <p>{profileData.myProfile.description}</p>
@@ -193,7 +192,6 @@ const UserProfile = (props) => {
   return (
     <div>
       {displayUserDetails()}
-      {/* <EmptyMessage message="No Posts Yet" entity="user-profile" /> */}
     </div>
   )
 }
