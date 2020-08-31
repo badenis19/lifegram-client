@@ -79,7 +79,7 @@ const SearchUser = (props) => {
                     <span className="username">{user.username.toLowerCase()}</span>
                   </div>
                   <div>
-                    <span className="follow-btn" onClick={() => followUser(user)}>follow</span><br />
+                    <span className="custom-button-follow btn-blue " onClick={() => followUser(user)}>follow</span><br />
                   </div>
                 </div>
                 
