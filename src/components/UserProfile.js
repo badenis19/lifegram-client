@@ -39,7 +39,6 @@ const UserProfile = (props) => {
 
   const deletePost = async (post) => {
     console.log("deleted");
-    // console.log(post);
 
     await client.mutate({
       variables: {
@@ -52,8 +51,6 @@ const UserProfile = (props) => {
 
   let profileData = props.getMyProfileQuery;
 
-  // console.log("<<", props)
-
   const getConnectedUserID = () => {
     if (profileData.loading) {
       return (<p>Loading...</p>)
@@ -65,7 +62,7 @@ const UserProfile = (props) => {
   let userID = getConnectedUserID();
 
   const likePost = async (post) => {
-    console.log("Liked post", post)
+    console.log("Liked post")
 
     await client.mutate({
       variables: {

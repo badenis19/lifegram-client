@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { SignedInContext } from "../App";
 import { useForm } from "react-hook-form";
 import client from '../apollo';
+import Modal from "./Modal";
 
 /* Queries */
 import { getMyProfileQuery } from '../queries/queries';
@@ -18,10 +19,12 @@ const clientFS = require('filestack-js').init(process.env.REACT_APP_FILESTACK_AP
 
 const EditProfile = (props) => {
 
+  let [show, setShow] = useState(false);
   let history = useHistory();
   const { register, handleSubmit, errors, reset } = useForm();
   let { updateSignIn } = useContext(SignedInContext);
   let [imageUrl, setImageUrl] = useState("");
+
 
   if (!Cookies.get('token')) {
     history.push('/userprofile');
@@ -40,12 +43,23 @@ const EditProfile = (props) => {
       circle: true,
       rotate: false,
       force: true
-  }
+    }
   };
 
   const handleImageUpload = () => {
     // to open the widget for image upload
     clientFS.picker(options).open();
+  };
+
+
+  let showModal = () => {
+    setShow(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  let hideModal = () => {
+    setShow(false);
+    document.body.style.overflow = "unset";
   };
 
   const onSubmit = async ({ username, email, password, age, description, height, weight }) => {
@@ -67,6 +81,7 @@ const EditProfile = (props) => {
   }
 
   let data = props.data;
+  const userID = data.myProfile._id;
 
   useEffect(() => {
 
@@ -86,10 +101,15 @@ const EditProfile = (props) => {
 
     setImageUrl(userDetailsToEdit.img);
 
+
   }, [])
 
   return (
     <div>
+      <Modal
+        show={show}
+        hideModal={hideModal}
+        userID={userID} />
       <div className="edit-user-form-top">
         <img className="profil-avatar" src={imageUrl} alt="" />
       </div>
@@ -130,11 +150,15 @@ const EditProfile = (props) => {
           {errors.weight && errors.weight.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
 
-        <div>
+        <div className="mb-20">
           <input className="trial" id="height" type="text" placeholder="Height (e.g. 1m62)" name="height" ref={register({ maxLength: 6 })} />
           {errors.height && errors.height.type === 'required' && (< p > This is required</p>)}
           {errors.height && errors.height.type === 'maxLength' && (< p > This has a maximum length of 6</p>)}
         </div>
+
+        <button className="custom-button btn-blue btn-160 m-auto" onClick={() => showModal()}>
+          Change Password
+        </button>
 
         {/* <div>
           <input type="password" placeholder="Password" name="password" ref={register({ required: true })} />
@@ -142,7 +166,7 @@ const EditProfile = (props) => {
         </div> */}
 
         <div>
-          <input type="submit" />
+          <input className="custom-button btn-submit btn-160 m-auto" type="submit" />
         </div>
       </form>
     </div>
