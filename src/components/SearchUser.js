@@ -76,7 +76,7 @@ const SearchUser = (props) => {
 
                 <div className="right">
                   <div>
-                    <span className="username">{user.username}</span>
+                    <span className="username">{user.username.toLowerCase()}</span>
                   </div>
                   <div>
                     <span className="follow-btn" onClick={() => followUser(user)}>follow</span><br />
