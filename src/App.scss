@@ -197,21 +197,21 @@ body,p,a,ul,li{
     display: flex;
     justify-content: space-between;
 
-    .icon-left {
-      margin-left: 10px;
-      font-size: 25px;
-      display: flex;
-      margin-bottom: 7px;
-
-      .dumbell {
-        padding-right: 10px;
-      }
-    }
-
     .icon-right {
       margin-right: 10px;
     }
   }
+
+  .icon-left {
+    margin-left: 10px;
+    font-size: 25px;
+    display: flex;
+    margin-bottom: 7px;
+
+    .dumbell {
+      padding-right: 10px;
+    }
+  } 
 
   .post-details {
 
