@@ -141,8 +141,8 @@ const UserProfile = (props) => {
             <p>{profileData.myProfile.description}</p>
           </div>
 
-          <div>
-            {profileData.myProfile.posts.map(post => {
+          {profileData.myProfile.posts > 0 ?
+            profileData.myProfile.posts.map(post => {
               return (
 
                 <div className="post" key={post._id}>
@@ -181,8 +181,10 @@ const UserProfile = (props) => {
                   </div>
                 </div>
               )
-            })}
-          </div>
+            })
+            :
+            <EmptyMessage message="No posts added" entity="user-profile" />
+          }
         </div>
       )
     }
@@ -191,6 +193,7 @@ const UserProfile = (props) => {
   return (
     <div>
       {displayUserDetails()}
+      {/* <EmptyMessage message="No Posts Yet" entity="user-profile" /> */}
     </div>
   )
 }

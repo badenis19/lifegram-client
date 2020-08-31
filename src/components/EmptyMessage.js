@@ -7,7 +7,7 @@ const EmptyMessage = ({ message, entity }) => {
     if (entity === "user-profile") {
         return (
             <div className="">
-                <p>{message} <Link to={`/newpost`}>Add new post.</Link></p>
+                <p>{message} <Link to={`/newpost`}>Upload first post</Link></p>
             </div>
         )
     } else if (entity === "post-feed") {
