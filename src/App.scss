@@ -27,6 +27,7 @@ body,p,a,ul,li{
 
 .main {
   margin-bottom: 70px;
+  height: 80vh;
 }
 
 // NAV //
@@ -957,10 +958,16 @@ body,p,a,ul,li{
     font-size: 1.5em;
     margin: 5px;
   }
+  .custom-button-follow{
+    margin:10px 0 0;
+  }
   a{
     cursor: pointer;
     font-size: 0.7em;
-    color: var(--powerBlue);
+    color: white;
+    &:hover {
+      color: rgb(0, 132, 180);
+      text-decoration: underline;
+    }
   }
 }
-

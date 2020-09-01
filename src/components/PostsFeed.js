@@ -17,6 +17,7 @@ import { getMyProfileQuery } from '../queries/queries';
 
 /* Mutations */
 import { likePostMutation } from '../mutations/mutations';
+import EmptyMessage from './EmptyMessage';
 
 const PostsFeed = (props) => {
 
@@ -71,13 +72,13 @@ const PostsFeed = (props) => {
   const followingArray = getConnectedUserFollowingArray();
 
   console.log("sign", followingArray)
-
+  console.log("postData", postData.posts)
 
   const displayAllPosts = () => {
 
     if (postData.loading) {
       return (<p>Loading...</p>)
-    } else if (postData.posts) {
+    } else if (followingArray.length > 0) {
       return (
         <div>
           {postData.posts.filter(post => followingArray.includes(post.user._id)).sort((a, b) => b.timeStamp - a.timeStamp).map((post) => {
@@ -111,7 +112,7 @@ const PostsFeed = (props) => {
         </div>
       )
     } else {
-      return (<p>There are no posts...</p>)
+      return <EmptyMessage message="No posts yet." entity="post-feed" />
     }
   }
 

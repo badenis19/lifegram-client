@@ -12,13 +12,15 @@ const EmptyMessage = ({ message, entity }) => {
             <div className="message-container">
                 <Icon icon={armFlex} />
                 <p>{message}</p>
-                <p><Link to={`/newpost`}>Upload first post</Link></p>
+                <Link className="custom-button-follow" to={`/newpost`}>Upload first post</Link>
             </div>
         )
     } else if (entity === "post-feed") {
         return (
-            <div className="">
+            <div className="message-container feed">
+                <Icon icon={armFlex} />
                 <p>{message}</p>
+                <Link className="custom-button-follow" to={`/searchuser`}>Find more content</Link>
             </div>
         )
     } else if (entity === "search") {
