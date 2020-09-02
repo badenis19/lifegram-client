@@ -33,6 +33,7 @@ const PostsFeed = (props) => {
 
   // useEffect(() => {
   //   window.scrollTo(0, 0);
+
   // });
 
   let postData = props.getAllPostsQuery;
@@ -70,9 +71,6 @@ const PostsFeed = (props) => {
 
   // following array from currently connected user
   const followingArray = getConnectedUserFollowingArray();
-
-  console.log("sign", followingArray)
-  console.log("postData", postData.posts)
 
   const displayAllPosts = () => {
 
