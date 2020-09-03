@@ -715,29 +715,52 @@ body,p,a,ul,li{
 // SEARCH USER
 
 .search-bar-and-users {
+  // display: block;
+  // justify-content: center;
   width: 100%;
+  height: calc(100vh - 86px); //86px is top and bottom nav
 
-  .top {
-    width: 95%;
-    margin: 50px auto 20px auto;
+  .top-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+  }
+
+  .search-user-input {
+    border: 1px solid rgba(0,0,0, 0.4);
+    box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+    border-width: 1px;
+    border-radius: 5px;
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+    // margin: 50px auto 20px auto;
 
     input {
-      font-family: 'Montserrat', sans-serif;
-      border-radius: 5px;
-      width: 80%;
-      box-sizing: border-box;
-      padding: 5px 5px;
-      margin: 0;
-      border-width: 1px;
-      border: 1px solid rgba(0,0,0, 0.4);
-      box-shadow: 0 0 4px 0px rgba(0,0,0, 0.4);
+      border: none;
+      width: 75%;
+      &:focus {
+        outline: 0;
+        outline-color: transparent;
+        outline-style: none;
+      }
+    }
+
+    button {
+      width: 20%;
     }
     
     #cancel-btn {
       border-radius: 5px;
       width: 20%;
-      padding: 8px 0;
+      padding: 4px 0;
       border: none;
+      :focus {
+        outline: 0;
+        outline-color: transparent;
+        outline-style: none;
+      }
     }
   }
 

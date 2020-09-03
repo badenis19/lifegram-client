@@ -72,12 +72,12 @@ const SearchUser = (props) => {
 
   return (
     <div className="search-bar-and-users">
-
-      <div className="top">
-        <input id="search-user-input" onKeyUp={() => searchUsers()} onChange={(e) => setSearchText(e.target.value.toLowerCase())} type="text" placeholder="Search" />
-        <button id="cancel-btn" onClick={() => handleCancel()}>cancel</button>
+      <div className="top-container">
+        <div className="search-user-input">
+          <input id="" onKeyUp={() => searchUsers()} onChange={(e) => setSearchText(e.target.value.toLowerCase())} type="text" placeholder="Search" />
+          <button id="cancel-btn" onClick={() => handleCancel()}>cancel</button>
+        </div>
       </div>
-
       <div className="bottom">
         {searchText.length > 0 &&
           userList.map(user => {
