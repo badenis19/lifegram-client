@@ -6,11 +6,15 @@ import { flowRight as compose } from 'lodash';
 import { SignedInContext } from "../App";
 import client from '../apollo';
 
+/*  import explore content */
+import Explore from './Explore';
+
 /* Queries */
 import { allUsersQuery, getMyProfileQuery } from "../queries/queries";
 
 /* Mutations */
 import { followUserMutation } from "../mutations/mutations";
+import ExploreContent from './Explore';
 
 const SearchUser = (props) => {
 
@@ -77,6 +81,8 @@ const SearchUser = (props) => {
         <input id="search-user-input" onKeyUp={() => searchUsers()} onChange={(e) => setSearchText(e.target.value.toLowerCase())} type="text" placeholder="Search" />
         <button id="cancel-btn" onClick={() => handleCancel()}>cancel</button>
       </div>
+
+      <Explore />
 
       <div className="bottom">
         {searchText.length > 0 &&
