@@ -74,6 +74,37 @@ const SearchUser = (props) => {
     });
   }
 
+  const exploreContent = searchText.length === 0
+    ?
+    <Explore />
+    :
+    <div className="bottom">
+      {searchText.length > 0 &&
+        userList.map(user => {
+          return (
+            <div className="user-card" key={user._id}>
+
+              <div className="left">
+                <img src={user.img} alt="" />
+              </div>
+
+              <div className="right">
+                <div>
+                  <span className="username">{user.username.toLowerCase()}</span>
+                </div>
+                <div>
+                  <span className="custom-button-follow btn-blue " onClick={() => followUser(user)}>{followingArray.includes(user._id) ? "unfollow" : "follow"}</span><br />
+                </div>
+              </div>
+
+            </div>
+          )
+
+        })
+      }
+    </div>
+
+
   return (
     <div className="search-bar-and-users">
 
@@ -81,34 +112,7 @@ const SearchUser = (props) => {
         <input id="search-user-input" onKeyUp={() => searchUsers()} onChange={(e) => setSearchText(e.target.value.toLowerCase())} type="text" placeholder="Search" />
         <button id="cancel-btn" onClick={() => handleCancel()}>cancel</button>
       </div>
-
-      <Explore />
-
-      <div className="bottom">
-        {searchText.length > 0 &&
-          userList.map(user => {
-            return (
-              <div className="user-card" key={user._id}>
-
-                <div className="left">
-                  <img src={user.img} alt="" />
-                </div>
-
-                <div className="right">
-                  <div>
-                    <span className="username">{user.username.toLowerCase()}</span>
-                  </div>
-                  <div>
-                    <span className="custom-button-follow btn-blue " onClick={() => followUser(user)}>{followingArray.includes(user._id) ? "unfollow" : "follow"}</span><br />
-                  </div>
-                </div>
-
-              </div>
-            )
-          })
-        }
-      </div>
-
+      {exploreContent}
     </div>
   )
 };
