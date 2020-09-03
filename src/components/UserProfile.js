@@ -13,6 +13,9 @@ import crossMark from '@iconify/icons-emojione-v1/cross-mark';
 import gymIcon from '@iconify/icons-map/gym';
 import commentBubble from '@iconify/icons-cil/comment-bubble';
 
+/* Component*/
+import EmptyMessage from './EmptyMessage';
+
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 import { getMyProfileQuery } from '../queries/queries';
@@ -79,8 +82,9 @@ const UserProfile = (props) => {
     } else if (!profileData.myProfile) {
       return (<p>No users have been loaded. Contact admin.</p>)
     } else {
+      console.log("query", profileData.myProfile.following);
       return (
-        <div className="user-info-and-stats">
+        < div className="user-info-and-stats" >
           <div className="button-grid-container">
             <div className="top-grid anchor-img">
               <div className="grid-item item1">
@@ -132,53 +136,56 @@ const UserProfile = (props) => {
             </div>
           </div>
 
-
           <div className="description">
             <p><strong>{profileData.myProfile.username}</strong> </p>
             <p>{profileData.myProfile.description}</p>
           </div>
 
-          {profileData.myProfile.posts.map(post => {
-            return (
+          {profileData.myProfile.posts.length > 0 ?
+            profileData.myProfile.posts.map(post => {
+              return (
 
-              <div className="post" key={post._id}>
+                <div className="post" key={post._id}>
 
-                <div className="user-details">
-                  <img className="profil-avatar" src={profileData.myProfile.img} alt="" />
-                  <p>{profileData.myProfile.username}</p>
-                </div>
-
-                <img className="post-img" src={post.img} alt="post_image" />
-                <div className="under-img">
-                  <div className="post-icons-in-profile">
-
-                    <div className="icon-left">
-                      <div className={post.likes.includes(userID) ? "powerBlue dumbell" : "dumbell"} onClick={() => likePost(post)}>
-
-                        <Icon icon={gymIcon} />
-                      </div>
-                      <div>
-                        <Icon icon={commentBubble} />
-                      </div>
-                    </div>
-
-                    <div className="icon-right">
-                      <p onClick={() => deletePost(post)}><Icon icon={crossMark} /></p>
-                    </div>
-
+                  <div className="user-details">
+                    <img className="profil-avatar" src={profileData.myProfile.img} alt="" />
+                    <p>{profileData.myProfile.username}</p>
                   </div>
-                  <div className="post-details">
-                    <p>{post.likes.length > 0 ? `${post.likes.length} like(s)` : "No likes yet"}</p>
-                    <p><strong>{profileData.myProfile.username}</strong> {post.description}</p>
-                    <p className="comment-link">{post.comments.length > 0 ? `view comments` : ""}</p>
-                    {/* <p className="comment-link">View comments </p> */}
-                    <p className="date">{moment.unix(post.timeStamp / 1000).format('LL')}</p>
+
+                  <img className="post-img" src={post.img} alt="post_image" />
+                  <div className="under-img">
+                    <div className="post-icons-in-profile">
+
+                      <div className="icon-left">
+                        <div className={post.likes.includes(userID) ? "powerBlue dumbell" : "dumbell"} onClick={() => likePost(post)}>
+
+                          <Icon icon={gymIcon} />
+                        </div>
+                        <div>
+                          <Icon icon={commentBubble} />
+                        </div>
+                      </div>
+
+                      <div className="icon-right">
+                        <p onClick={() => deletePost(post)}><Icon icon={crossMark} /></p>
+                      </div>
+
+                    </div>
+                    <div className="post-details">
+                      <p>{post.likes.length > 0 ? `${post.likes.length} like(s)` : "No likes yet"}</p>
+                      <p><strong>{profileData.myProfile.username}</strong> {post.description}</p>
+                      <p className="comment-link">{post.comments.length > 0 ? `view comments` : ""}</p>
+                      {/* <p className="comment-link">View comments </p> */}
+                      <p className="date">{moment.unix(post.timeStamp / 1000).format('LL')}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
+              )
+            })
+            :
+            <EmptyMessage message="No posts added" entity="user-profile" />
+          }
+        </div >
       )
     }
   }

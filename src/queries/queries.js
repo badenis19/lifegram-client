@@ -14,7 +14,8 @@ const getAllPostsQuery = gql`
     likes
     comments
     timeStamp
-     user{
+      user{
+      _id
       username
       img
     }
