@@ -738,6 +738,7 @@ body,p,a,ul,li{
     // margin: 50px auto 20px auto;
 
     input {
+      padding-left: 5px;
       border: none;
       width: 75%;
       &:focus {
@@ -792,17 +793,17 @@ body,p,a,ul,li{
         justify-content: space-between;
         align-items: center;
 
+        .btn-blue{
+          text-align: center;
+          min-width: 52px;
+          font-size: 0.75em;
+        }
         .username-and-follow {
           display: flex;
         }
 
         .username {
           font-weight: 500;
-        }
-
-        .follow-btn {
-          margin-right: 20px;
-          // border: 1px solid red;
         }
 
       }
