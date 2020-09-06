@@ -84,7 +84,7 @@ const PostsFeed = (props) => {
               <div className="post" key={post._id}>
                 <div className="user-details">
                   <img className="profil-avatar" src={post.user.img} alt="" />
-                  <p>{post.user.username}</p>
+                  <div><p>{post.user.username}</p></div>
                 </div>
                 <img className="post-img" src={post.img} alt="post_image" />
                 <div className="under-img">
