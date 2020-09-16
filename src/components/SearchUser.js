@@ -47,6 +47,7 @@ const SearchUser = (props) => {
   const handleCancel = () => {
     searchInput.value = ""
     setUserList([]);
+    setSearchText("");
   };
 
   const getConnectedUserFollowingArray = () => {
