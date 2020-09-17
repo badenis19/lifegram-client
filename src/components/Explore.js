@@ -16,7 +16,7 @@ const ExploreContent = (props) => {
             return (
 
                 <div className="row">
-                    <p>Find other fitgrammer's journey's</p>
+                    <span className="discover-title">Discover fitgrammer's</span>
                     <div className=" grid-container explore-container">
                         {postData.posts.map((post) => {
                             return (
