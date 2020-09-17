@@ -950,6 +950,7 @@ body,p,a,ul,li{
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
+  grid-gap: 1px;
 }
 
 .explore-container {
@@ -960,7 +961,6 @@ body,p,a,ul,li{
 
 .post-card {
   box-sizing: border-box;
-  border: 1px solid white;
   overflow: hidden;
   align-items: center;
 }

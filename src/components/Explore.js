@@ -14,7 +14,9 @@ const ExploreContent = (props) => {
             return (<p>Loading...</p>)
         } else if (postData.posts) {
             return (
+
                 <div className="row">
+                    <p>Find other fitgrammer's journey's</p>
                     <div className=" grid-container explore-container">
                         {postData.posts.map((post) => {
                             return (
