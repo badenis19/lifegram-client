@@ -17,6 +17,7 @@ import { getMyProfileQuery } from '../queries/queries';
 
 /* Mutations */
 import { likePostMutation } from '../mutations/mutations';
+import EmptyMessage from './EmptyMessage';
 
 const PostsFeed = (props) => {
 
@@ -32,6 +33,7 @@ const PostsFeed = (props) => {
 
   // useEffect(() => {
   //   window.scrollTo(0, 0);
+
   // });
 
   let postData = props.getAllPostsQuery;
@@ -59,18 +61,30 @@ const PostsFeed = (props) => {
     });
   }
 
+  const getConnectedUserFollowingArray = () => {
+    if (profileData.loading) {
+      return (<p>Loading...</p>)
+    } else if (!profileData.loading) {
+      return profileData.myProfile.following
+    }
+  }
+
+  // following array from currently connected user
+  const followingArray = getConnectedUserFollowingArray();
+
   const displayAllPosts = () => {
+
     if (postData.loading) {
       return (<p>Loading...</p>)
-    } else if (postData.posts) {
+    } else if (followingArray.length > 0) {
       return (
         <div>
-          {postData.posts.map((post) => {
+          {postData.posts.filter(post => followingArray.includes(post.user._id)).sort((a, b) => b.timeStamp - a.timeStamp).map((post) => {
             return (
               <div className="post" key={post._id}>
                 <div className="user-details">
                   <img className="profil-avatar" src={post.user.img} alt="" />
-                  <p>{post.user.username}</p>
+                  <div><p>{post.user.username}</p></div>
                 </div>
                 <img className="post-img" src={post.img} alt="post_image" />
                 <div className="under-img">
@@ -96,7 +110,7 @@ const PostsFeed = (props) => {
         </div>
       )
     } else {
-      return (<p>There are no posts...</p>)
+      return <EmptyMessage message="No posts yet." entity="post-feed" />
     }
   }
 
@@ -107,7 +121,6 @@ const PostsFeed = (props) => {
   )
 }
 
-// export default graphql(getAllPostsQuery)(PostsFeed);
 export default compose(
   graphql(getAllPostsQuery, { name: "getAllPostsQuery" }),
   graphql(getMyProfileQuery, { name: "getMyProfileQuery" })
