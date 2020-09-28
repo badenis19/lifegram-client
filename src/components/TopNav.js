@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { useHistory } from 'react-router-dom';
-import { SignedInContext } from "../App"
+
 import { Icon } from '@iconify/react';
 import bxLogOut from '@iconify/icons-bx/bx-log-out';
+import { SignedInContext } from '../App';
 
 const TopNav = () => {
+  const history = useHistory();
 
-  let history = useHistory();
-
-  let { isSignedIn, updateSignIn } = useContext(SignedInContext);
+  const { isSignedIn, updateSignIn } = useContext(SignedInContext);
 
   const handleSignOut = () => {
-    // remove token cookie 
+    // remove token cookie
     Cookies.remove('token');
     // updating the context isSignedIn to false
     updateSignIn(false);
@@ -24,32 +23,31 @@ const TopNav = () => {
   return (
     <nav className="top-nav">
       <ul>
-        {!isSignedIn ?
-          <Link to="/signup"><li className="signage">Sign up</li></Link>
-          :
-          <li className="hidden"></li>
-        }
+        {!isSignedIn
+          ? <Link to="/signup"><li className="signage">Sign up</li></Link>
+          : <li className="hidden" />}
 
-        {window.location.href.includes("sign") ?
-          <Link to="/"><li className="fitgram">FITGRAM</li></Link>
-          :
-          <Link to="/"><li className="fitgram"></li></Link>
-        }
+        {window.location.href.includes('sign')
+          ? <Link to="/"><li className="fitgram">FITGRAM</li></Link>
+          : <Link to="/"><li className="fitgram" /></Link>}
 
-        {!isSignedIn &&
+        {!isSignedIn
+          && (
           <Link to="/signIn">
             <li className="signage">Sign in</li>
-          </Link>}
+          </Link>
+          )}
 
-        {isSignedIn &&
+        {isSignedIn
+          && (
           <li className="sign-out" onClick={() => handleSignOut()}>
             <Icon icon={bxLogOut} />
             <span>Signout</span>
           </li>
-        }
+          )}
       </ul>
     </nav>
-  )
+  );
 };
 
 export default TopNav;

@@ -12,12 +12,12 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers, // add all the headers already present and adds the token
-      authorization: token
-    }
-  }
+      authorization: token,
+    },
+  };
 });
 
 export default new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });

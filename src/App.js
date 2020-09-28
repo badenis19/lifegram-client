@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ApolloProvider } from 'react-apollo'; // binds apollo to React
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 import client from './apollo';
 
 /* Styles */
@@ -15,7 +15,6 @@ import Routes from './components/Routes';
 export const SignedInContext = React.createContext();
 
 const App = () => {
-
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   // method to update the isSignedIn variable (true or false)
@@ -26,7 +25,7 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        
+
         <div className="App">
           {/* All the components nested inside of the Provider will have access to the context values */}
           <SignedInContext.Provider value={{ isSignedIn, updateSignIn }}>
@@ -34,15 +33,13 @@ const App = () => {
             <Routes />
 
             {isSignedIn
-              &&
-              <BottomNav />
-            }
+              && <BottomNav />}
           </SignedInContext.Provider>
 
         </div>
       </Router>
     </ApolloProvider>
   );
-}
+};
 
 export default App;

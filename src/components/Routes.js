@@ -1,87 +1,84 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import React from 'react';
 
 /* Component */
 import PostsFeed from './PostsFeed';
 import NewPost from './NewPost';
 import UserProfile from './UserProfile';
-import SignIn from "./SignIn";
-import Signup from "./Signup";
-import SearchUser from "./SearchUser";
-import EditProfile from "./EditProfile";
-import Followers from "./Followers";
-import Following from "./Following";
+import SignIn from './SignIn';
+import Signup from './Signup';
+import SearchUser from './SearchUser';
+import EditProfile from './EditProfile';
+import Followers from './Followers';
+import Following from './Following';
 // import Comments from "./Comments";
 
-const Routes = () => {
+const Routes = () => (
+  <>
+    <Switch>
 
-  return (
-    <>
-      <Switch>
+      <Route
+        path="/"
+        render={() => <PostsFeed />}
+        exact
+      />
 
-        <Route
-          path="/"
-          render={() => <PostsFeed />}
-          exact
-        />
+      <Route
+        path="/signup"
+        render={() => <Signup />}
+        exact
+      />
 
-        <Route
-          path="/signup"
-          render={() => <Signup />}
-          exact
-        />
+      <Route
+        path="/signin"
+        render={() => <SignIn />}
+        exact
+      />
 
-        <Route
-          path="/signin"
-          render={() => <SignIn />}
-          exact
-        />
+      <Route
+        path="/posts"
+        render={() => <PostsFeed />}
+        exact
+      />
 
-        <Route
-          path="/posts"
-          render={() => <PostsFeed />}
-          exact
-        />
+      <Route
+        path="/newpost"
+        render={() => <NewPost />}
+        exact
+      />
 
-        <Route
-          path="/newpost"
-          render={() => <NewPost />}
-          exact
-        />
+      <Route
+        path="/userprofile"
+        render={() => <UserProfile />}
+        exact
+      />
 
-        <Route
-          path="/userprofile"
-          render={() => <UserProfile />}
-          exact
-        />
+      <Route
+        path="/userprofile/:id/edit"
+        render={(props) => <EditProfile {...props} />}
+        exact
+      />
 
-        <Route
-          path="/userprofile/:id/edit"
-          render={(props) => <EditProfile {...props} />}
-          exact
-        />
+      <Route
+        path="/userprofile/:id/followers"
+        render={(props) => <Followers {...props} />}
+        exact
+      />
 
-        <Route
-          path="/userprofile/:id/followers"
-          render={(props) => <Followers {...props} />}
-          exact
-        />
+      <Route
+        path="/userprofile/:id/following"
+        render={(props) => <Following {...props} />}
+        exact
+      />
 
-        <Route
-          path="/userprofile/:id/following"
-          render={(props) => <Following {...props} />}
-          exact
-        />
+      <Route
+        path="/searchuser"
+        render={() => <SearchUser />}
+        exact
+      />
 
-        <Route
-          path="/searchuser"
-          render={() => <SearchUser />}
-          exact
-        />
-
-      </Switch>
-    </>
-  )
-}
+    </Switch>
+  </>
+);
 
 export default Routes;

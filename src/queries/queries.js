@@ -51,8 +51,6 @@ const getMyProfileQuery = gql`
   }
 `;
 
-
-
 // Not used for now, will use for explore page, search page
 const getSingleUserDetailsQuery = gql`
   { 
@@ -74,7 +72,6 @@ const getSingleUserDetailsQuery = gql`
     }
   }
 `;
-
 
 // Get all
 const getUsersPostsQuery = gql`
@@ -113,4 +110,6 @@ const allUsersQuery = gql`
   }
 `;
 
-export { getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, getMyProfileQuery, allUsersQuery }
+export {
+  getAllPostsQuery, getUsersPostsQuery, getSingleUserDetailsQuery, getMyProfileQuery, allUsersQuery,
+};

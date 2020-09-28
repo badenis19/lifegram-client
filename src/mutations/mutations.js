@@ -61,4 +61,6 @@ const deletePostMutation = gql`
     }
 `;
 
-export { createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation, deletePostMutation, editUserProfileMutation }
+export {
+  createPostMutation, createUserMutation, followUserMutation, likePostMutation, addCommentMutation, deletePostMutation, editUserProfileMutation,
+};

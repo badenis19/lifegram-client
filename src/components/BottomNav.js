@@ -6,58 +6,55 @@ import roundHome from '@iconify/icons-ic/round-home';
 import roundSearch from '@iconify/icons-ic/round-search';
 import bxsUser from '@iconify/icons-bx/bxs-user';
 
-const BottomNav = () => {
+const BottomNav = () => (
+  <nav className="bottom-nav">
+    <ul>
 
-  return (
-    <nav className="bottom-nav">
-      <ul>
-
-        <div>
-          <NavLink activeClassName='is-active' to="/posts">
-            <li>
-              <Icon icon={roundHome} />
-            </li>
-            <span>
-              Feed
+      <div>
+        <NavLink activeClassName="is-active" to="/posts">
+          <li>
+            <Icon icon={roundHome} />
+          </li>
+          <span>
+            Feed
           </span>
-          </NavLink>
-        </div>
+        </NavLink>
+      </div>
 
-        <div>
-          <NavLink activeClassName='is-active' to="/searchuser">
-            <li>
-              <Icon icon={roundSearch} />
-            </li>
-            <span>
-              Search
+      <div>
+        <NavLink activeClassName="is-active" to="/searchuser">
+          <li>
+            <Icon icon={roundSearch} />
+          </li>
+          <span>
+            Search
           </span>
-          </NavLink>
-        </div>
+        </NavLink>
+      </div>
 
-        <div>
-          <NavLink activeClassName='is-active' to="/newpost">
-            <li>
-              <Icon icon={roundPostAdd} />
-            </li>
-            <span>
-              New post
+      <div>
+        <NavLink activeClassName="is-active" to="/newpost">
+          <li>
+            <Icon icon={roundPostAdd} />
+          </li>
+          <span>
+            New post
           </span>
-          </NavLink>
-        </div>
+        </NavLink>
+      </div>
 
-        <div>
-          <NavLink activeClassName='is-active' to="/userprofile">
-            <li>
-              <Icon icon={bxsUser} />
-            </li>
-            <span>
-              Profile
+      <div>
+        <NavLink activeClassName="is-active" to="/userprofile">
+          <li>
+            <Icon icon={bxsUser} />
+          </li>
+          <span>
+            Profile
           </span>
-          </NavLink>
-        </div>
-      </ul>
-    </nav>
-  )
-};
+        </NavLink>
+      </div>
+    </ul>
+  </nav>
+);
 
 export default BottomNav;

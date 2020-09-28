@@ -1,27 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { graphql } from 'react-apollo';
 import { flowRight as compose } from 'lodash';
-import client from '../apollo';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { SignedInContext } from "../App";
 import { Icon } from '@iconify/react';
 import plusCircleFill from '@iconify/icons-bi/plus-circle-fill';
+import { SignedInContext } from '../App';
+import client from '../apollo';
 
 /* Queries */
 import { getAllPostsQuery } from '../queries/queries';
 
 /* Mutations */
-import { createPostMutation } from "../mutations/mutations";
+import { createPostMutation } from '../mutations/mutations';
 
 // setting up the filestack client with API KEY
 const clientFS = require('filestack-js').init(process.env.REACT_APP_FILESTACK_API_KEY);
 
 const NewPost = () => {
+  const history = useHistory();
 
-  let history = useHistory();
-
-  let { updateSignIn } = useContext(SignedInContext);
+  const { updateSignIn } = useContext(SignedInContext);
 
   if (!Cookies.get('token')) {
     history.push('/userprofile');
@@ -30,11 +29,11 @@ const NewPost = () => {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   });
 
-  let [description, setDescription] = useState("");
-  let [imageUrl, setImageUrl] = useState("");
+  const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   // To refresh page after submitting the form
   const refreshPage = () => {
@@ -43,16 +42,16 @@ const NewPost = () => {
 
   // Callback options for fileStack upload
   const options = {
-    fromSources: ["local_file_system", "webcam", "url", "instagram", "facebook"],
-    accept: ["image/*", "video/*"],
-    onUploadDone: file => {
-      setImageUrl(file.filesUploaded[0].url) // to save url from upload
+    fromSources: ['local_file_system', 'webcam', 'url', 'instagram', 'facebook'],
+    accept: ['image/*', 'video/*'],
+    onUploadDone: (file) => {
+      setImageUrl(file.filesUploaded[0].url); // to save url from upload
     },
     transformations: {
       crop: true,
       circle: false,
-      rotate: false
-    }
+      rotate: false,
+    },
   };
 
   const handleImageUpload = () => {
@@ -61,31 +60,30 @@ const NewPost = () => {
   };
 
   const submitForm = async (e) => {
-    console.log("running....");
+    console.log('running....');
     e.preventDefault();
 
     await client.mutate({
       variables: {
-        description: description,
-        img: imageUrl
+        description,
+        img: imageUrl,
       },
       mutation: createPostMutation,
-      refetchQueries: () => [{ query: getAllPostsQuery }]
+      refetchQueries: () => [{ query: getAllPostsQuery }],
     });
     refreshPage();
-  }
+  };
 
   return (
-    <div className="new-post-container" >
+    <div className="new-post-container">
       <h2>New Post</h2>
       <form className="share-form" onSubmit={(e) => submitForm(e)}>
 
         <div className="image-upload-btn" onClick={() => handleImageUpload()}>
           {
-            imageUrl ?
-              <img src={imageUrl} alt="" />
-              :
-              <Icon icon={plusCircleFill} />
+            imageUrl
+              ? <img src={imageUrl} alt="" />
+              : <Icon icon={plusCircleFill} />
           }
 
         </div>
@@ -96,10 +94,10 @@ const NewPost = () => {
 
       </form>
     </div>
-  )
+  );
 };
 
 export default compose(
-  graphql(createPostMutation, { name: "createPostMutation" }),
-  graphql(getAllPostsQuery, { name: "getAllPostsQuery" })
+  graphql(createPostMutation, { name: 'createPostMutation' }),
+  graphql(getAllPostsQuery, { name: 'getAllPostsQuery' }),
 )(NewPost);

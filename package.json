@@ -33,6 +33,7 @@
     "sweetalert": "^2.1.2"
   },
   "scripts": {
+    "lint": "eslint --fix --ext .js,.jsx .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
