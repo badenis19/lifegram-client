@@ -45,6 +45,8 @@ const SearchUser = (props) => {
     setUserList([]);
   };
 
+  console.log("hello")
+
   const getConnectedUserFollowingArray = () => {
     if (props.getMyProfileQuery.loading) {
       return (<p>Loading...</p>)
